@@ -12,6 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="130dp"
         android:backgroundTint="#8095B7B3"
+        android:fontFamily="@font/fresca"
         android:drawableLeft="@drawable/ines"
         android:text="Inés"
         app:cornerRadius="25dp"
