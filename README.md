@@ -1,3 +1,8 @@
 SINENSIS
 
-App de relajación
+Creadoras:
+
+ - Inés Acebes Hernansanz 
+ - Paula Gallejones López
+ - Jimena Díaz Padilla
+
