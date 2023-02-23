@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">sinensis</string>
+    <string name="app_name">Aplicación</string>
+    <string name="titulo">Sinensis</string>
 </resources>
