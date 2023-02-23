@@ -9,6 +9,20 @@
     >
 
 
+    <TextView
+        android:id="@+id/presentacion"
+        android:layout_width="385dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/fresca"
+        android:gravity="center"
+        android:text="Bienvenido a Sinensis.\n Es preciso para nosotros saber tus datos"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/bambu"
         android:layout_width="wrap_content"
@@ -21,26 +35,68 @@
         app:srcCompat="@drawable/bambu" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/text_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/fresca"
         android:text="¿Como te llamas?"
         android:textColor="@color/white"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/presentacion" />
 
     <EditText
+        android:id="@+id/nombre"
         android:layout_width="177dp"
         android:layout_height="52dp"
         android:layout_marginStart="116dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@color/white"
+        android:gravity="center"
         android:hint="Introduce tu nombre"
+        android:inputType="textPersonName"
+        app:cornerRadius="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/text_nombre" />
+
+    <TextView
+        android:id="@+id/text_edad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/fresca"
+        android:text="¿Cuantos años tienes?"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+    <EditText
+        android:id="@+id/edad"
+        android:layout_width="177dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:hint="Introduce tu edad"
+        android:digits="0 1 2 3 4 5 6 7 8 9"
+        android:maxLength="2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_edad" />
+
+    <SeekBar
+        android:layout_width="250dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:max="100"
+
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edad" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
