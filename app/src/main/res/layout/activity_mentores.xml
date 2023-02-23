@@ -7,6 +7,18 @@
     android:background="#1F2B53"
     tools:context=".activity_mentores">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/fresca"
+        android:text="Elige tu mentor"
+        android:textColor="#ECE8E8"
+        android:textSize="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/bambu"
         android:layout_width="wrap_content"
@@ -23,47 +35,53 @@
         android:layout_width="300dp"
         android:layout_height="130dp"
         android:backgroundTint="#8095B7B3"
-        android:fontFamily="@font/fresca"
         android:drawableLeft="@drawable/ines"
-        android:text="Inés"
+        android:fontFamily="@font/fresca"
+        android:text="Inés\n\n Ejercicios de relajación"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.177" />
+        app:layout_constraintVertical_bias="0.279" />
 
     <Button
         android:id="@+id/button_paula"
-
         android:layout_width="300dp"
         android:layout_height="130dp"
         android:backgroundTint="#8095B7B3"
-        android:drawableRight="@drawable/paula"
-        android:text="Paula"
+        android:drawableRight="@drawable/Paula"
+        android:fontFamily="@font/fresca"
+        android:text="Paula\n\n Ejercicios de relajación"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.575" />
 
     <Button
         android:id="@+id/button_jimena"
-
         android:layout_width="300dp"
         android:layout_height="130dp"
         android:backgroundTint="#8095B7B3"
-        android:drawableLeft="@drawable/jimena"
-        android:text="Jimena"
+        android:drawableLeft="@drawable/Jimena"
+        android:fontFamily="@font/fresca"
+        android:text="Jimena\n\n Ejercicios de relajación"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.878" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
