@@ -18,11 +18,16 @@ public class activity_datos extends AppCompatActivity {
         edad = (EditText) findViewById(R.id.edad);
     }
 
-    public void validacion(View v){
+
+
+    public void validar(View v){
         if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
-            Toast.makeText(this, "RELLENA LOS CAMPOS CABRON", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_SHORT);
+            toast.show();
         }
+
     }
+
 
 
 }

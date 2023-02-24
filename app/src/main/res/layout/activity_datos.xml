@@ -17,7 +17,7 @@
         android:layout_marginTop="40dp"
         android:fontFamily="@font/fresca"
         android:gravity="center"
-        android:text="Bienvenido a Sinensis.\n Es preciso para nosotros saber tus dato"
+        android:text="Bienvenido a Sinensis.\n Es preciso para nosotros saber tus datos"
         android:textColor="@color/white"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,14 +87,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_edad" />
 
-    <SeekBar
-        android:layout_width="250dp"
-        android:layout_height="139dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="24dp"
-        android:max="100"
-
-
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="32dp"
+        android:onClick="validar"
+        android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edad" />
 
