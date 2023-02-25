@@ -29,7 +29,7 @@ public class activity_mentores extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_mentores.this, activity_datos.class);
+                Intent intent = new Intent(activity_mentores.this, activity_principal.class);
                 startActivity(intent);
 
             }
@@ -40,7 +40,7 @@ public class activity_mentores extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(activity_mentores.this,activity_datos.class);
+                Intent intent = new Intent(activity_mentores.this,activity_principal.class);
                 startActivity(intent);
 
             }
@@ -50,7 +50,7 @@ public class activity_mentores extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_mentores.this, activity_datos.class);
+                Intent intent = new Intent(activity_mentores.this, activity_principal.class);
                 startActivity(intent);
 
             }
