@@ -14,12 +14,12 @@
         android:layout_width="385dp"
         android:layout_height="111dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/fresca"
         android:gravity="center"
         android:text="Bienvenido a Sinensis.\n Es preciso para nosotros saber tus datos"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,12 +38,12 @@
         android:id="@+id/text_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/fresca"
         android:text="¿Como te llamas?"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/presentacion" />
 
@@ -57,7 +57,7 @@
         android:gravity="center"
         android:hint="Introduce tu nombre"
         android:inputType="textPersonName"
-        app:cornerRadius="25dp"
+        android:maxLength="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_nombre" />
 
@@ -65,14 +65,15 @@
         android:id="@+id/text_edad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/fresca"
         android:text="¿Cuantos años tienes?"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre" />
+
     <EditText
         android:id="@+id/edad"
         android:layout_width="177dp"
@@ -87,12 +88,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_edad" />
 
+    <TextView
+        android:id="@+id/text_grado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/fresca"
+        android:text="¿Cuanto enfermo estas ?"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edad" />
+
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="353dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:max="90"
+
+        android:progressBackgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_grado" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="236dp"
         android:onClick="validar"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
