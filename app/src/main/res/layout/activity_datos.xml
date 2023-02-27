@@ -108,8 +108,10 @@
         android:layout_height="22dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
-        android:max="90"
-
+        android:max="2"
+        android:progress="1"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:thumb="@mipmap/ic_launcher"
         android:progressBackgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_grado" />
@@ -118,12 +120,13 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="28dp"
         android:onClick="validar"
+
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edad" />
+        app:layout_constraintTop_toBottomOf="@+id/seekbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
