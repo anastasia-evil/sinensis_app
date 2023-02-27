@@ -25,12 +25,17 @@ public class activity_mentores extends AppCompatActivity {
         boton = (Button) findViewById(R.id.button_ines);
         boton2 = (Button) findViewById(R.id.button_paula);
         boton3 = (Button) findViewById(R.id.button_jimena);
+
         boton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity_mentores.this, activity_principal.class);
                 startActivity(intent);
+
+                Intent intent1 = new Intent(activity_mentores.this, activity_principal.class);
+                intent1.putExtra("mentor", "Has elegido a Ines");
+                startActivity(intent1);
 
             }
 
@@ -39,9 +44,12 @@ public class activity_mentores extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(activity_mentores.this,activity_principal.class);
                 startActivity(intent);
+
+                Intent intent1 = new Intent(activity_mentores.this, activity_principal.class);
+                intent1.putExtra("mentor", "Has elegido a Paula");
+                startActivity(intent1);
 
             }
         });
@@ -53,40 +61,11 @@ public class activity_mentores extends AppCompatActivity {
                 Intent intent = new Intent(activity_mentores.this, activity_principal.class);
                 startActivity(intent);
 
+                Intent intent1 = new Intent(activity_mentores.this, activity_principal.class);
+                intent1.putExtra("mentor", "Has elegido a Jimena");
+                startActivity(intent1);
+
             }
         });
     }
-
-    /*public void onClick(View view){
-        boolean visto = ((Button)view).isClickable();
-        Button boton1,boton2,boton3;
-
-        switch (view.getId()){
-
-            case R.id.button_ines:
-                if(visto){
-
-                }
-                break;
-
-            case R.id.button_paula:
-                if(visto){
-                    Snackbar mySnackbar = Snackbar.make(view,"Has elegido a Paula", 100);
-                    mySnackbar.show();
-
-                }
-                break;
-
-            case R.id.button_jimena:
-                if(visto){
-                    Snackbar mySnackbar = Snackbar.make(view,"Has elegido a Jimena", 100);
-                    mySnackbar.show();
-
-                }
-                break;
-        }
-    }*/
-
-
-
 }

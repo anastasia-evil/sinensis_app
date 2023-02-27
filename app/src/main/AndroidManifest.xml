@@ -16,6 +16,10 @@
         <activity
             android:name=".activity_datos"
             android:exported="false"/>
+
+        <activity
+            android:name=".activity_principal"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
