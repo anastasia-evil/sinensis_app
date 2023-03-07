@@ -32,6 +32,12 @@ public interface ActividadesDAO {
     @Query("SELECT * FROM Actividades WHERE mentor=:mentor")
     Actividades selectByMentor(int mentor);
 
+    @Query("SELECT COUNT(*) FROM actividades")
+    int count();
+
+    @Query("SELECT nombre FROM actividades")
+    List<String> getNombresActividades();
+
     @Insert
     long insert(Actividades actividades);
 

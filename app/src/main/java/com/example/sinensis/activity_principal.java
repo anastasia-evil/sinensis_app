@@ -2,6 +2,7 @@ package com.example.sinensis;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,29 +28,33 @@ public class activity_principal extends AppCompatActivity {
         textView.setText(message);
 
 
+        Log.d("MyApp", "Creando instancia de la base de datos");
         db = AppDatabase.getInstance(getApplicationContext()); // le damos valos de inicio a db
 
+
+
+
         listView = findViewById(R.id.list_view);
-        listView.setOnItemClickListener((adapter, view, pos, id) -> {
-            Actividades actividades = (Actividades) adapter.getAdapter().getItem(pos);
-        });
-
-        displayList();
 
 
-    }
+        int count = db.ActividadesDAO().count();
 
-    private void displayList() {
+
+
+
+        Log.d("MyApp", "Buscando todas las actividades...");
         List<Actividades> actividadesList = db.ActividadesDAO().selectAll();
+        if (count > 0) {
+            Log.d("MyApp", "hay datos");
+        } else {
+            Log.d("MyApp", "No hay datos");
+        }
+        Log.d("MyApp", "actividadesList size: " + actividadesList.size());
         ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
                 android.R.layout.simple_list_item_1, actividadesList);
         listView.setAdapter(listAdapter);
+
+
     }
-
-
-
-
-
-
 
 }

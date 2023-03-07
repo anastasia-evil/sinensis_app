@@ -48,4 +48,7 @@ public class Actividades {
         return nombre;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 }

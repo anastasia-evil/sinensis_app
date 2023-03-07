@@ -9,7 +9,10 @@ import androidx.room.RoomDatabase;
 @Database(entities = { Actividades.class }, version = 1)
 public abstract class AppDatabase extends RoomDatabase{
 
+
+
         private static final String DB_NAME = "base_datos_sinensis.db";
+
         private static volatile AppDatabase instance;
 
         public abstract ActividadesDAO ActividadesDAO();
@@ -23,6 +26,7 @@ public abstract class AppDatabase extends RoomDatabase{
 
         private static AppDatabase create(Context context) {
             return Room.databaseBuilder(context, AppDatabase.class, DB_NAME)
+
                     .allowMainThreadQueries()
                     .build();
         }
