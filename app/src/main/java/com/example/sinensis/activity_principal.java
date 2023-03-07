@@ -22,6 +22,8 @@ public class activity_principal extends AppCompatActivity {
         db = AppDatabase.getInstance(getApplicationContext()); // le damos valos de inicio a db
 
         listView = findViewById(R.id.list_view);
+
+
         listView.setOnItemClickListener((adapter, view, pos, id) -> {
             Actividades actividades = (Actividades) adapter.getAdapter().getItem(pos);
         });
