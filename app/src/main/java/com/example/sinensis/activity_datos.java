@@ -29,9 +29,6 @@ public class activity_datos extends AppCompatActivity {
 
 
 
-
-
-
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
@@ -54,10 +51,6 @@ public class activity_datos extends AppCompatActivity {
 
 
     }
-
-
-
-
 
 
     public void validar(View v){
