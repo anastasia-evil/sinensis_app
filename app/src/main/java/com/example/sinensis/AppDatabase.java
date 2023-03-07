@@ -12,7 +12,7 @@ public abstract class AppDatabase extends RoomDatabase{
         private static final String DB_NAME = "actividades.sqbpro";
         private static volatile AppDatabase instance;
 
-        public abstract ActividadesDao actividadesDao();
+        public abstract ActividadesDAO ActividadesDAO();
 
         public static synchronized AppDatabase getInstance(Context context) {
             if (instance == null) {

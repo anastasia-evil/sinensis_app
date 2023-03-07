@@ -44,7 +44,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/white"
         android:gravity="center"
-        android:hint="Introduce tu nombre"
+        android:hint="Introduce tu nombre "
         android:inputType="textPersonName"
         android:maxLength="10"
         app:layout_constraintStart_toStartOf="parent"

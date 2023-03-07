@@ -6,44 +6,27 @@
     android:layout_height="match_parent"
     android:background="#6073B1">
 
-    <include layout="@layout/imagen_fija" />
-
-    <TextView
-        android:layout_width="252dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/fresca"
-        android:text="Tus actividades"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/texto_mentor"
-        android:layout_width="200dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="104dp"
-        android:fontFamily="@font/fresca"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/boton_cambiar"
+    <ImageView
+        android:id="@+id/bambu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="552dp"
-        android:backgroundTint="#8095B7B3"
-        android:text="¿Desea cambiar de actividad?"
-        android:textAllCaps="false"
-        app:cornerRadius="15dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
+        android:alpha="0.35"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bambu" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="369dp"
+        android:layout_height="228dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/lista_actividades"
+
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
