@@ -3,18 +3,21 @@ package com.example.sinensis;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 
+import java.io.InputStream;
+
 public class MainActivity extends AppCompatActivity {
 
-    Handler handler;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        handler=new Handler();
+        Handler handler = new Handler();
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -24,7 +27,18 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         },2000);
+
+       
+
+
+
+
     }
+
+
+
+
+
 
 
 }

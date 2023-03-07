@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class activity_datos extends AppCompatActivity {
@@ -13,6 +14,10 @@ public class activity_datos extends AppCompatActivity {
     EditText nombre, edad;
     SeekBar seekbar;
     int grado;
+    TextView n;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,9 @@ public class activity_datos extends AppCompatActivity {
         nombre = (EditText) findViewById(R.id.nombre);
         edad = (EditText) findViewById(R.id.edad);
         seekbar = (SeekBar) findViewById(R.id.seekbar);
+        n = (TextView) findViewById(R.id.textito);
+
+
 
 
 
@@ -28,6 +36,7 @@ public class activity_datos extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 grado = seekbar.getProgress();
+                n.setText("Nivel: " + progress);
             }
 
             @Override
