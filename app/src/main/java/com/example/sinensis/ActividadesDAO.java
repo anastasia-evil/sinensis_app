@@ -29,7 +29,7 @@ public interface ActividadesDAO {
     @Query("SELECT * FROM Actividades WHERE edad=:edad")
     Actividades selectByEdad(int edad);
 
-    @Query("SELECT * FROM Actividades WHERE mentorl=:mentor")
+    @Query("SELECT * FROM Actividades WHERE mentor=:mentor")
     Actividades selectByMentor(int mentor);
 
     @Insert
