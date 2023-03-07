@@ -108,7 +108,7 @@
         android:layout_height="22dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
-        android:max="2"
+        android:max="4"
         android:progress="1"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:thumb="@mipmap/ic_launcher"
