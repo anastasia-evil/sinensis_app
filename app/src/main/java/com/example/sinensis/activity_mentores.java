@@ -2,6 +2,8 @@ package com.example.sinensis;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+import static com.example.sinensis.activity_datos.nombre;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -26,15 +28,15 @@ public class activity_mentores extends AppCompatActivity {
         boton2 = (Button) findViewById(R.id.button_paula);
         boton3 = (Button) findViewById(R.id.button_jimena);
 
+        Intent intent = new Intent(activity_mentores.this, activity_principal.class);
+        Intent intent1 = new Intent(activity_mentores.this, activity_principal.class);
+        intent1.putExtra("nombre", nombre.getText().toString());
         boton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_mentores.this, activity_principal.class);
-                startActivity(intent);
 
-                Intent intent1 = new Intent(activity_mentores.this, activity_principal.class);
-                intent1.putExtra("mentor", "Has elegido a Ines");
+                startActivity(intent);
                 startActivity(intent1);
 
             }
@@ -44,11 +46,8 @@ public class activity_mentores extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_mentores.this,activity_principal.class);
-                startActivity(intent);
 
-                Intent intent1 = new Intent(activity_mentores.this, activity_principal.class);
-                intent1.putExtra("mentor", "Has elegido a Paula");
+                startActivity(intent);
                 startActivity(intent1);
 
             }
@@ -58,11 +57,8 @@ public class activity_mentores extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_mentores.this, activity_principal.class);
-                startActivity(intent);
 
-                Intent intent1 = new Intent(activity_mentores.this, activity_principal.class);
-                intent1.putExtra("mentor", "Has elegido a Jimena");
+                startActivity(intent);
                 startActivity(intent1);
 
             }

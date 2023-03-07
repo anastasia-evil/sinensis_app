@@ -6,17 +6,30 @@
     android:layout_height="match_parent"
     android:background="#6073B1">
 
-    <ImageView
-        android:id="@+id/bambu"
+    <include layout="@layout/imagen_fija" />
+
+    <TextView
+        android:id = "@+id/actividades"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="16dp"
-        android:alpha="0.35"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/fresca"
+        android:text="Tus actividades"
+        android:textColor="#ECE8E8"
+        android:textSize="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bambu" />
-
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id = "@+id/textonombre"
+        android:fontFamily="@font/fresca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="150dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <ListView
         android:id="@+id/list_view"
         android:layout_width="280dp"
