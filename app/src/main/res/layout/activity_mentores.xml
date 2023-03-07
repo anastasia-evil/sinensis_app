@@ -51,7 +51,7 @@
         android:backgroundTint="#8095B7B3"
         android:drawableRight="@drawable/paula"
         android:fontFamily="@font/fresca"
-        android:text="Paula\n\n Ejercicios de relajación"
+        android:text="Paula\n\n Ejercicio s de relajación"
         android:textAllCaps="false"
         android:textSize="20sp"
         android:onClick="onClick"
