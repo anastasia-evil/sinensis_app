@@ -28,19 +28,15 @@ public class activity_mentores extends AppCompatActivity {
         boton2 = (Button) findViewById(R.id.button_paula);
         boton3 = (Button) findViewById(R.id.button_jimena);
 
-        Intent intent = new Intent(activity_mentores.this, activity_principal.class);
-        Intent intent1 = new Intent(activity_mentores.this, activity_principal.class);
+        Intent intent = new Intent(this, activity_principal.class);
+        Intent intent1 = new Intent(this, activity_principal.class);
         intent1.putExtra("nombre", nombre.getText().toString());
         boton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-
                 startActivity(intent);
                 startActivity(intent1);
-
             }
-
         });
         boton2.setOnClickListener(new View.OnClickListener() {
 

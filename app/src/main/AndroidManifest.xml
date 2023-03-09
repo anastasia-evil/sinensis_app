@@ -24,6 +24,14 @@
             android:name=".activity_mentores"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".activity_ajustes"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".activity_calendario"
+            android:exported="false">
+        </activity>
 
 
         <activity

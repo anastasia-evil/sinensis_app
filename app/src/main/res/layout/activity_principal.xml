@@ -9,7 +9,7 @@
     <include layout="@layout/imagen_fija" />
 
     <TextView
-        android:id = "@+id/actividades"
+        android:id="@+id/actividades"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
@@ -20,22 +20,57 @@
         android:textSize="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id = "@+id/textonombre"
-        android:fontFamily="@font/fresca"
+        android:id="@+id/textonombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="150dp"
+        android:fontFamily="@font/fresca"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/calendario"
+        android:layout_width="80dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="512dp"
+        android:background="@drawable/calendar"
+        android:onClick="onClick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/home"
+        android:layout_width="80dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="512dp"
+        android:background="@drawable/home"
+        android:onClick="onClick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ajustes"
+        android:layout_width="80dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="512dp"
+        android:background="@drawable/ajustes"
+        android:onClick="onClick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ListView
         android:id="@+id/list_view"
         android:layout_width="280dp"
         android:layout_height="270dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="204dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
