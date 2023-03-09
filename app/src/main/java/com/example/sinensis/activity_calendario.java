@@ -34,6 +34,7 @@ public class activity_calendario extends AppCompatActivity {
             }
         });
 
+        //calendario
         calendar = (CalendarView) findViewById(R.id.calendarView);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
