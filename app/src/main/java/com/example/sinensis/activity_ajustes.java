@@ -59,6 +59,7 @@ public class activity_ajustes extends AppCompatActivity {
         seekBarVol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //papa
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i ,0 );
 
             }
