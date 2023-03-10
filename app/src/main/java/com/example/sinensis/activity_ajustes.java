@@ -23,7 +23,7 @@ public class activity_ajustes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
-
+        //variables
         Button play;
         SeekBar seekBarVol;
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
