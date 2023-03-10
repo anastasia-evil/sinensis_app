@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +21,7 @@ public class activity_datos extends AppCompatActivity {
     TextView n;
     Button btn;
 
-
+    private AppDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,9 @@ public class activity_datos extends AppCompatActivity {
         seekbar = (SeekBar) findViewById(R.id.seekbar);
         n = (TextView) findViewById(R.id.textito);
         btn = (Button) findViewById(R.id.button);
+
+
+
 
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
