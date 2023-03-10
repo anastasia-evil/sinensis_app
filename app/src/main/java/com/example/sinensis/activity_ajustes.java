@@ -1,5 +1,7 @@
 package com.example.sinensis;
 
+import static com.example.sinensis.activity_datos.nombre;
+
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -30,11 +32,15 @@ public class activity_ajustes extends AppCompatActivity {
         btn_ajustes = (ImageButton) findViewById(R.id.flechaA);
         int max_vol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+        Intent intent1 = new Intent(this, activity_principal.class);
+        intent1.putExtra("nombre", nombre.getText().toString());
         btn_ajustes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity_ajustes.this, activity_principal.class);
                 startActivity(intent);
+                startActivity(intent1);
                 finish();
             }
         });

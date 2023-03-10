@@ -11,8 +11,7 @@ public abstract class AppDatabase extends RoomDatabase{
 
 
 
-        private static final String PRELOADED_DATABASE_FILE = "base_datos_sinensis.db";
-        private static final String DB_NAME = "base_datos_-sinensis.db";
+        private static final String DB_NAME = "base_datos_sinensis.db";
 
         private static volatile AppDatabase instance;
 
@@ -25,16 +24,12 @@ public abstract class AppDatabase extends RoomDatabase{
             return instance;
         }
 
+        private static AppDatabase create(Context context) {
+            return Room.databaseBuilder(context, AppDatabase.class, DB_NAME)
 
-
-
-
-    private static AppDatabase create(Context context) {
-        return Room.databaseBuilder(context, AppDatabase.class, DB_NAME)
-                .createFromAsset(PRELOADED_DATABASE_FILE)
-                .allowMainThreadQueries()
-                .build();
-    }
+                    .allowMainThreadQueries()
+                    .build();
+        }
 
 
 }

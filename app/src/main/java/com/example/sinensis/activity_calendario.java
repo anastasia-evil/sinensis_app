@@ -1,5 +1,7 @@
 package com.example.sinensis;
 
+import static com.example.sinensis.activity_datos.nombre;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,11 +27,14 @@ public class activity_calendario extends AppCompatActivity {
         setContentView(R.layout.activity_calendario);
 
         btn_calendario = (ImageButton) findViewById(R.id.flechaC);
+        Intent intent1 = new Intent(this, activity_principal.class);
+        intent1.putExtra("nombre", nombre.getText().toString());
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity_calendario.this, activity_principal.class);
                 startActivity(intent);
+                startActivity(intent1);
                 finish();
             }
         });
@@ -46,16 +51,6 @@ public class activity_calendario extends AppCompatActivity {
 
     }
 
-    /*public void flechaC(View view){
-        btn_calendario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(activity_calendario.this, activity_principal.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }*/
 
 
 
