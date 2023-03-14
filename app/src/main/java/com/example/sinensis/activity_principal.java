@@ -2,16 +2,12 @@ package com.example.sinensis;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
@@ -64,9 +60,17 @@ public class activity_principal extends AppCompatActivity {
         db = AppDatabase.getInstance(getApplicationContext()); // le damos valos de inicio a db
         listView = findViewById(R.id.list_view);
 
-        List<Actividades> notesList = db.ActividadesDAO().selectAll();
+        listView.setOnItemClickListener((adapter, view, pos, id) -> {
+            Actividades actividades = (Actividades) adapter.getAdapter().getItem(pos);
+
+            Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
+            intent.putExtra("id", actividades.id);
+            startActivity(intent_mapa);
+        });
+
+        List<Actividades> actividadesList = db.ActividadesDAO().selectAll();
         ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
-                android.R.layout.simple_list_item_1, notesList);
+                android.R.layout.simple_list_item_1, actividadesList);
         listView.setAdapter(listAdapter);
 
     }
