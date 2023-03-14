@@ -32,10 +32,6 @@ public class activity_datos extends AppCompatActivity {
         n = (TextView) findViewById(R.id.textito);
         btn = (Button) findViewById(R.id.button);
 
-
-
-
-
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){

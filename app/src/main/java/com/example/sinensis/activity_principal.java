@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
@@ -59,32 +61,13 @@ public class activity_principal extends AppCompatActivity {
             }
         });
 
-        Log.d("MyApp", "Creando instancia de la base de datos");
         db = AppDatabase.getInstance(getApplicationContext()); // le damos valos de inicio a db
-
-
-
-
         listView = findViewById(R.id.list_view);
 
-
-        int count = db.ActividadesDAO().count();
-
-
-
-
-        Log.d("MyApp", "Buscando todas las actividades...");
-        List<Actividades> actividadesList = db.ActividadesDAO().selectAll();
-        if (count > 0) {
-            Log.d("MyApp", "hay datos");
-        } else {
-            Log.d("MyApp", "No hay datos");
-        }
-        Log.d("MyApp", "actividadesList size: " + actividadesList.size());
+        List<Actividades> notesList = db.ActividadesDAO().selectAll();
         ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
-                android.R.layout.simple_list_item_1, actividadesList);
+                android.R.layout.simple_list_item_1, notesList);
         listView.setAdapter(listAdapter);
-
 
     }
 
