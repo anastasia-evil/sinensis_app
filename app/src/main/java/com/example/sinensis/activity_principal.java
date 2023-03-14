@@ -51,7 +51,9 @@ public class activity_principal extends AppCompatActivity {
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(intentH);
+                startActivity(intent);
             }
         });
         btn_ajustes.setOnClickListener(new View.OnClickListener() {

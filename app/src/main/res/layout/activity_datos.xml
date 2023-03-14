@@ -30,7 +30,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/fresca"
-        android:text="¿Como te llamas?"
+        android:text="¿Cómo te llamas?"
         android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
         android:gravity="center"
         android:hint="Introduce tu nombre "
         android:inputType="textPersonName"
-        android:maxLength="10"
+        android:maxLength="15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_nombre" />
 
@@ -57,7 +57,7 @@
         android:layout_marginStart="96dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/fresca"
-        android:text="¿Cuantos años tienes?"
+        android:text="¿Cuántos años tienes?"
         android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/fresca"
-        android:text="¿Cuanto enfermo estas ?"
+        android:text="¿Cómo de estresado estás ?"
         android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
         android:max="4"
-        android:progress="1"
+        android:progress="2"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:thumb="@mipmap/ic_launcher"
         android:progressBackgroundTint="@color/white"
@@ -111,8 +111,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="284dp"
         android:layout_marginTop="28dp"
+        android:elevation="20dp"
         android:onClick="validar"
-        android:text="Button"
+        android:text="Enviar"
+        android:backgroundTint="#436891"
+        app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekbar" />
 
@@ -122,7 +125,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/fresca"
         android:text="Nivel: "
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekbar" />
 

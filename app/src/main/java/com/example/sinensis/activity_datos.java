@@ -52,28 +52,25 @@ public class activity_datos extends AppCompatActivity {
 
         });
 
-
-    }
-
-
-    public void validar(View v){
-        if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
-            Toast toast = Toast.makeText(this, "Rellena todos los campos " + grado, Toast.LENGTH_SHORT);
-            toast.show();
-        }
-        else{
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
+                    Toast toast = Toast.makeText(activity_datos.this, "Rellena todos los campos " + grado, Toast.LENGTH_SHORT);
+                    toast.show();
+                }else{
                     Intent intent = new Intent(activity_datos.this, activity_mentores.class);
                     startActivity(intent);
                 }
+            }
 
-            });
-        }
+        });
 
 
     }
+
+
+
 
 
 
