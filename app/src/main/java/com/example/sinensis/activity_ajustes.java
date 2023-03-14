@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.List;
-
 public class activity_ajustes extends AppCompatActivity {
 
     ImageButton btn_ajustes;
@@ -44,6 +42,7 @@ public class activity_ajustes extends AppCompatActivity {
                 finish();
             }
         });
+
         play = (Button)findViewById(R.id.button_play);
         MediaPlayer mp = MediaPlayer.create(this, R.raw.sinensis_t);
         play.setOnClickListener(new View.OnClickListener() {

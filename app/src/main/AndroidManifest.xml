@@ -12,6 +12,10 @@
         android:theme="@style/Theme.Sinensis"
         tools:targetApi="31">
 
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDBrKizRUyqs4d4CMgNzUFZK-Yv3kmTt7g" />
+
         <activity
             android:name=".activity_datos"
             android:exported="false">
@@ -32,7 +36,10 @@
             android:name=".activity_calendario"
             android:exported="false">
         </activity>
-
+        <activity
+            android:name=".activity_mapa"
+            android:exported="false">
+        </activity>
 
         <activity
             android:name=".MainActivity"
