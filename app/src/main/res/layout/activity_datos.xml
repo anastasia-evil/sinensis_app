@@ -84,7 +84,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/fresca"
-        android:text="¿Cuanto enfermo estas ?"
+        android:text="¿Qué tan estresado te sientes?"
         android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
