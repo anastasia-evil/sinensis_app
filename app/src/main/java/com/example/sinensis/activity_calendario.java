@@ -45,7 +45,7 @@ public class activity_calendario extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int day, int month, int year) {
                 String fecha = year + "/" + month + "/" + day;
-                Toast.makeText(activity_calendario.this, fecha, Toast.LENGTH_LONG).show();
+                Toast.makeText(activity_calendario.this, fecha, Toast.LENGTH_SHORT).show();
             }
         });
 

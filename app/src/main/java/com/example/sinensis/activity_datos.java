@@ -51,35 +51,25 @@ public class activity_datos extends AppCompatActivity {
 
         });
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(nombre.getText().toString().isEmpty()){
+                    Toast toast = Toast.makeText(activity_datos.this, "Rellena tu nombre por favor " + grado, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                else{
+                    Intent intent = new Intent(activity_datos.this, activity_mentores.class);
+                    startActivity(intent);
+                }
+
+            }
+
+        });
+
 
     }
 
-
-    public void validar(View v){
-        if(nombre.getText().toString().isEmpty()){
-            Toast toast = Toast.makeText(this, "Rellena tu nombre por favor " + grado, Toast.LENGTH_SHORT);
-            toast.show();
-        }
-        else{
-            if(edad.getText().toString().isEmpty()){
-                Toast toast = Toast.makeText(this, "Rellena tu edad por favor " + grado, Toast.LENGTH_SHORT);
-                toast.show();
-            }
-            else{
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(activity_datos.this, activity_mentores.class);
-                        startActivity(intent);
-                    }
-
-                });
-            }
-
-        }
-
-
-    }
 
 
 
