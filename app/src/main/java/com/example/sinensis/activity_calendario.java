@@ -47,14 +47,21 @@ public class activity_calendario extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int day, int month, int year) {
-                String fecha = year + "/" + month + "/" + day;
-                Toast.makeText(activity_calendario.this, fecha, Toast.LENGTH_SHORT).show();
+                Calendar calendar1 = Calendar.getInstance();
+                int hora = calendar1.get(Calendar.HOUR_OF_DAY);
+                int minuto = calendar1.get(Calendar.MINUTE);
+                TimePickerDialog tpd = new TimePickerDialog(activity_calendario.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+
+                    }
+                },hora, minuto,false);
+                tpd.show();
+
             }
         });
 
     }
-
-    //elegir hora
 
 
 
