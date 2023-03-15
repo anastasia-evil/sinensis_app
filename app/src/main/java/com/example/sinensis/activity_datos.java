@@ -17,6 +17,8 @@ public class activity_datos extends AppCompatActivity {
     EditText edad;
     SeekBar seekbar;
     int grado;
+    public static int grado_datos;
+    public static int edad_datos;
     TextView n;
     Button btn;
 
@@ -31,11 +33,13 @@ public class activity_datos extends AppCompatActivity {
         n = (TextView) findViewById(R.id.textito);
         btn = (Button) findViewById(R.id.button);
 
+
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 grado = seekbar.getProgress();
                 n.setText("Nivel: " + progress);
+                grado_datos = progress;
             }
 
             @Override
@@ -54,11 +58,13 @@ public class activity_datos extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nombre.getText().toString().isEmpty()){
-                    Toast toast = Toast.makeText(activity_datos.this, "Rellena tu nombre por favor " + grado, Toast.LENGTH_SHORT);
+                if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
+                    Toast toast = Toast.makeText(activity_datos.this, "Rellena los datos", Toast.LENGTH_SHORT);
                     toast.show();
                 }
                 else{
+                    String edad_conversor = edad.getText().toString();
+                    edad_datos = Integer.parseInt(edad_conversor);
                     Intent intent = new Intent(activity_datos.this, activity_mentores.class);
                     startActivity(intent);
                 }
@@ -69,6 +75,7 @@ public class activity_datos extends AppCompatActivity {
 
 
     }
+
 
 
 
