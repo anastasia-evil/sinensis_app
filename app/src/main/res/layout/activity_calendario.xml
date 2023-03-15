@@ -25,12 +25,12 @@
 
     <ImageButton
         android:id="@+id/flechaC"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/flecha"
-        android:onClick="flechaC"
+        android:onClick="onClick"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

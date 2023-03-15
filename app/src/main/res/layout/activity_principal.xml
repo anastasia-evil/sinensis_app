@@ -29,6 +29,7 @@
         android:layout_marginTop="116dp"
         android:fontFamily="@font/fresca"
         android:textSize="20dp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,9 +69,9 @@
     <ListView
         android:id="@+id/list_view"
         android:layout_width="280dp"
-        android:layout_height="270dp"
+        android:layout_height="300dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
