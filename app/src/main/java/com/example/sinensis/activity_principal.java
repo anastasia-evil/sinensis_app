@@ -70,10 +70,44 @@ public class activity_principal extends AppCompatActivity {
             startActivity(intent_mapa);
         });
 
-        List<Actividades> actividadesList = db.ActividadesDAO().selectAll();
+
+        //vamos a hacer que nos salgan las listas de actividades dependiendo de nuestra edad, nievl (grado) y mentor
+        int edad = activity_datos.edad_datos;
+        int nivel = activity_datos.grado_datos;
+        int mentor = activity_mentores.mentor_datos;
+        int e = 0;
+        int n = 0;
+
+        //restriccion de edad
+        if(edad<= 50){
+            e = 0; //niños y adultos
+        }else if(edad> 50 && edad<=99){
+            e = 1; //gente mayor
+        }else if(edad > 0 && edad<99){
+            e = 2; //todos
+        }
+
+        //restriccion para el nievwel
+        if(nivel == 0 || nivel == 1){
+            n = 0;
+        }else if(nivel == 2 || nivel == 3){
+            n = 1;
+        }else{
+            n = 2;
+        }
+
+
+        List<Actividades> lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
         ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
-                android.R.layout.simple_list_item_1, actividadesList);
+                android.R.layout.simple_list_item_1, lista_actividades);
         listView.setAdapter(listAdapter);
+
+
+
+
+
+
+
 
     }
 

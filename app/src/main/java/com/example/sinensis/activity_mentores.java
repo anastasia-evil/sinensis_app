@@ -19,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class activity_mentores extends AppCompatActivity {
 
     Button boton,boton2,boton3;
+    public static int mentor_datos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,7 @@ public class activity_mentores extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mentor_datos = 0;
                 startActivity(intent);
                 startActivity(intent1);
             }
@@ -42,6 +44,7 @@ public class activity_mentores extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                mentor_datos = 1;
 
                 startActivity(intent);
                 startActivity(intent1);
@@ -53,6 +56,7 @@ public class activity_mentores extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                mentor_datos = 2;
 
                 startActivity(intent);
                 startActivity(intent1);

@@ -14,6 +14,9 @@ public interface ActividadesDAO {
     @Query("SELECT * FROM Actividades")
     List<Actividades> selectAll();
 
+    @Query("SELECT * FROM Actividades WHERE edad = :edad AND nivel = :nivel AND mentor= :mentor")
+    List<Actividades> selectactividad(int edad, int nivel, int mentor);
+
     @Query("SELECT * FROM Actividades WHERE id=:id")
     Actividades selectById(long id);
 
