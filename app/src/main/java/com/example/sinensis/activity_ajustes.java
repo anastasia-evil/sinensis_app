@@ -1,28 +1,51 @@
 package com.example.sinensis;
 
-import static com.example.sinensis.activity_datos.nombre;
-
-import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.SeekBar;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class activity_ajustes extends AppCompatActivity {
 
-    ImageButton btn_ajustes;
+    //ImageButton btn_ajustes;
 
+    private ListView listview_ajustes;
+    private ArrayList<String> ajustes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
+
+        listview_ajustes = (ListView) findViewById(R.id.listview_ajustes);
+        ajustes = new ArrayList<String>();
+        ajustes.add("Sobre la app");
+        ajustes.add("Creadoras");
+        ajustes.add("ODS");
+        ajustes.add("Mis datos");
+        ajustes.add("Idioma");
+        ajustes.add("Notificaciones");
+
+        ArrayAdapter<String> adapter_ajustes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ajustes);
+
+        listview_ajustes.setAdapter(adapter_ajustes);
+        listview_ajustes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                showPopUp(view);
+            }
+        });
+
+        /*  CÓDIGO PARA REPRODUCIR MUSICA Y CONTROLAR VOLUMEN
         //variables
         Button play;
         SeekBar seekBarVol;
@@ -79,13 +102,31 @@ public class activity_ajustes extends AppCompatActivity {
 
             }
         });
+        */
+
+    }
+
+    public void showPopUp(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater layoutInflater = getLayoutInflater();
+
+        //this is custom dialog
+        //custom_popup_dialog contains textview only
+        View customView = layoutInflater.inflate(R.layout.popup_ajustes, null);
+        // reference the textview of custom_popup_dialog
+        TextView tv = (TextView) customView.findViewById(R.id.tvpopup);
 
 
+        //this textview is from the adapter
+        TextView text = (TextView) view.findViewById(R.id.textView);
+        // get the text of the view clicked
+        String day = text.getText().toString();
+        //set the text to the view of custom_popop_dialog.
+        tv.setText(day);
 
-
-
-
-
+        builder.setView(customView);
+        builder.create();
+        builder.show();
 
     }
 

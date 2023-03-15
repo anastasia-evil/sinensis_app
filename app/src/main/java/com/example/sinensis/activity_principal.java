@@ -87,7 +87,7 @@ public class activity_principal extends AppCompatActivity {
             e = 2; //todos
         }
 
-        //restriccion para el nievwel
+        //restriccion para el nivel
         if(nivel == 0 || nivel == 1){
             n = 0;
         }else if(nivel == 2 || nivel == 3){
@@ -101,12 +101,6 @@ public class activity_principal extends AppCompatActivity {
         ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
                 android.R.layout.simple_list_item_1, lista_actividades);
         listView.setAdapter(listAdapter);
-
-
-
-
-
-
 
 
     }
