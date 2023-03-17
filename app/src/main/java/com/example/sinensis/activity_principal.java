@@ -104,11 +104,11 @@ public class activity_principal extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, lista_actividades);
         listView.setAdapter(listAdapter);*/
 
-        List<String> listanombres= db.ActividadesDAO().getNombresActividades();
+        List<String> listanombres= db.ActividadesDAO().getNombresActividades(e,n,mentor);
         List<String> listadescripcion= db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
 
         ArrayAdapter<String> listAdapter = new ArrayAdapter<>(listView.getContext(),
-                android.R.layout.simple_list_item_1, listadescripcion);
+                android.R.layout.simple_list_item_1, listanombres);
         listView.setAdapter(listAdapter);
 
 

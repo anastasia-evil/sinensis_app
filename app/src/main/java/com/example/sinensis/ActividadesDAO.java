@@ -38,8 +38,8 @@ public interface ActividadesDAO {
     @Query("SELECT COUNT(*) FROM actividades")
     int count();
 
-    @Query("SELECT nombre FROM actividades")
-    List<String> getNombresActividades();
+    @Query("SELECT nombre FROM actividades WHERE edad = :edad AND nivel = :nivel AND mentor= :mentor")
+    List<String> getNombresActividades(int edad, int nivel, int mentor);
 
     @Query("SELECT descripcion FROM actividades WHERE edad = :edad AND nivel = :nivel AND mentor= :mentor")
     List<String> getDescripcionActividades(int edad, int nivel, int mentor);
