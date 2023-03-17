@@ -21,6 +21,9 @@ public class activity_principal extends AppCompatActivity {
 
     ImageButton btn_calendario,btn_home,btn_ajustes;
     public static List<Actividades> lista_actividades = new ArrayList<>();
+    public static List<String> listanombres = new ArrayList<>();
+    public static List<String> listadescripcion = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,16 +103,14 @@ public class activity_principal extends AppCompatActivity {
 
 
         lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
-        /*ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
+        ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
                 android.R.layout.simple_list_item_1, lista_actividades);
-        listView.setAdapter(listAdapter);*/
-
-        List<String> listanombres= db.ActividadesDAO().getNombresActividades(e,n,mentor);
-        List<String> listadescripcion= db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
-
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(listView.getContext(),
-                android.R.layout.simple_list_item_1, listanombres);
         listView.setAdapter(listAdapter);
+
+        listanombres = db.ActividadesDAO().getNombresActividades(e,n,mentor);
+        listadescripcion = db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
+
+        Adaptadores adaptador = new Adaptadores(this, R.layout.listas_items);
 
 
 
