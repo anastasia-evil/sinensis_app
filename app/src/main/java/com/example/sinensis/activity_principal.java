@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class activity_principal extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class activity_principal extends AppCompatActivity {
     private ListView listView; //lista de actividades
 
     ImageButton btn_calendario,btn_home,btn_ajustes;
+    public static List<Actividades> lista_actividades = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,10 +99,20 @@ public class activity_principal extends AppCompatActivity {
         }
 
 
-        List<Actividades> lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
-        ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
+        lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
+        /*ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
                 android.R.layout.simple_list_item_1, lista_actividades);
+        listView.setAdapter(listAdapter);*/
+
+        List<String> listanombres= db.ActividadesDAO().getNombresActividades();
+        List<String> listadescripcion= db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
+
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(listView.getContext(),
+                android.R.layout.simple_list_item_1, listadescripcion);
         listView.setAdapter(listAdapter);
+
+
+
 
 
     }
