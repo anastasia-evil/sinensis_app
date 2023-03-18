@@ -15,9 +15,10 @@ import java.util.List;
 
 public class activity_principal extends AppCompatActivity {
 
-    private AppDatabase db; // una variable vacia donde podremos meter las actividades
+    //private AppDatabase db; // una variable vacia donde podremos meter las actividades
 
     private ListView listView; //lista de actividades
+    private AppDatabase db;
 
     ImageButton btn_calendario,btn_home,btn_ajustes;
     public static List<Actividades> lista_actividades = new ArrayList<>();
@@ -102,20 +103,34 @@ public class activity_principal extends AppCompatActivity {
         }
 
 
-        lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
-        ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
+
+        //lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
+        /*ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
                 android.R.layout.simple_list_item_1, lista_actividades);
-        listView.setAdapter(listAdapter);
+        listView.setAdapter(listAdapter);*/
 
-        listanombres = db.ActividadesDAO().getNombresActividades(e,n,mentor);
-        listadescripcion = db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
+        //listanombres = db.ActividadesDAO().getNombresActividades(e,n,mentor);
+        //listadescripcion = db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
 
-        Adaptadores adaptador = new Adaptadores(this, R.layout.listas_items);
-
-
+        Adaptadores adaptador = new Adaptadores(this, Getlista());
+        listView.setAdapter(adaptador);
 
 
 
     }
+    private ArrayList<Actividades> Getlista() {
+        ArrayList<Actividades> lista = new ArrayList<>();
+        lista.add(new Actividades("nombre", 2, "paulita",5,6));
+        lista.add(new Actividades("nombre1", 2, "marta",5,6));
+        lista.add(new Actividades("nombre2", 2, "romna",5,6));
+
+        return lista;
+    }
+
+
+
+
+
+
 
 }

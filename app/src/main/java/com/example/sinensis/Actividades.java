@@ -43,9 +43,12 @@ public class Actividades {
         this.mentor = mentor;
     }
 
-    @Override
-    public String toString() {
+
+    public String getNombre() {
         return nombre;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
 }
