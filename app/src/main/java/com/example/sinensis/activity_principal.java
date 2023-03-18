@@ -76,7 +76,7 @@ public class activity_principal extends AppCompatActivity {
         });
 
 
-        //vamos a hacer que nos salgan las listas de actividades dependiendo de nuestra edad, nievl (grado) y mentor
+        //vamos a hacer que nos salgan las listas de actividades dependiendo de nuestra edad, nivel (grado) y mentor
         int edad = activity_datos.edad_datos;
         int nivel = activity_datos.grado_datos;
         int mentor = activity_mentores.mentor_datos;

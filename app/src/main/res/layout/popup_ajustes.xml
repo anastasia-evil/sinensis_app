@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dip"
+    android:background="#6073B1"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/tvpopup"
-        android:layout_width="wrap_content"
+        android:id="@+id/contenido"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="250dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dip"
         android:fontFamily="@font/fresca"
-        android:textColor="#ECE8E8"
-        android:textSize="50dp"
-        android:text="Hola vale como tas esto es un popuppp"/>
+        android:text="epa"
+        android:textColor="#ECE8E8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

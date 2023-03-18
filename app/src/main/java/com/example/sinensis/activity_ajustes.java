@@ -1,14 +1,17 @@
 package com.example.sinensis;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ import java.util.ArrayList;
 public class activity_ajustes extends AppCompatActivity {
 
     //ImageButton btn_ajustes;
-
+    TextView seleccion;
     private ListView listview_ajustes;
     private ArrayList<String> ajustes;
 
@@ -41,7 +44,32 @@ public class activity_ajustes extends AppCompatActivity {
         listview_ajustes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                showPopUp(view);
+                String texto = "";
+
+                switch(position){
+                    case 0:
+                        texto = "Sinensis es una app enfocada en el alivio del estrés a través de la creatividad. Dispone de un amplio catálogo de actividades que te ayudarán a conectar tranquilamente con el momento presente.";
+                        break;
+                    case 1:
+                        texto = "Esta app fue desarrollada por tres estudiantes de Ingeniería de Sonido e Imagen de la Universidad Carlos III de Madrid: Inés Acebes, Paula Gallejones y Jimena Díaz.";
+                        break;
+                    case 2:
+                        texto = "La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.";
+                        break;
+                    case 3:
+                        texto = "Aquí irán mis datos";
+                        break;
+                    case 4:
+                        texto = "Aquí podré escoger el idioma.";
+                        break;
+                    case 5:
+                        texto = "Aquí podré configurar las notificaciones.";
+                        break;
+                    default:
+                        break;
+                }
+
+                showPopUp(view, texto);
             }
         });
 
@@ -103,31 +131,6 @@ public class activity_ajustes extends AppCompatActivity {
             }
         });
         */
-
-    }
-
-    public void showPopUp(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater layoutInflater = getLayoutInflater();
-
-        //this is custom dialog
-        //custom_popup_dialog contains textview only
-        View customView = layoutInflater.inflate(R.layout.popup_ajustes, null);
-        // reference the textview of custom_popup_dialog
-        TextView tv = (TextView) customView.findViewById(R.id.tvpopup);
-
-
-        //this textview is from the adapter
-        TextView text = (TextView) view.findViewById(R.id.textView);
-        // get the text of the view clicked
-        String day = text.getText().toString();
-        //set the text to the view of custom_popop_dialog.
-        tv.setText(day);
-
-        builder.setView(customView);
-        builder.create();
-        builder.show();
-
     }
 
     /*public void flechaA(View view){
@@ -141,7 +144,25 @@ public class activity_ajustes extends AppCompatActivity {
         });
     }*/
 
+    public void showPopUp(View view, String texto) {
 
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup_ajustes, null);
 
+        final PopupWindow popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true );
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        TextView txt2 = (TextView) popupView.findViewById(R.id.contenido);
+        txt2.setText(texto);
+
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+    }
 
 }
