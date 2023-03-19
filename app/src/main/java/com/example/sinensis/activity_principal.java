@@ -96,7 +96,7 @@ public class activity_principal extends AppCompatActivity {
             n = 2;
         }
 
-        //lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
+        //lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor); coment
         /*ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
                 android.R.layout.simple_list_item_1, lista_actividades);
         listView.setAdapter(listAdapter);*/
