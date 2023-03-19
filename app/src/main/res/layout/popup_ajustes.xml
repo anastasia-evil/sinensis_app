@@ -16,6 +16,6 @@
         android:layout_marginTop="10dip"
         android:fontFamily="@font/fresca"
         android:text="epa"
-        android:textColor="#ECE8E8" />
+        android:textColor="#ECE8E9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

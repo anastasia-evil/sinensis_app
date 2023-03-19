@@ -19,7 +19,6 @@ import java.util.ArrayList;
 public class activity_ajustes extends AppCompatActivity {
 
     //ImageButton btn_ajustes;
-    TextView seleccion;
     private ListView listview_ajustes;
     private ArrayList<String> ajustes;
 
@@ -48,22 +47,31 @@ public class activity_ajustes extends AppCompatActivity {
 
                 switch(position){
                     case 0:
+                        //Sobre la app
                         texto = "Sinensis es una app enfocada en el alivio del estrés a través de la creatividad. Dispone de un amplio catálogo de actividades que te ayudarán a conectar tranquilamente con el momento presente.";
                         break;
                     case 1:
+                        //Creadoras
                         texto = "Esta app fue desarrollada por tres estudiantes de Ingeniería de Sonido e Imagen de la Universidad Carlos III de Madrid: Inés Acebes, Paula Gallejones y Jimena Díaz.";
                         break;
                     case 2:
+                        //ODS
                         texto = "La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.";
                         break;
                     case 3:
-                        texto = "Aquí irán mis datos";
+                        //Mis datos
+                        String mi_nombre = activity_datos.nombre_datos;
+                        String mi_edad = String.valueOf(activity_datos.edad_datos);
+                        String mi_grado_estres = String.valueOf(activity_datos.grado_datos);
+                        texto = "Tu nombre: " + mi_nombre + "\nTu edad: " + mi_edad + "\nTu último grado de estrés: " + mi_grado_estres;
                         break;
                     case 4:
-                        texto = "Aquí podré escoger el idioma.";
+                        //Idioma
+                        texto = "Aquí podrás escoger el idioma.";
                         break;
                     case 5:
-                        texto = "Aquí podré configurar las notificaciones.";
+                        //Notificaciones
+                        texto = "Aquí podrás activar o desactivar las notificaciones.";
                         break;
                     default:
                         break;

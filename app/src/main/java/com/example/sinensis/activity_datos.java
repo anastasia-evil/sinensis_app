@@ -16,9 +16,10 @@ public class activity_datos extends AppCompatActivity {
     static EditText nombre;
     EditText edad;
     SeekBar seekbar;
-    int grado;
+    int grado = 2;
     public static int grado_datos;
     public static int edad_datos;
+    public static String nombre_datos;
     TextView n;
     Button btn;
 
@@ -59,12 +60,13 @@ public class activity_datos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
-                    Toast toast = Toast.makeText(activity_datos.this, "Rellena los datos", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(activity_datos.this, "Rellena todos los datos", Toast.LENGTH_SHORT);
                     toast.show();
                 }
                 else{
                     String edad_conversor = edad.getText().toString();
                     edad_datos = Integer.parseInt(edad_conversor);
+                    nombre_datos = nombre.getText().toString();
                     Intent intent = new Intent(activity_datos.this, activity_mentores.class);
                     startActivity(intent);
                 }
