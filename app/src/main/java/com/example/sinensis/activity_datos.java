@@ -17,7 +17,7 @@ public class activity_datos extends AppCompatActivity {
     EditText edad;
     SeekBar seekbar;
     int grado = 2;
-    public static int grado_datos;
+    public static int grado_datos = 2;
     public static int edad_datos;
     public static String nombre_datos;
     TextView n;
