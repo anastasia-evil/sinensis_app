@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Adaptadores extends BaseAdapter {
-    private ArrayList<Actividades> lista = new ArrayList<>();
+    private List<Actividades> lista = new ArrayList<>();
     private Context context;
-    public Adaptadores(Context context, ArrayList<Actividades> lista) {
+    public Adaptadores(Context context, List<Actividades> lista) {
         this.context= context;
         this.lista = lista;
     }

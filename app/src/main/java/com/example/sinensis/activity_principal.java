@@ -104,6 +104,7 @@ public class activity_principal extends AppCompatActivity {
 
 
 
+
         //lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
         /*ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
                 android.R.layout.simple_list_item_1, lista_actividades);
@@ -112,17 +113,15 @@ public class activity_principal extends AppCompatActivity {
         //listanombres = db.ActividadesDAO().getNombresActividades(e,n,mentor);
         //listadescripcion = db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
 
-        Adaptadores adaptador = new Adaptadores(this, Getlista());
+        Adaptadores adaptador = new Adaptadores(this, Getlista(e,n,mentor));
         listView.setAdapter(adaptador);
 
 
 
     }
-    private ArrayList<Actividades> Getlista() {
-        ArrayList<Actividades> lista = new ArrayList<>();
-        lista.add(new Actividades("nombre", 2, "paulita",5,6));
-        lista.add(new Actividades("nombre1", 2, "marta",5,6));
-        lista.add(new Actividades("nombre2", 2, "romna",5,6));
+    private List<Actividades> Getlista(int edad, int nivel, int mentor) {
+        List<Actividades> lista = new ArrayList<>();
+        lista = db.ActividadesDAO().selectactividad(edad,nivel,mentor);
 
         return lista;
     }
