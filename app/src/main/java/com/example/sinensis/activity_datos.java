@@ -22,6 +22,7 @@ public class activity_datos extends AppCompatActivity {
     public static String nombre_datos;
     TextView n;
     Button btn;
+    String txt = "Medio";
 
     private AppDatabase db;
     @Override
@@ -35,11 +36,28 @@ public class activity_datos extends AppCompatActivity {
         btn = (Button) findViewById(R.id.button);
 
 
+
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 grado = seekbar.getProgress();
-                n.setText("Nivel: " + progress);
+                if(progress == 0){
+                    txt = "Bajo";
+
+                }else if(progress == 1){
+                    txt = "Medio bajo";
+
+                }else if(progress == 2){
+                    txt = "Medio";
+
+                }else if(progress == 3){
+                    txt = "Medio alto";
+
+                }else if(progress == 4){
+                    txt = "Alto";
+
+                }
+                n.setText("Nivel: " + txt);
                 grado_datos = progress;
             }
 
