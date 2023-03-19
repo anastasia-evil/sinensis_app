@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="10dip"
-    android:background="#6073B1"
+    android:background="#8F9DCC"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -15,7 +15,20 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="10dip"
         android:fontFamily="@font/fresca"
-        android:text="epa"
-        android:textColor="#ECE8E9" />
+        android:text=""
+        android:textColor="#ECE8E8" />
+
+    <Button
+        android:id="@+id/cerrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#336088"
+        android:onClick="onClick"
+        android:text="Cerrar"
+        app:cornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenido" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

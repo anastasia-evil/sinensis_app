@@ -17,7 +17,7 @@ public class activity_principal extends AppCompatActivity {
     //private AppDatabase db; // una variable vacia donde podremos meter las actividades
 
     private ListView listView; //lista de actividades
-    private AppDatabase db;
+    public static AppDatabase db;
 
     ImageButton btn_calendario,btn_home,btn_ajustes;
     public static List<Actividades> lista_actividades = new ArrayList<>();
@@ -30,10 +30,9 @@ public class activity_principal extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
 
         //mostramos el nombre que hemos introducido
-        Intent intent = getIntent();
-        String message = intent.getStringExtra("nombre");
+        String mi_nombre = activity_datos.nombre_datos;
         TextView textView = findViewById(R.id.textonombre);
-        textView.setText("Hola " + message + "!");
+        textView.setText("Hola " + mi_nombre + "!");
 
         //Botones
         btn_calendario = (ImageButton) findViewById(R.id.calendario);
@@ -41,7 +40,7 @@ public class activity_principal extends AppCompatActivity {
         btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
 
         Intent intentC = new Intent(this, activity_calendario.class);
-        Intent intentH = new Intent(this, activity_principal.class);
+        Intent intentH = new Intent(this, activity_actividades.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,11 +50,7 @@ public class activity_principal extends AppCompatActivity {
         });
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                startActivity(intentH);
-                startActivity(intent);
-            }
+            public void onClick(View view) { startActivity(intentH); }
         });
         btn_ajustes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,15 +59,15 @@ public class activity_principal extends AppCompatActivity {
             }
         });
 
-        db = AppDatabase.getInstance(getApplicationContext()); // le damos valos de inicio a db
+        db = AppDatabase.getInstance(getApplicationContext()); // le damos valores de inicio a db
         listView = findViewById(R.id.list_view);
 
         listView.setOnItemClickListener((adapter, view, pos, id) -> {
             Actividades actividades = (Actividades) adapter.getAdapter().getItem(pos);
 
-            Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
+            /*Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
             intent.putExtra("id", actividades.id);
-            startActivity(intent_mapa);
+            startActivity(intent_mapa);*/
         });
 
 
@@ -101,9 +96,6 @@ public class activity_principal extends AppCompatActivity {
             n = 2;
         }
 
-
-
-
         //lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor);
         /*ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
                 android.R.layout.simple_list_item_1, lista_actividades);
@@ -115,8 +107,6 @@ public class activity_principal extends AppCompatActivity {
         Adaptadores adaptador = new Adaptadores(this, Getlista(e,n,mentor));
         listView.setAdapter(adaptador);
 
-
-
     }
     private List<Actividades> Getlista(int edad, int nivel, int mentor) {
         List<Actividades> lista = new ArrayList<>();
@@ -124,11 +114,6 @@ public class activity_principal extends AppCompatActivity {
 
         return lista;
     }
-
-
-
-
-
 
 
 }

@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -43,6 +44,7 @@ public class activity_ajustes extends AppCompatActivity {
         listview_ajustes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
                 String texto = "";
 
                 switch(position){
@@ -161,14 +163,22 @@ public class activity_ajustes extends AppCompatActivity {
 
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-        TextView txt2 = (TextView) popupView.findViewById(R.id.contenido);
-        txt2.setText(texto);
+        TextView contenido = (TextView) popupView.findViewById(R.id.contenido);
+        contenido.setText(texto);
+        Button cerrar = (Button) popupView.findViewById(R.id.cerrar);
 
         popupView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 popupWindow.dismiss();
                 return true;
+            }
+        });
+
+        cerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
             }
         });
     }

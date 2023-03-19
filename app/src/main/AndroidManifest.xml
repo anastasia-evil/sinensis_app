@@ -24,6 +24,10 @@
             android:exported="false">
         </activity>
         <activity
+            android:name=".activity_actividades"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".activity_principal"
             android:exported="false">
         </activity>
