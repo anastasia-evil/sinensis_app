@@ -10,7 +10,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 public class activity_mapa extends AppCompatActivity implements OnMapReadyCallback {
 
     @Override
@@ -21,8 +20,6 @@ public class activity_mapa extends AppCompatActivity implements OnMapReadyCallba
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
     @Override
@@ -30,7 +27,7 @@ public class activity_mapa extends AppCompatActivity implements OnMapReadyCallba
         LatLng madrid = new LatLng(40.416, -3.702);
         googleMap.addMarker(new MarkerOptions()
                 .position(madrid)
-                .title("Marcador en Madrid"));
+                .title("Marker in Madrid"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(madrid));
     }
 

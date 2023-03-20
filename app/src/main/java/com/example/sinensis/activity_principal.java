@@ -28,6 +28,7 @@ public class activity_principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        Intent intent = getIntent();
 
         //mostramos el nombre que hemos introducido
         String mi_nombre = activity_datos.nombre_datos;
@@ -65,11 +66,10 @@ public class activity_principal extends AppCompatActivity {
         listView.setOnItemClickListener((adapter, view, pos, id) -> {
             Actividades actividades = (Actividades) adapter.getAdapter().getItem(pos);
 
-            /*Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
+            Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
             intent.putExtra("id", actividades.id);
-            startActivity(intent_mapa);*/
+            startActivity(intent_mapa);
         });
-
 
         //vamos a hacer que nos salgan las listas de actividades dependiendo de nuestra edad, nivel (grado) y mentor
         int edad = activity_datos.edad_datos;
