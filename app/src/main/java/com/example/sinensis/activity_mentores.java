@@ -1,20 +1,13 @@
 package com.example.sinensis;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
 import static com.example.sinensis.activity_datos.nombre;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class activity_mentores extends AppCompatActivity {
 
@@ -33,6 +26,7 @@ public class activity_mentores extends AppCompatActivity {
         Intent intent1 = new Intent(this, activity_principal.class);
         intent1.putExtra("nombre", nombre.getText().toString());
         boton.setOnClickListener(new View.OnClickListener() {
+            //Ines
             @Override
             public void onClick(View view) {
                 mentor_datos = 0;
@@ -41,7 +35,7 @@ public class activity_mentores extends AppCompatActivity {
             }
         });
         boton2.setOnClickListener(new View.OnClickListener() {
-
+            //Paula
             @Override
             public void onClick(View view) {
                 mentor_datos = 1;
@@ -53,7 +47,7 @@ public class activity_mentores extends AppCompatActivity {
         });
 
         boton3.setOnClickListener(new View.OnClickListener() {
-
+            //Jimena
             @Override
             public void onClick(View view) {
                 mentor_datos = 2;

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -18,7 +17,6 @@ public class Adaptadores extends BaseAdapter {
         this.context= context;
         this.lista = lista;
     }
-
 
     public int getCount(){
         return lista.size();
@@ -39,7 +37,6 @@ public class Adaptadores extends BaseAdapter {
         Actividades a = (Actividades) getItem(position);
 
         convertView = LayoutInflater.from(context).inflate(R.layout.listas_items, null);
-
 
         TextView nombreTextView = (TextView) convertView.findViewById(R.id.tituloActividad);
         nombreTextView.setText(a.getNombre());

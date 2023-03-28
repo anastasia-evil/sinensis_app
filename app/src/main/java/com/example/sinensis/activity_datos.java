@@ -1,6 +1,8 @@
 package com.example.sinensis;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class activity_datos extends AppCompatActivity {
 
+    static SharedPreferences preferencias;
     static EditText nombre;
     EditText edad;
     SeekBar seekbar;
@@ -35,12 +38,16 @@ public class activity_datos extends AppCompatActivity {
         n = (TextView) findViewById(R.id.textito);
         btn = (Button) findViewById(R.id.button);
 
-
+        preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferencias.edit();
+        nombre.setText(preferencias.getString("nombre",""));
+        edad.setText(preferencias.getString("edad",""));
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 grado = seekbar.getProgress();
+
                 if(progress == 0){
                     txt = "Bajo";
 
@@ -50,15 +57,15 @@ public class activity_datos extends AppCompatActivity {
                 }else if(progress == 2){
                     txt = "Medio";
 
-                }else if(progress == 3){
+                }else if(progress == 3 ){
                     txt = "Medio alto";
 
                 }else if(progress == 4){
                     txt = "Alto";
-
                 }
                 n.setText("Nivel: " + txt);
                 grado_datos = progress;
+
             }
 
             @Override

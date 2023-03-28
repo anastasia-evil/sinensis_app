@@ -7,9 +7,10 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        //Implementación Splash Screen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -23,14 +24,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         },2000);
-
-
-
-       
-
-
-
-
     }
 
 

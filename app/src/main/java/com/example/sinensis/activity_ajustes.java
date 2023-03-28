@@ -27,7 +27,9 @@ public class activity_ajustes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
+        //Creamos la lista de visualización
         listview_ajustes = (ListView) findViewById(R.id.listview_ajustes);
+        //Rellenamos el array con las opciones
         ajustes = new ArrayList<String>();
         ajustes.add("Sobre la app");
         ajustes.add("Creadoras");

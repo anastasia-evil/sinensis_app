@@ -14,10 +14,8 @@ import java.util.List;
 
 public class activity_principal extends AppCompatActivity {
 
-    //private AppDatabase db; // una variable vacia donde podremos meter las actividades
-
     private ListView listView; //lista de actividades
-    public static AppDatabase db;
+    public static AppDatabase db; //base de datos en java
 
     ImageButton btn_calendario,btn_home,btn_ajustes;
     public static List<Actividades> lista_actividades = new ArrayList<>();
@@ -28,7 +26,7 @@ public class activity_principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
         //mostramos el nombre que hemos introducido
         String mi_nombre = activity_datos.nombre_datos;
@@ -45,16 +43,19 @@ public class activity_principal extends AppCompatActivity {
         Intent intentA = new Intent(this, activity_ajustes.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
+            //Lanzar actividad de calendario
             public void onClick(View view) {
                 startActivity(intentC);
             }
         });
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
+            //Lanzar actividad de lista de actividades
             public void onClick(View view) { startActivity(intentH); }
         });
         btn_ajustes.setOnClickListener(new View.OnClickListener() {
             @Override
+            //Lanzar actividad de ajustes
             public void onClick(View view) {
                 startActivity(intentA);
             }
@@ -64,14 +65,17 @@ public class activity_principal extends AppCompatActivity {
         listView = findViewById(R.id.list_view);
 
         listView.setOnItemClickListener((adapter, view, pos, id) -> {
+
+            //Esta sección se utilizará posteriormente para que al hacer click en una, se inicie el ejercicio
+
             Actividades actividades = (Actividades) adapter.getAdapter().getItem(pos);
 
             Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
-            intent.putExtra("id", actividades.id);
+            //intent.putExtra("id", actividades.id);
             startActivity(intent_mapa);
         });
 
-        //vamos a hacer que nos salgan las listas de actividades dependiendo de nuestra edad, nivel (grado) y mentor
+        //Que salgan las listas de actividades dependiendo de nuestra edad, nivel (grado) y mentor
         int edad = activity_datos.edad_datos;
         int nivel = activity_datos.grado_datos;
         int mentor = activity_mentores.mentor_datos;
@@ -106,7 +110,6 @@ public class activity_principal extends AppCompatActivity {
 
         Adaptadores adaptador = new Adaptadores(this, Getlista(e,n,mentor));
         listView.setAdapter(adaptador);
-
     }
     private List<Actividades> Getlista(int edad, int nivel, int mentor) {
         List<Actividades> lista = new ArrayList<>();
@@ -114,6 +117,5 @@ public class activity_principal extends AppCompatActivity {
 
         return lista;
     }
-
 
 }
