@@ -25,22 +25,27 @@ public class Actividades {
     @ColumnInfo(name = "mentor")
     public int mentor;
 
-    public Actividades(long id, String nombre, int nivel, String descripcion, int edad, int mentor) {
+    @ColumnInfo(name = "foto")
+    public String  foto;
+
+    public Actividades(long id, String nombre, int nivel, String descripcion, int edad, int mentor, String foto) {
         this.id = id;
         this.nombre = nombre;
         this.nivel = nivel;
         this.descripcion = descripcion;
         this.edad = edad;
         this.mentor = mentor;
+        this.foto = foto;
     }
 
     @Ignore
-    public Actividades(String nombre, int nivel, String descripcion, int edad, int mentor) {
+    public Actividades(String nombre, int nivel, String descripcion, int edad, int mentor,String foto) {
         this.nombre = nombre;
         this.nivel = nivel;
         this.descripcion = descripcion;
         this.edad = edad;
         this.mentor = mentor;
+        this.foto = foto;
     }
 
 
