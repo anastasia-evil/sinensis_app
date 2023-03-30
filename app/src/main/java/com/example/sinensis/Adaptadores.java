@@ -11,19 +11,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Adaptadores extends BaseAdapter {
-    private List<Actividades> lista = new ArrayList<>();
+    private List<Actividades> lista_act = new ArrayList<>();
+    private List<String> lista_ajus = new ArrayList<>();
     private Context context;
-    public Adaptadores(Context context, List<Actividades> lista) {
-        this.context= context;
-        this.lista = lista;
-    }
 
-    public int getCount(){
-        return lista.size();
-}
-    public Actividades getItem(int position){
-        return lista.get(position);
+    public Adaptadores(Context context, List<Actividades> lista_act, List<String> lista_ajus) {
+        this.context= context;
+        this.lista_act = lista_act;
+        this.lista_ajus = lista_ajus;
     }
+    public int getCount(){
+        if (lista_ajus == null){
+            return lista_act.size();
+        }else{
+            return lista_ajus.size();
+        }
+    }
+    public Actividades getItem(int position){ return lista_act.get(position); }
+    public String getItem_ajus(int position){ return lista_ajus.get(position); }
+
 
     @Override
     public long getItemId(int i) {
@@ -34,16 +40,30 @@ public class Adaptadores extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Actividades a = (Actividades) getItem(position);
+        if (lista_ajus == null){
+            Actividades a = (Actividades) getItem(position);
 
-        convertView = LayoutInflater.from(context).inflate(R.layout.listas_items, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.listas_items, null);
 
-        TextView nombreTextView = (TextView) convertView.findViewById(R.id.tituloActividad);
-        nombreTextView.setText(a.getNombre());
+            TextView nombreTextView = (TextView) convertView.findViewById(R.id.tituloActividad);
+            nombreTextView.setText(a.getNombre());
 
-        TextView descripcionTextView = (TextView) convertView.findViewById(R.id.descripcionActividad);
-        descripcionTextView.setText(a.getDescripcion());
+            TextView descripcionTextView = (TextView) convertView.findViewById(R.id.descripcionActividad);
+            descripcionTextView.setText(a.getDescripcion());
 
-        return convertView;
+            return convertView;
+
+        }else{
+
+            String a = (String) getItem_ajus(position);
+
+            convertView = LayoutInflater.from(context).inflate(R.layout.listas_items, null);
+
+            TextView nombreTextView = (TextView) convertView.findViewById(R.id.tituloActividad);
+            nombreTextView.setText(a);
+
+            return convertView;
+
+        }
     }
 }

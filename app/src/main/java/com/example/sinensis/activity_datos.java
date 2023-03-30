@@ -39,7 +39,7 @@ public class activity_datos extends AppCompatActivity {
         btn = (Button) findViewById(R.id.button);
 
         preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferencias.edit();
+
         nombre.setText(preferencias.getString("nombre",""));
         edad.setText(preferencias.getString("edad",""));
 

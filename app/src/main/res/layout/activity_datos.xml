@@ -17,7 +17,7 @@
         android:layout_marginTop="28dp"
         android:fontFamily="@font/fresca"
         android:gravity="center"
-        android:text="Bienvenido a Sinensis.\n Es preciso para nosotros saber tus datos"
+        android:text="@string/titulo_formulario"
         android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"

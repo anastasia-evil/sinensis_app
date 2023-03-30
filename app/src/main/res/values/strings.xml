@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Sinensis</string>
     <string name="titulo">Sinensis</string>
+    <string name="titulo_formulario">Bienvenido a Sinensis. Es preciso para nosotros saber tus datos.</string>
+    <string name="sobre_la_app">Sinensis es una app enfocada en el alivio del estrés a través de la creatividad.Dispone de un amplio catálogo de actividades que te ayudarán a conectar tranquilamente con el momento presente.</string>
+    <string name="creadoras">Esta app fue desarrollada por tres estudiantes de Ingeniería de Sonido e Imagen de la Universidad Carlos III de Madrid: Inés Acebes, Paula Gallejones y Jimena Díaz.</string>
+    <string name="ods">La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.</string>
+    <string name="notificaciones">Ajusta tus notificaiones</string>
 </resources>

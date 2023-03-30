@@ -19,7 +19,7 @@ public class activity_actividades extends AppCompatActivity {
         listView = findViewById(R.id.list_view_actividades);
 
         List<Actividades> lista = activity_principal.db.ActividadesDAO().selectAll();
-        Adaptadores adaptador = new Adaptadores(this, lista);
+        Adaptadores adaptador = new Adaptadores(this, lista, null);
         listView.setAdapter(adaptador);
     }
 

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -35,10 +34,9 @@ public class activity_ajustes extends AppCompatActivity {
         ajustes.add("Creadoras");
         ajustes.add("ODS");
         ajustes.add("Mis datos");
-        ajustes.add("Idioma");
         ajustes.add("Notificaciones");
 
-        ArrayAdapter<String> adapter_ajustes = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ajustes);
+        Adaptadores adapter_ajustes = new Adaptadores(this, null, ajustes);
 
         listview_ajustes.setAdapter(adapter_ajustes);
         listview_ajustes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,15 +48,15 @@ public class activity_ajustes extends AppCompatActivity {
                 switch(position){
                     case 0:
                         //Sobre la app
-                        texto = "Sinensis es una app enfocada en el alivio del estrés a través de la creatividad. Dispone de un amplio catálogo de actividades que te ayudarán a conectar tranquilamente con el momento presente.";
+                        texto = getString(R.string.sobre_la_app);
                         break;
                     case 1:
                         //Creadoras
-                        texto = "Esta app fue desarrollada por tres estudiantes de Ingeniería de Sonido e Imagen de la Universidad Carlos III de Madrid: Inés Acebes, Paula Gallejones y Jimena Díaz.";
+                        texto = getString(R.string.creadoras);
                         break;
                     case 2:
                         //ODS
-                        texto = "La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.";
+                        texto = getString(R.string.ods);
                         break;
                     case 3:
                         //Mis datos
@@ -68,12 +66,8 @@ public class activity_ajustes extends AppCompatActivity {
                         texto = "Tu nombre: " + mi_nombre + "\nTu edad: " + mi_edad + "\nTu último grado de estrés: " + mi_grado_estres;
                         break;
                     case 4:
-                        //Idioma
-                        texto = "Aquí podrás escoger el idioma.";
-                        break;
-                    case 5:
                         //Notificaciones
-                        texto = "Aquí podrás activar o desactivar las notificaciones.";
+                        texto = getString(R.string.notificaciones);
                         break;
                     default:
                         break;

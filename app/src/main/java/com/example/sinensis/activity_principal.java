@@ -108,7 +108,7 @@ public class activity_principal extends AppCompatActivity {
         //listanombres = db.ActividadesDAO().getNombresActividades(e,n,mentor);
         //listadescripcion = db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
 
-        Adaptadores adaptador = new Adaptadores(this, Getlista(e,n,mentor));
+        Adaptadores adaptador = new Adaptadores(this, Getlista(e,n,mentor), null);
         listView.setAdapter(adaptador);
     }
     private List<Actividades> Getlista(int edad, int nivel, int mentor) {
