@@ -58,20 +58,20 @@
                 android:orientation="horizontal">
             <Button
                 android:id="@+id/btn_fechaI"
-                android:layout_width="100dp"
+                android:layout_width="135dp"
                 android:layout_height="60dp"
                 android:text="Fecha Inicio"
                 android:textAllCaps="false"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"/>
 
             <Button
                 android:id="@+id/btn_fechaF"
-                android:layout_width="100dp"
+                android:layout_width="135dp"
                 android:layout_height="60dp"
                 android:text="Fecha Final"
                 android:textAllCaps="false"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"/>
             </LinearLayout>
 

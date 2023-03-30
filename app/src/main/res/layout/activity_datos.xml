@@ -7,14 +7,17 @@
     tools:context=".activity_datos"
     android:background="@color/fondo_carga">
 
-    <include layout="@layout/imagen_fija" />
+    <include
+        layout="@layout/imagen_fija"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/presentacion"
         android:layout_width="385dp"
         android:layout_height="111dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/fresca"
         android:gravity="center"
         android:text="@string/titulo_formulario"
@@ -42,11 +45,14 @@
         android:layout_height="52dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="16dp"
-        android:background="@color/white"
+        android:fontFamily="@font/fresca"
         android:gravity="center"
         android:hint="Introduce tu nombre "
         android:inputType="textPersonName"
         android:maxLength="10"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_nombre" />
 
@@ -69,11 +75,15 @@
         android:layout_height="52dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="16dp"
-        android:background="@color/white"
+        android:digits="0 1 2 3 4 5 6 7 8 9"
+        android:fontFamily="@font/fresca"
         android:gravity="center"
         android:hint="Introduce tu edad"
-        android:digits="0 1 2 3 4 5 6 7 8 9"
         android:maxLength="2"
+        android:selectAllOnFocus="false"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_edad" />
 
