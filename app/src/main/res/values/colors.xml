@@ -11,5 +11,6 @@
     <color name="red">#DC1010</color>
 
     <color name="fondo_carga">#1F2B53</color>
+    <color name="fondo_principal">#6073B1</color>
 
 </resources>

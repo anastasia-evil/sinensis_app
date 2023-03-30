@@ -1,6 +1,7 @@
 package com.example.sinensis;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -38,14 +39,15 @@ public class activity_principal extends AppCompatActivity {
         btn_home = (ImageButton) findViewById(R.id.home);
         btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
 
-        Intent intentC = new Intent(this, activity_calendario.class);
         Intent intentH = new Intent(this, activity_actividades.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             //Lanzar actividad de calendario
             public void onClick(View view) {
-                startActivity(intentC);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://calendar.google.com"));
+                startActivity(intent);
             }
         });
         btn_home.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +72,12 @@ public class activity_principal extends AppCompatActivity {
 
             Actividades actividades = (Actividades) adapter.getAdapter().getItem(pos);
 
-            Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
+            //Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
             //intent.putExtra("id", actividades.id);
-            startActivity(intent_mapa);
+            //startActivity(intent_mapa);
+
+            Intent intent_activity = new Intent(view.getContext(),activity_actividadLista.class);
+            startActivity(intent_activity);
         });
 
         //Que salgan las listas de actividades dependiendo de nuestra edad, nivel (grado) y mentor
