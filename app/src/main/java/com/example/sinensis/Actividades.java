@@ -56,4 +56,8 @@ public class Actividades {
     public String getDescripcion() {
         return descripcion;
     }
+
+    public String getfoto() {
+        return foto;
+    }
 }
