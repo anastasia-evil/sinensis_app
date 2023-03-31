@@ -66,7 +66,7 @@ public class Adaptadores extends BaseAdapter {
             return convertView;
 
         }else{
-
+//h
             String a = (String) getItem_ajus(position);
 
             convertView = LayoutInflater.from(context).inflate(R.layout.listas_items, null);
