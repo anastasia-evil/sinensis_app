@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/fresca"
         android:text="Elige tu mentor"
         android:textColor="#ECE8E8"

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="27dp"
         android:fontFamily="@font/fresca"
         android:text="Todas las actividades"
@@ -26,10 +26,10 @@
 
     <ListView
         android:id="@+id/list_view_actividades"
-        android:layout_width="348dp"
+        android:layout_width="350dp"
         android:layout_height="525dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="90dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -54,6 +54,7 @@ public class activity_actividadLista extends AppCompatActivity {
         btn_fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 elegirFecha(btn_fecha,fecha);
             }
         });
@@ -174,10 +175,14 @@ public class activity_actividadLista extends AppCompatActivity {
             e.printStackTrace();
         }
         long startTimeInMillis = startDate.getTime();
+        TextView titulo = findViewById(R.id.titulo_activity);
         // Crear Intent para agregar evento al calendario
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,startTimeInMillis);
+                .putExtra(CalendarContract.Events.TITLE, titulo.getText().toString())
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,startTimeInMillis)
+                .putExtra(CalendarContract.Reminders.MINUTES, 5) // Para que te avise 5 min antes
+                .putExtra(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT); // Notificación de alerta
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
 

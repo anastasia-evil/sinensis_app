@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:fontFamily="@font/fresca"
         android:text="Tus actividades"
         android:textColor="#ECE8E8"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="96dp"
         android:fontFamily="@font/fresca"
         android:textSize="20dp"
         android:textColor="@color/white"
@@ -70,10 +70,10 @@
 
     <ListView
         android:id="@+id/list_view"
-        android:layout_width="273dp"
+        android:layout_width="285dp"
         android:layout_height="290dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="128dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
