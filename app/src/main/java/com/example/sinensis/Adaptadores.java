@@ -1,10 +1,14 @@
 package com.example.sinensis;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,6 +18,7 @@ public class Adaptadores extends BaseAdapter {
     private List<Actividades> lista_act = new ArrayList<>();
     private List<String> lista_ajus = new ArrayList<>();
     private Context context;
+
 
     public Adaptadores(Context context, List<Actividades> lista_act, List<String> lista_ajus) {
         this.context= context;
@@ -51,6 +56,13 @@ public class Adaptadores extends BaseAdapter {
             TextView descripcionTextView = (TextView) convertView.findViewById(R.id.descripcionActividad);
             descripcionTextView.setText(a.getDescripcion());
 
+            String ruta = a.getfoto(); // Devuelve el nombre de archivo de la imagen
+            String nombreArchivo = ruta.substring(0, ruta.lastIndexOf(".")); // Elimina la extensión ".png" del nombre de archivo
+            int id = context.getResources().getIdentifier(nombreArchivo, "drawable", context.getPackageName()); // Obtiene el ID de recurso de la imagen sin la extensión
+            ImageView imagenDraw = (ImageView) convertView.findViewById(R.id.imageactividad);
+            imagenDraw.setImageResource(id);
+
+
             return convertView;
 
         }else{
@@ -62,8 +74,15 @@ public class Adaptadores extends BaseAdapter {
             TextView nombreTextView = (TextView) convertView.findViewById(R.id.tituloActividad);
             nombreTextView.setText(a);
 
+            TextView descripcionTextView = (TextView) convertView.findViewById(R.id.descripcionActividad);
+            descripcionTextView.setText("");
+
             return convertView;
 
         }
     }
+
+
+
+
 }
