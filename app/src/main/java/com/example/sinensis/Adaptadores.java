@@ -69,7 +69,7 @@ public class Adaptadores extends BaseAdapter {
 //h
             String a = (String) getItem_ajus(position);
 
-            convertView = LayoutInflater.from(context).inflate(R.layout.listas_items, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.listas_items_ajus, null);
 
             TextView nombreTextView = (TextView) convertView.findViewById(R.id.tituloActividad);
             nombreTextView.setText(a);

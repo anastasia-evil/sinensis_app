@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0.25"
-
+        android:background="@drawable/bambu"
         tools:layout_editor_absoluteX="79dp"
         tools:layout_editor_absoluteY="62dp"
         tools:ignore="MissingConstraints" />
