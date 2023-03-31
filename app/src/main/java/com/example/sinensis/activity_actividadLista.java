@@ -2,7 +2,11 @@ package com.example.sinensis;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TimePicker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,8 +26,9 @@ import java.util.Locale;
 
 public class activity_actividadLista extends AppCompatActivity {
 
-    private Button btn_fechaI,btn_fechaF;
-    private Calendar fechaInicio, fechaFinal;
+    private Button btn_fecha,btn_hora;
+
+    private Calendar fecha, hora;
     private Button btn_anadirA;
 
 
@@ -30,23 +36,23 @@ public class activity_actividadLista extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_lista);
-        btn_fechaI = (Button) findViewById(R.id.btn_fechaI);
-        btn_fechaF = (Button) findViewById(R.id.btn_fechaF);
+        btn_fecha = (Button) findViewById(R.id.btn_fecha);
+        btn_hora = (Button) findViewById(R.id.btn_hora);
         btn_anadirA = (Button) findViewById(R.id.btn_anadirA);
-        fechaInicio = Calendar.getInstance();
-        fechaFinal = Calendar.getInstance();
+        fecha = Calendar.getInstance();
+        hora = Calendar.getInstance();
 
-        btn_fechaI.setOnClickListener(new View.OnClickListener() {
+        btn_fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                elegirFecha(btn_fechaI,fechaInicio);
+                elegirFecha(btn_fecha,fecha);
             }
         });
 
-        btn_fechaF.setOnClickListener(new View.OnClickListener() {
+        btn_hora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                elegirFecha(btn_fechaF,fechaFinal);
+                elegirHora(btn_hora,hora);
 
             }
         });
@@ -55,8 +61,8 @@ public class activity_actividadLista extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Obtener valores de los botones
-                String date1 = btn_fechaI.getText().toString();
-                String date2 = btn_fechaF.getText().toString();
+                String date1 = btn_fecha.getText().toString();
+                String date2 = btn_hora.getText().toString();
                 try {
                     addEvent(date1,date2);
                 } catch (ParseException e) {
@@ -103,28 +109,45 @@ public class activity_actividadLista extends AppCompatActivity {
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, day);
 
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                String dateString = sdf.format(calendar.getTime());
-                boton.setText(dateString);
+                String date = year + "/" + (month+1) + "/" + day;
+                boton.setText(date);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         dpd.show();
     }
 
-    public void addEvent(String beginDate, String endDate) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = sdf.parse(beginDate);
-        Date date1 = sdf.parse(endDate);
-        long startDateMillis = date.getTime();
-        long endDateMillis = date1.getTime();
+    public void elegirHora(Button boton, Calendar calendar){
+        TimePickerDialog tpd = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                calendar.set(Calendar.HOUR_OF_DAY,hour);
+                calendar.set(Calendar.MINUTE,minute);
 
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                String timeString = sdf.format(calendar.getTime());
+                boton.setText(timeString);
+            }
+        },calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),true);
+        tpd.show();
+    }
+
+    public void addEvent(String beginDate, String beginHour) throws ParseException {
+        // Convertir fechas y horas a milisegundos
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date startDate = null;
+        try {
+            startDate = sdf.parse(beginDate + " " + beginHour);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long startTimeInMillis = startDate.getTime();
         // Crear Intent para agregar evento al calendario
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,startDateMillis)
-                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME,endDateMillis);
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,startTimeInMillis);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
+
         }
 
     }

@@ -57,22 +57,26 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
             <Button
-                android:id="@+id/btn_fechaI"
+                android:id="@+id/btn_fecha"
                 android:layout_width="135dp"
                 android:layout_height="60dp"
-                android:text="Fecha Inicio"
+                android:text="Elegir fecha"
+                android:backgroundTint="#336088"
                 android:textAllCaps="false"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="30dp"
+                app:cornerRadius="10dp"/>
 
             <Button
-                android:id="@+id/btn_fechaF"
+                android:id="@+id/btn_hora"
                 android:layout_width="135dp"
                 android:layout_height="60dp"
-                android:text="Fecha Final"
+                android:text="Elegir hora"
+                android:backgroundTint="#336088"
                 android:textAllCaps="false"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="30dp"
+                app:cornerRadius="10dp"/>
             </LinearLayout>
 
             <Button
@@ -80,9 +84,11 @@
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:text="Añadir"
+                android:backgroundTint="#336088"
                 android:textAllCaps="false"
                 android:layout_marginStart="120dp"
-                android:layout_marginTop="1dp"/>
+                android:layout_marginTop="1dp"
+                app:cornerRadius="10dp"/>
 
         </LinearLayout>
     </ScrollView>
