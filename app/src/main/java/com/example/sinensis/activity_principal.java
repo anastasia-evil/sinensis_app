@@ -1,10 +1,13 @@
 package com.example.sinensis;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,11 +20,15 @@ public class activity_principal extends AppCompatActivity {
 
     private ListView listView; //lista de actividades
     public static AppDatabase db; //base de datos en java
+    public static String s_nombre;//nombre de la actividad
+
 
     ImageButton btn_calendario,btn_home,btn_ajustes;
     public static List<Actividades> lista_actividades = new ArrayList<>();
     public static List<String> listanombres = new ArrayList<>();
     public static List<String> listadescripcion = new ArrayList<>();
+
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +83,9 @@ public class activity_principal extends AppCompatActivity {
             //intent.putExtra("id", actividades.id);
             //startActivity(intent_mapa);
 
-            Intent intent_activity = new Intent(view.getContext(),activity_actividadLista.class);
-            startActivity(intent_activity);
+            //si pulsamos nos lleva a la descripcion mas clara de la actividad.
+
+
         });
 
         //Que salgan las listas de actividades dependiendo de nuestra edad, nivel (grado) y mentor
@@ -105,16 +113,23 @@ public class activity_principal extends AppCompatActivity {
             n = 2;
         }
 
-        //lista_actividades = db.ActividadesDAO().selectactividad(e,n,mentor); coment
-        /*ArrayAdapter<Actividades> listAdapter = new ArrayAdapter<>(listView.getContext(),
-                android.R.layout.simple_list_item_1, lista_actividades);
-        listView.setAdapter(listAdapter);*/
-
-        //listanombres = db.ActividadesDAO().getNombresActividades(e,n,mentor);
-        //listadescripcion = db.ActividadesDAO().getDescripcionActividades(e,n,mentor);
-
         Adaptadores adaptador = new Adaptadores(this, Getlista(e,n,mentor), null);
         listView.setAdapter(adaptador);
+
+        //que nos lleve a la acyividad_lista
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Actividades a = (Actividades) adaptador.getItem(position);
+                Intent intentLista = new Intent(view.getContext(), activity_actividadLista.class);
+                //parametros, nosotros tenemos titulo, imagen y descripcion(pongo de momento la de siempre)
+
+                intentLista.putExtra("TIT", a.getNombre());
+                intentLista.putExtra("DES", a.getDescripcion());
+
+                startActivity(intentLista);
+            }
+        });
     }
     private List<Actividades> Getlista(int edad, int nivel, int mentor) {
         List<Actividades> lista = new ArrayList<>();

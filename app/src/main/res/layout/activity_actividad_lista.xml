@@ -17,7 +17,6 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/fresca"
-        android:text="Tus actividades"
         android:textColor="#ECE8E8"
         android:textSize="50dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,13 +41,11 @@
                 android:id="@+id/descripcion_activity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="cfebsiufbisbefbilsbdubasiulbwdubicbsudbcliuasbciluabs\n diuabsdilxabdiuasbcdisbiuabilusbdialu"
                 android:textSize="20dp"/>
             <ImageView
                 android:id="@+id/imagen_activity"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:background="@drawable/logo"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="20dp"/>
 

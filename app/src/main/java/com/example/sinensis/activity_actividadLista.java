@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.text.ParseException;
@@ -30,6 +31,14 @@ public class activity_actividadLista extends AppCompatActivity {
 
     private Calendar fecha, hora;
     private Button btn_anadirA;
+
+    private TextView titulo;
+    private TextView descripcion;
+    private ImageView imagen;
+
+    private Context context;
+
+
 
 
     @Override
@@ -99,7 +108,31 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         });
 
+        //que se guarde el nombre y la descripcion
+
+        titulo = findViewById(R.id.titulo_activity);
+        descripcion = findViewById(R.id.descripcion_activity);
+        imagen = findViewById(R.id.imagen_activity);
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+
+        if(b!= null){
+            titulo.setText(b.getString("TIT"));
+            descripcion.setText(b.getString("DES"));
+            //para la imagen lo haremos diferente:
+            /*String ruta = activity_principal.db.ActividadesDAO().foto(activity_principal.s_nombre);
+            String nombreArchivo = ruta.substring(0, ruta.lastIndexOf(".")); // Elimina la extensión ".png" del nombre de archivo
+            int id = context.getResources().getIdentifier(nombreArchivo, "drawable", context.getPackageName()); // Obtiene el ID de recurso de la imagen sin la extensión
+            imagen.setImageResource(id);*/
+
+        }
+
     }
+
+
+
+
+
 
     public void elegirFecha(Button boton, Calendar calendar){
         DatePickerDialog dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
