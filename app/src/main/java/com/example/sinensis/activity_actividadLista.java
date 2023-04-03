@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class activity_actividadLista extends AppCompatActivity {
@@ -34,9 +35,11 @@ public class activity_actividadLista extends AppCompatActivity {
 
     private TextView titulo;
     private TextView descripcion;
-    private ImageView imagen;
+    //private ImageView imagen;
 
     private Context context;
+
+    Button btn_eliminar_actividad;
 
 
 
@@ -113,7 +116,7 @@ public class activity_actividadLista extends AppCompatActivity {
 
         titulo = findViewById(R.id.titulo_activity);
         descripcion = findViewById(R.id.descripcion_activity);
-        imagen = findViewById(R.id.imagen_activity);
+        //imagen = findViewById(R.id.imagen_activity);
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
@@ -126,7 +129,34 @@ public class activity_actividadLista extends AppCompatActivity {
             int id = context.getResources().getIdentifier(nombreArchivo, "drawable", context.getPackageName()); // Obtiene el ID de recurso de la imagen sin la extensión
             imagen.setImageResource(id);*/
 
+
         }
+
+        btn_eliminar_actividad = (Button) findViewById(R.id.boton_eliminar);
+        btn_eliminar_actividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                eliminar(activity_principal.lista_actividades, titulo);
+                activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
+
+            }
+        });
+
+
+
+    }
+
+    public void eliminar(List<Actividades> a, TextView t){
+        String nombreActividad = t.getText().toString();
+        for(int i = 0; i<a.size(); i++){
+            Actividades actividad = a.get(i);
+            if (actividad.getNombre().equals(nombreActividad)) {
+                activity_principal.db.ActividadesDAO().delete(actividad);
+                a.remove(i);
+                break;
+            }
+        }
+
 
     }
 

@@ -10,37 +10,27 @@
         android:id="@+id/include2"
         layout="@layout/imagen_fija" />
 
-    <TextView
-        android:id="@+id/actividades"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="35dp"
-        android:fontFamily="@font/fresca"
-        android:text="Tus actividades"
-        android:textColor="#ECE8E8"
-        android:textSize="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textonombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="363dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/fresca"
+        android:gravity="center"
+        android:text="Tus actividades"
+        android:textColor="#ECE8E8"
         android:textSize="20dp"
-        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/calendario"
-        android:layout_width="80dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="512dp"
+        android:layout_width="45dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="532dp"
         android:background="@drawable/calendar"
         android:onClick="onClick"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,10 +38,10 @@
 
     <ImageButton
         android:id="@+id/home"
-        android:layout_width="80dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="512dp"
+        android:layout_width="45dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="532dp"
         android:background="@drawable/home"
         android:onClick="onClick"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,10 +49,10 @@
 
     <ImageButton
         android:id="@+id/ajustes"
-        android:layout_width="80dp"
-        android:layout_height="76dp"
+        android:layout_width="45dp"
+        android:layout_height="46dp"
         android:layout_marginStart="288dp"
-        android:layout_marginTop="512dp"
+        android:layout_marginTop="532dp"
         android:background="@drawable/ajustes"
         android:onClick="onClick"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,10 +72,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="452dp"
+        android:layout_marginTop="444dp"
         android:backgroundTint="#336088"
-        app:cornerRadius="10dp"
         android:text="¿ Deseas cambiar tu plan ?"
+        android:onClick="onClick"
+        app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/include2" />
 

@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,6 +28,8 @@ public class activity_principal extends AppCompatActivity {
     public static List<Actividades> lista_actividades = new ArrayList<>();
     public static List<String> listanombres = new ArrayList<>();
     public static List<String> listadescripcion = new ArrayList<>();
+    public static Adaptadores adaptador;
+    Button btn_eleccion;
 
     Context context;
 
@@ -39,7 +42,7 @@ public class activity_principal extends AppCompatActivity {
         //mostramos el nombre que hemos introducido
         String mi_nombre = activity_datos.nombre_datos;
         TextView textView = findViewById(R.id.textonombre);
-        textView.setText("Hola " + mi_nombre + "!");
+        textView.setText("Hola " + mi_nombre + "!. Estas son las actividades añadidas a tu plan. Seleccione alguna de ellas para empezar y añadirlas a tus recordatorios");
 
         //Botones
         btn_calendario = (ImageButton) findViewById(R.id.calendario);
@@ -113,7 +116,9 @@ public class activity_principal extends AppCompatActivity {
             n = 2;
         }
 
-        Adaptadores adaptador = new Adaptadores(this, Getlista(e,n,mentor), null);
+        lista_actividades = Getlista(e,n,mentor);
+
+        adaptador = new Adaptadores(this, lista_actividades, null);
         listView.setAdapter(adaptador);
 
         //que nos lleve a la acyividad_lista
@@ -130,6 +135,9 @@ public class activity_principal extends AppCompatActivity {
                 startActivity(intentLista);
             }
         });
+
+
+
     }
     private List<Actividades> Getlista(int edad, int nivel, int mentor) {
         List<Actividades> lista = new ArrayList<>();

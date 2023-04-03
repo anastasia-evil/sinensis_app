@@ -18,6 +18,7 @@ public class Adaptadores extends BaseAdapter {
     private List<Actividades> lista_act = new ArrayList<>();
     private List<String> lista_ajus = new ArrayList<>();
     private Context context;
+    public static int id;
 
 
     public Adaptadores(Context context, List<Actividades> lista_act, List<String> lista_ajus) {
@@ -41,6 +42,11 @@ public class Adaptadores extends BaseAdapter {
         return 0;
     }
 
+    public void actualizarActividades(List<Actividades> actividades) {
+        lista_act = actividades;
+        notifyDataSetChanged();
+    }
+
     @Override
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -58,7 +64,7 @@ public class Adaptadores extends BaseAdapter {
 
             String ruta = a.getfoto(); // Devuelve el nombre de archivo de la imagen
             String nombreArchivo = ruta.substring(0, ruta.lastIndexOf(".")); // Elimina la extensión ".png" del nombre de archivo
-            int id = context.getResources().getIdentifier(nombreArchivo, "drawable", context.getPackageName()); // Obtiene el ID de recurso de la imagen sin la extensión
+            id = context.getResources().getIdentifier(nombreArchivo, "drawable", context.getPackageName()); // Obtiene el ID de recurso de la imagen sin la extensión
             ImageView imagenDraw = (ImageView) convertView.findViewById(R.id.imageactividad);
             imagenDraw.setImageResource(id);
 

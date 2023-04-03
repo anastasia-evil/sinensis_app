@@ -21,6 +21,9 @@ public interface ActividadesDAO {
     @Query("SELECT foto FROM Actividades WHERE nombre LIKE :nombre LIMIT 1")
      String foto(String nombre);
 
+
+
+
     @Query("SELECT * FROM Actividades WHERE id=:id")
     Actividades selectById(long id);
 
