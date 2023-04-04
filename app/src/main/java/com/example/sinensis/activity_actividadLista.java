@@ -141,9 +141,6 @@ public class activity_actividadLista extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     public void eliminar(List<Actividades> a, TextView t){
