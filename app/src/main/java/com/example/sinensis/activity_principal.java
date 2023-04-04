@@ -130,7 +130,7 @@ public class activity_principal extends AppCompatActivity {
                 //parametros, nosotros tenemos titulo, imagen y descripcion(pongo de momento la de siempre)
 
                 intentLista.putExtra("TIT", a.getNombre());
-                intentLista.putExtra("DES", a.getDescripcion());
+                intentLista.putExtra("DES", a.getDescripcion_larga());
 
                 startActivity(intentLista);
             }
