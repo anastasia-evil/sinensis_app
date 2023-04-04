@@ -110,7 +110,7 @@
         android:max="4"
         android:progress="2"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:thumb="@mipmap/ic_launcher"
+        android:thumb="@drawable/icono_barra"
         android:progressBackgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_grado" />

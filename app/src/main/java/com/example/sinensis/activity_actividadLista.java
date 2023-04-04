@@ -42,8 +42,6 @@ public class activity_actividadLista extends AppCompatActivity {
     Button btn_eliminar_actividad;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
