@@ -28,7 +28,10 @@ public class Actividades {
     @ColumnInfo(name = "foto")
     public String  foto;
 
-    public Actividades(long id, String nombre, int nivel, String descripcion, int edad, int mentor, String foto) {
+    @ColumnInfo(name = "descripcion_larga")
+    public String  descripcion_larga;
+
+    public Actividades(long id, String nombre, int nivel, String descripcion, int edad, int mentor, String foto, String descripcion_larga) {
         this.id = id;
         this.nombre = nombre;
         this.nivel = nivel;
@@ -36,6 +39,7 @@ public class Actividades {
         this.edad = edad;
         this.mentor = mentor;
         this.foto = foto;
+        this.descripcion_larga = descripcion_larga;
     }
 
     @Ignore

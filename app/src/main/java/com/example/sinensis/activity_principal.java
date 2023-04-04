@@ -100,11 +100,11 @@ public class activity_principal extends AppCompatActivity {
 
         //restriccion de edad
         if(edad<= 50){
-            e = 2; //niños y adultos
+            e = 0; //niños y adultos
         }else if(edad> 50 && edad<=99){
-            e = 1; //gente mayor
+            e = 0; //gente mayor
         }else if(edad > 0 && edad<99){
-            e = 2; //todos
+            e = 0; //todos
         }
 
         //restriccion para el nivel
