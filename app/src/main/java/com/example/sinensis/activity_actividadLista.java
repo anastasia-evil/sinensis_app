@@ -16,9 +16,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,7 +43,6 @@ public class activity_actividadLista extends AppCompatActivity {
     private Context context;
 
     Button btn_eliminar_actividad;
-
 
 
     @Override
@@ -130,6 +131,7 @@ public class activity_actividadLista extends AppCompatActivity {
             imagen.setImageResource(id);*/
 
 
+
         }
 
         btn_eliminar_actividad = (Button) findViewById(R.id.boton_eliminar);
@@ -143,6 +145,8 @@ public class activity_actividadLista extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     public void eliminar(List<Actividades> a, TextView t){

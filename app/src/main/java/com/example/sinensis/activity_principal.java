@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -131,7 +133,6 @@ public class activity_principal extends AppCompatActivity {
 
                 intentLista.putExtra("TIT", a.getNombre());
                 intentLista.putExtra("DES", a.getDescripcion_larga());
-
                 startActivity(intentLista);
             }
         });

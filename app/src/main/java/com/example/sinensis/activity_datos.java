@@ -25,7 +25,8 @@ public class activity_datos extends AppCompatActivity {
     public static String nombre_datos;
     TextView n;
     Button btn;
-    String txt = "Medio";
+    String txt;
+
 
     private AppDatabase db;
     @Override
@@ -42,6 +43,9 @@ public class activity_datos extends AppCompatActivity {
 
         nombre.setText(preferencias.getString("nombre",""));
         edad.setText(preferencias.getString("edad",""));
+
+        txt = "Medio";
+        n.setText("Nivel: " + txt);
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
@@ -101,15 +105,7 @@ public class activity_datos extends AppCompatActivity {
         });
 
 
+
     }
-
-
-
-
-
-
-
-
-
 
 }
