@@ -62,6 +62,7 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         });
 
+
         btn_hora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

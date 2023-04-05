@@ -49,7 +49,7 @@ public class activity_principal extends AppCompatActivity {
         btn_home = (ImageButton) findViewById(R.id.home);
         btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
 
-        Intent intentH = new Intent(this, activity_actividades.class);
+        Intent intentH = new Intent(this, activity_principal.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
