@@ -54,6 +54,7 @@ public interface ActividadesDAO {
     @Query("SELECT nombre FROM actividades")
     List<String> getNombresActividades_();
 
+
     @Insert
     long insert(Actividades actividades);
 
