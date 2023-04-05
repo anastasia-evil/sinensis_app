@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -137,6 +138,8 @@ public class activity_actividadLista extends AppCompatActivity {
             public void onClick(View view) {
                 eliminar(activity_principal.lista_actividades, titulo);
                 activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
+                Toast toast = Toast.makeText(activity_actividadLista.this, "Actividad eliminada", Toast.LENGTH_SHORT);
+                toast.show();
 
             }
         });

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,6 +41,8 @@ public class activity_actividades extends AppCompatActivity {
                 activity_principal.lista_actividades.add(a);
 
                 activity_principal.adaptador.notifyDataSetChanged();
+                Toast toast = Toast.makeText(activity_actividades.this, "Actividad seleccionada", Toast.LENGTH_SHORT);
+                toast.show();
 
 
 
