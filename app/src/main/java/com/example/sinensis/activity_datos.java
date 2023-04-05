@@ -47,6 +47,7 @@ public class activity_datos extends AppCompatActivity {
         txt = "Medio";
         n.setText("Nivel: " + txt);
 
+
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
