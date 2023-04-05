@@ -38,6 +38,7 @@ public class activity_actividades extends AppCompatActivity {
                 //intentLista.putExtra("TIT", a.getNombre());
 
 
+
                 activity_principal.lista_actividades.add(a);
 
                 activity_principal.adaptador.notifyDataSetChanged();
