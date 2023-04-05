@@ -6,4 +6,9 @@
     <string name="creadoras">Esta app fue desarrollada por tres estudiantes de Ingeniería de Sonido e Imagen de la Universidad Carlos III de Madrid: Inés Acebes, Paula Gallejones y Jimena Díaz.</string>
     <string name="ods">La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.</string>
     <string name="notificaciones">Ajusta tus notificaiones</string>
+    <string name="calendario">Añade esta actividad a tu calendario:</string>
+
+    <string name="descripcion_ines">Inés te dará ejercicios con más movimiento y para disfrutar al aire libre</string>
+    <string name="descripcion_paula">Paula planificará actividades más relajantes y mentales</string>
+    <string name="descripcion_jimena">Jimena te ayudará con ejercicios en casa y de meditación </string>
 </resources>
