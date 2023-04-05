@@ -42,6 +42,7 @@ public class activity_actividadLista extends AppCompatActivity {
     Button btn_eliminar_actividad;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,8 +147,9 @@ public class activity_actividadLista extends AppCompatActivity {
         for(int i = 0; i<a.size(); i++){
             Actividades actividad = a.get(i);
             if (actividad.getNombre().equals(nombreActividad)) {
-                activity_principal.db.ActividadesDAO().delete(actividad);
-                a.remove(i);
+                //activity_principal.db.ActividadesDAO().delete(actividad); si lo hago con esto se borra de todo.
+                a.remove(actividad);
+
                 break;
             }
         }

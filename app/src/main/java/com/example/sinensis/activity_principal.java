@@ -19,7 +19,7 @@ import java.util.List;
 
 public class activity_principal extends AppCompatActivity {
 
-    private ListView listView; //lista de actividades
+    public static ListView listView; //lista de actividades
     public static AppDatabase db; //base de datos en java
     public static String s_nombre;//nombre de la actividad
 
@@ -29,7 +29,7 @@ public class activity_principal extends AppCompatActivity {
     public static List<String> listanombres = new ArrayList<>();
     public static List<String> listadescripcion = new ArrayList<>();
     public static Adaptadores adaptador;
-    Button btn_eleccion;
+    Button btn_anadir;
 
     Context context;
 
@@ -137,6 +137,14 @@ public class activity_principal extends AppCompatActivity {
         });
 
 
+        btn_anadir = (Button) findViewById(R.id.button_eleccion);
+        Intent anadir = new Intent(this, activity_actividades.class);
+        btn_anadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //Lanzar actividad de lista de actividades
+            public void onClick(View view) { startActivity(anadir); }
+        });
+
 
     }
     private List<Actividades> Getlista(int edad, int nivel, int mentor) {
@@ -146,4 +154,6 @@ public class activity_principal extends AppCompatActivity {
         return lista;
     }
 
+
 }
+

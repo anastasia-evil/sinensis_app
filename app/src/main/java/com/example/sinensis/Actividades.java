@@ -10,6 +10,7 @@ public class Actividades {
     @PrimaryKey(autoGenerate = true)
     public long id;
 
+
     @ColumnInfo(name = "nombre")
     public String nombre;
 
