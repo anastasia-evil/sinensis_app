@@ -24,8 +24,8 @@
 
     <ListView
         android:id="@+id/list_view_actividades"
-        android:layout_width="347dp"
-        android:layout_height="420dp"
+        android:layout_width="352dp"
+        android:layout_height="536dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="116dp"
         app:layout_constraintStart_toStartOf="parent"
