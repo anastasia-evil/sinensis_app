@@ -161,56 +161,14 @@ public class activity_actividadLista extends AppCompatActivity {
             btn_link.setVisibility(View.VISIBLE);
         }
 
-        play = (Button)findViewById(R.id.button_play);
-        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
 
-        if(nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")){
-            play.setVisibility(View.VISIBLE);
-            seekBarVol.setVisibility(View.VISIBLE);
-
-            if(nombreActividad.equals("Respiraciones guiadas")){
-                MediaPlayer mp = MediaPlayer.create(this, R.raw.respiraciones);
-                audio(mp);
-
-            }else if(nombreActividad.equals("Sonidos Relajantes")){
-                MediaPlayer mp = MediaPlayer.create(this, R.raw.sonidosrelajantes);
-                audio(mp);
-
-            }else if(nombreActividad.equals("Audioguia")){
-                MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
-                audio(mp);
-
-            }
-
-
-
-        }
-
-
-
-
-    }
-
-    public void eliminar(List<Actividades> a, TextView t){
-        String nombreActividad = t.getText().toString();
-        for(int i = 0; i<a.size(); i++){
-            Actividades actividad = a.get(i);
-            if (actividad.getNombre().equals(nombreActividad)) {
-                //activity_principal.db.ActividadesDAO().delete(actividad); si lo hago con esto se borra de todo.
-                a.remove(actividad);
-                break;
-            }
-        }
-
-
-    }
-
-    public void audio(MediaPlayer mp){
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         int max_vol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
 
+        play = (Button)findViewById(R.id.button_play);
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -224,6 +182,7 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         });
 
+        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
         seekBarVol.setMax(max_vol);
         seekBarVol.setProgress(currentVolume);
         seekBarVol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -244,6 +203,21 @@ public class activity_actividadLista extends AppCompatActivity {
 
             }
         });
+
+
+
+    }
+
+    public void eliminar(List<Actividades> a, TextView t){
+        String nombreActividad = t.getText().toString();
+        for(int i = 0; i<a.size(); i++){
+            Actividades actividad = a.get(i);
+            if (actividad.getNombre().equals(nombreActividad)) {
+                //activity_principal.db.ActividadesDAO().delete(actividad); si lo hago con esto se borra de todo.
+                a.remove(actividad);
+                break;
+            }
+        }
 
 
     }
