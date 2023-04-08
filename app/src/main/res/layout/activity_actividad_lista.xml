@@ -96,8 +96,28 @@
                 android:layout_height="55dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/googlemaps"
-                android:visibility="invisible"/>
+                android:background="@drawable/googlemaps" />
+
+
+            <Button
+                android:id="@+id/button_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Play"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar_vol" />
+
+
+            <SeekBar
+                android:id="@+id/seekBar_vol"
+                android:layout_width="313dp"
+                android:layout_height="20dp"
+                android:max="10"
+                android:progress="3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actividades" />
+
+
             <Button
                 android:id="@+id/boton_eliminar"
                 android:layout_width="250dp"

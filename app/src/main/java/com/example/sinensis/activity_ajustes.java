@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -44,6 +45,7 @@ public class activity_ajustes extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 String texto = "";
+                int img_ods = 0;
 
                 switch(position){
                     case 0:
@@ -57,6 +59,7 @@ public class activity_ajustes extends AppCompatActivity {
                     case 2:
                         //ODS
                         texto = getString(R.string.ods);
+                        img_ods = 1;
                         break;
                     case 3:
                         //Mis datos
@@ -73,12 +76,12 @@ public class activity_ajustes extends AppCompatActivity {
                         break;
                 }
 
-                showPopUp(view, texto);
+                showPopUp(view, texto, img_ods);
             }
         });
     }
 
-    public void showPopUp(View view, String texto) {
+    public void showPopUp(View view, String texto, int img_ods) {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_ajustes, null);
@@ -90,6 +93,11 @@ public class activity_ajustes extends AppCompatActivity {
         TextView contenido = (TextView) popupView.findViewById(R.id.contenido);
         contenido.setText(texto);
         Button cerrar = (Button) popupView.findViewById(R.id.cerrar);
+
+        if (img_ods != 1){
+            ImageView ods = (ImageView) popupView.findViewById(R.id.imagen_ods);
+            ods.setVisibility( View.GONE );
+        }
 
         popupView.setOnTouchListener(new View.OnTouchListener() {
             @Override
