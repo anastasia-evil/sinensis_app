@@ -315,8 +315,6 @@ public class activity_actividadLista extends AppCompatActivity {
             case "Caminar":
             case "Ir a un spa":
                 id = R.drawable.googlemaps;
-                Intent intent = new Intent(this,activity_mapa.class);
-                startActivity(intent);
                 break;
             case "Estiramientos":
                 id = R.drawable.youtube;
