@@ -1,9 +1,6 @@
 package com.example.sinensis;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,9 +76,6 @@ public class Adaptadores extends BaseAdapter {
 
             TextView nombreTextView = (TextView) convertView.findViewById(R.id.tituloActividad);
             nombreTextView.setText(a);
-
-            TextView descripcionTextView = (TextView) convertView.findViewById(R.id.descripcionActividad);
-            descripcionTextView.setText("");
 
             return convertView;
 

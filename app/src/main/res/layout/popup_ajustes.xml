@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/contenido"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,7 +17,9 @@
         android:fontFamily="@font/fresca"
         android:text=""
         android:textColor="#ECE8E8"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <Button
         android:id="@+id/cerrar"
@@ -29,6 +31,17 @@
         android:onClick="onClick"
         android:text="Cerrar"
         app:cornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenido" />
+
+    <ImageView
+        android:id="@+id/imagen_ods"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ods"
+        tools:srcCompat="@tools:sample/avatars"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contenido" />
 
