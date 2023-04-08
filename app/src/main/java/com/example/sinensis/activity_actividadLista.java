@@ -40,7 +40,8 @@ public class activity_actividadLista extends AppCompatActivity {
 
     private TextView titulo;
     private TextView descripcion;
-    //private ImageView imagen;
+
+    private ImageButton btn_link;
     Button btn_eliminar_actividad;
 
 
@@ -145,6 +146,9 @@ public class activity_actividadLista extends AppCompatActivity {
 
             }
         });
+
+        btn_link = (ImageButton) findViewById(R.id.boton_link);
+
 
     }
 

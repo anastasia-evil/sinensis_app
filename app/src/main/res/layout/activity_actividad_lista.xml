@@ -96,7 +96,8 @@
                 android:layout_height="55dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/googlemaps" />
+                android:background="@drawable/googlemaps"
+                android:visibility="invisible"/>
             <Button
                 android:id="@+id/boton_eliminar"
                 android:layout_width="250dp"
