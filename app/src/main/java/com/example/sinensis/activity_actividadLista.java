@@ -6,6 +6,8 @@ import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -39,9 +41,6 @@ public class activity_actividadLista extends AppCompatActivity {
     private TextView titulo;
     private TextView descripcion;
     //private ImageView imagen;
-
-    private Context context;
-
     Button btn_eliminar_actividad;
 
 
@@ -147,7 +146,6 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void eliminar(List<Actividades> a, TextView t){
@@ -157,7 +155,6 @@ public class activity_actividadLista extends AppCompatActivity {
             if (actividad.getNombre().equals(nombreActividad)) {
                 //activity_principal.db.ActividadesDAO().delete(actividad); si lo hago con esto se borra de todo.
                 a.remove(actividad);
-
                 break;
             }
         }
@@ -224,6 +221,7 @@ public class activity_actividadLista extends AppCompatActivity {
         }
 
     }
+
 
 
 
