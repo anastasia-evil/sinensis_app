@@ -10,9 +10,25 @@
     <include layout="@layout/imagen_fija" />
 
 
+    <TextView
+        android:id="@+id/titulo_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/fresca"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:shadowColor="@color/fondo_carga"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="410dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
@@ -21,34 +37,68 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099">
+        app:layout_constraintVertical_bias="0.375">
 
         <LinearLayout
+            android:id = "@+id/linear1"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/titulo_activity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/fresca"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
                 android:id="@+id/descripcion_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_marginTop="25dp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/fresca"
                 android:textSize="20dp" />
 
+            <LinearLayout
+                android:id="@+id/linear"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/boton_link"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@android:color/transparent"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+
+            <SeekBar
+                android:id="@+id/seekBar_vol"
+                android:layout_width="313dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                android:max="10"
+                android:progress="3"
+                android:layout_gravity="center"
+                android:progressTint="@color/fondo_carga"
+                android:thumbTint="@color/botones"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actividades"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/calendario"
+                android:fontFamily="@font/fresca"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,52 +133,31 @@
                 android:id="@+id/btn_anadirA"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="120dp"
                 android:layout_marginTop="1dp"
                 android:backgroundTint="@color/botones"
                 android:text="Añadir"
                 android:textAllCaps="false"
                 app:cornerRadius="10dp" />
 
-            <ImageButton
-                android:id="@+id/boton_link"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:background="@android:color/transparent"
-                android:visibility="invisible"/>
 
-
-            <Button
-                android:id="@+id/button_play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Play/PAUSE"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar_vol"
-                android:visibility="invisible"/>
-
-
-            <SeekBar
-                android:id="@+id/seekBar_vol"
-                android:layout_width="313dp"
-                android:layout_height="20dp"
-                android:max="10"
-                android:progress="3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/actividades"
-                android:visibility="invisible"/>
-
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/eliminar"
+                android:fontFamily="@font/fresca"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp" />
             <Button
                 android:id="@+id/boton_eliminar"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/botones"
                 android:textAllCaps="false"
                 android:text="Eliminar actividad"
-                android:layout_marginStart="40dp"
+                android:layout_gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

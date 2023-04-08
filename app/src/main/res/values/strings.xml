@@ -7,6 +7,7 @@
     <string name="ods">La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.</string>
     <string name="notificaciones">Ajusta tus notificaciones</string>
     <string name="calendario">Añade esta actividad a tu calendario:</string>
+    <string name="eliminar">Si no te interesa la actividad, pulsa el botón y se eliminará de tu plan</string>
 
     <string name="descripcion_ines">Inés \n Te dará ejercicios con más movimiento y para disfrutar al aire libre</string>
     <string name="descripcion_paula">Paula \n Planificará actividades más relajantes y mentales</string>

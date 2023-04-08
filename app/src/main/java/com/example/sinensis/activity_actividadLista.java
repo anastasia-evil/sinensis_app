@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -45,8 +46,6 @@ public class activity_actividadLista extends AppCompatActivity {
     private TextView descripcion;
 
     private ImageButton btn_link;
-
-    private Button play;
 
     private SeekBar seekBarVol;
     Button btn_eliminar_actividad;
@@ -158,12 +157,10 @@ public class activity_actividadLista extends AppCompatActivity {
         btn_link = (ImageButton) findViewById(R.id.boton_link);
         String nombreActividad = titulo.getText().toString();
         elegirFoto(btn_link);
-
-        play = (Button)findViewById(R.id.button_play);
         seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
 
         if(nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")){
-            play.setVisibility(View.VISIBLE);
+            btn_link.setVisibility(View.VISIBLE);
             seekBarVol.setVisibility(View.VISIBLE);
             if(nombreActividad.equals("Respiraciones guiadas")){
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.respiraciones);
@@ -212,7 +209,7 @@ public class activity_actividadLista extends AppCompatActivity {
 
 
 
-        play.setOnClickListener(new View.OnClickListener() {
+        btn_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(mp.isPlaying()){
@@ -308,6 +305,7 @@ public class activity_actividadLista extends AppCompatActivity {
     }
     public void elegirFoto(ImageButton botonLink){
         String nombreActividad = titulo.getText().toString();
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear1);
         int id = 0;
         String url = "";
         switch (nombreActividad){
@@ -315,35 +313,53 @@ public class activity_actividadLista extends AppCompatActivity {
             case "Caminar":
             case "Ir a un spa":
                 id = R.drawable.googlemaps;
+                url="mapa";
+                linearLayout.removeView(seekBarVol);
                 break;
             case "Estiramientos":
                 id = R.drawable.youtube;
                 url = "https://www.youtube.com/watch?v=BaPLtt2w3AM&list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ" ;
+                linearLayout.removeView(seekBarVol);
                 break;
             case "Yoga":
                 id = R.drawable.youtube;
                 url = "https://www.youtube.com/watch?v=a01D1PzTVFc&list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r" ;
+                linearLayout.removeView(seekBarVol);
                 break;
             case "Escuchar música":
                 id = R.drawable.spotify;
                 url = "https://open.spotify.com/";
+                linearLayout.removeView(seekBarVol);
                 break;
             case "Libros de autoayuda":
                 id = R.drawable.libro;
                 url = "https://lamenteesmaravillosa.com/los-9-mejores-libros-de-autoayuda-y-superacion-personal/";
+                linearLayout.removeView(seekBarVol);
                 break;
             case "Respiración con postura de Loto":
                 id = R.drawable.loto;
                 url = "https://www.youtube.com/watch?v=5LBtBzi8Djg";
+                linearLayout.removeView(seekBarVol);
                 break;
             case "Cocinar":
                 id = R.drawable.hornear;
                 url = "https://www.recetasgratis.net/";
+                linearLayout.removeView(seekBarVol);
                 break;
             case "Ir al cine o al teatro":
                 id = R.drawable.cartelera;
                 url = "https://www.filmaffinity.com/es/cat_new_th_es.html";
+                linearLayout.removeView(seekBarVol);
                 break;
+            case "Respiraciones guiadas":
+            case "Sonidos Relajantes":
+            case "Audioguia":
+                id = R.drawable.play;
+                break;
+            default:
+                LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linear);
+                linearLayout1.removeView(btn_link);
+                linearLayout.removeView(seekBarVol);
         }
         if (id != 0 || !url.isEmpty()) {
             botonLink.setVisibility(View.VISIBLE);
@@ -353,6 +369,15 @@ public class activity_actividadLista extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalUrl));
+                    startActivity(intent);
+                }
+            });
+        }
+        if(url.equals("mapa")){
+            botonLink.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), activity_mapa.class);
                     startActivity(intent);
                 }
             });
