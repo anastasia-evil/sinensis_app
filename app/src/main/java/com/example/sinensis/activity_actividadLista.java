@@ -10,6 +10,8 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -19,6 +21,7 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -42,7 +45,12 @@ public class activity_actividadLista extends AppCompatActivity {
     private TextView descripcion;
 
     private ImageButton btn_link;
+
+    private Button play;
+
+    private SeekBar seekBarVol;
     Button btn_eliminar_actividad;
+
 
 
     @Override
@@ -152,6 +160,49 @@ public class activity_actividadLista extends AppCompatActivity {
         if(nombreActividad.equals("Correr") || nombreActividad.equals("Caminar") || nombreActividad.equals("Ir a un spa")){
             btn_link.setVisibility(View.VISIBLE);
         }
+
+
+        AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+        int max_vol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+
+        play = (Button)findViewById(R.id.button_play);
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mp.isPlaying()){
+                    mp.pause();
+                    Toast.makeText(activity_actividadLista.this, "Pausa", Toast.LENGTH_SHORT).show();
+                }else{
+                    mp.start();
+                    Toast.makeText(activity_actividadLista.this, "Play", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
+        seekBarVol.setMax(max_vol);
+        seekBarVol.setProgress(currentVolume);
+        seekBarVol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //papa
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i ,0 );
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
 
 
