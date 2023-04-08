@@ -89,6 +89,14 @@
                 android:text="Añadir"
                 android:textAllCaps="false"
                 app:cornerRadius="10dp" />
+
+            <ImageButton
+                android:id="@+id/boton_link"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/googlemaps" />
             <Button
                 android:id="@+id/boton_eliminar"
                 android:layout_width="250dp"
@@ -102,7 +110,9 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.768"/>
+                app:layout_constraintVertical_bias="0.868"/>
+
+
 
         </LinearLayout>
     </ScrollView>
