@@ -8,9 +8,9 @@
     <string name="notificaciones">Ajusta tus notificaiones</string>
     <string name="calendario">Añade esta actividad a tu calendario:</string>
 
-    <string name="descripcion_ines">Inés te dará ejercicios con más movimiento y para disfrutar al aire libre</string>
-    <string name="descripcion_paula">Paula planificará actividades más relajantes y mentales</string>
-    <string name="descripcion_jimena">Jimena te ayudará con ejercicios en casa y de meditación </string>
+    <string name="descripcion_ines">Inés \n Te dará ejercicios con más movimiento y para disfrutar al aire libre</string>
+    <string name="descripcion_paula">Paula \n Planificará actividades más relajantes y mentales</string>
+    <string name="descripcion_jimena">Jimena \n  Te ayudará con ejercicios en casa y de meditación </string>
 
     <string name="bienvenida_todas_actividades">Aquí puedes observar todas las actividades. Selecciona las que quieras a tu plan.</string>
 </resources>
