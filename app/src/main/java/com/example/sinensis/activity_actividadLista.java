@@ -148,6 +148,11 @@ public class activity_actividadLista extends AppCompatActivity {
         });
 
         btn_link = (ImageButton) findViewById(R.id.boton_link);
+        String nombreActividad = titulo.getText().toString();
+        if(nombreActividad.equals("Correr") || nombreActividad.equals("Caminar") || nombreActividad.equals("Ir a un spa")){
+            btn_link.setVisibility(View.VISIBLE);
+        }
+
 
 
     }
