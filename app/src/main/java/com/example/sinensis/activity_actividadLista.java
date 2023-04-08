@@ -156,16 +156,63 @@ public class activity_actividadLista extends AppCompatActivity {
         });
 
         btn_link = (ImageButton) findViewById(R.id.boton_link);
-        elegirFoto(btn_link);
+        String nombreActividad = titulo.getText().toString();
+        if(nombreActividad.equals("Correr") || nombreActividad.equals("Caminar") || nombreActividad.equals("Ir a un spa")){
+            btn_link.setVisibility(View.VISIBLE);
+        }
+        play = (Button)findViewById(R.id.button_play);
+        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
+
+        if(nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")){
+            play.setVisibility(View.VISIBLE);
+            seekBarVol.setVisibility(View.VISIBLE);
+            if(nombreActividad.equals("Respiraciones guiadas")){
+                MediaPlayer mp = MediaPlayer.create(this, R.raw.respiraciones);
+                audio(mp);
+            }else if(nombreActividad.equals("Sonidos Relajantes")){
+                MediaPlayer mp = MediaPlayer.create(this, R.raw.sonidosrelajantes);
+                audio(mp);
+
+            }else if(nombreActividad.equals("Audioguia")){
+                MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
+                audio(mp);
+
+            }
 
 
+
+        }
+
+
+
+
+
+
+
+
+    }
+
+    public void eliminar(List<Actividades> a, TextView t){
+        String nombreActividad = t.getText().toString();
+        for(int i = 0; i<a.size(); i++){
+            Actividades actividad = a.get(i);
+            if (actividad.getNombre().equals(nombreActividad)) {
+                //activity_principal.db.ActividadesDAO().delete(actividad); si lo hago con esto se borra de todo.
+                a.remove(actividad);
+                break;
+            }
+        }
+
+
+    }
+
+    public void audio(MediaPlayer mp){
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         int max_vol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
 
-        play = (Button)findViewById(R.id.button_play);
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
+
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,7 +226,6 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         });
 
-        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
         seekBarVol.setMax(max_vol);
         seekBarVol.setProgress(currentVolume);
         seekBarVol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -200,22 +246,6 @@ public class activity_actividadLista extends AppCompatActivity {
 
             }
         });
-
-
-    }
-
-    public void eliminar(List<Actividades> a, TextView t){
-        String nombreActividad = t.getText().toString();
-        for(int i = 0; i<a.size(); i++){
-            Actividades actividad = a.get(i);
-            if (actividad.getNombre().equals(nombreActividad)) {
-                //activity_principal.db.ActividadesDAO().delete(actividad); si lo hago con esto se borra de todo.
-                a.remove(actividad);
-                break;
-            }
-        }
-
-
     }
 
 
@@ -274,61 +304,6 @@ public class activity_actividadLista extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
 
-        }
-
-    }
-    public void elegirFoto(ImageButton botonLink){
-        String nombreActividad = titulo.getText().toString();
-        int id = 0;
-        String url = "";
-        switch (nombreActividad){
-            case "Correr":
-            case "Caminar":
-            case "Ir a un spa":
-                id = R.drawable.googlemaps;
-                Intent intent = new Intent(this,activity_mapa.class);
-                startActivity(intent);
-                break;
-            case "Estiramientos":
-                id = R.drawable.youtube;
-                url = "https://www.youtube.com/watch?v=BaPLtt2w3AM&list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ" ;
-                break;
-            case "Yoga":
-                id = R.drawable.youtube;
-                url = "https://www.youtube.com/watch?v=a01D1PzTVFc&list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r" ;
-                break;
-            case "Escuchar música":
-                id = R.drawable.spotify;
-                url = "https://open.spotify.com/";
-                break;
-            case "Libros de autoayuda":
-                id = R.drawable.libro;
-                url = "https://lamenteesmaravillosa.com/los-9-mejores-libros-de-autoayuda-y-superacion-personal/";
-                break;
-            case "Respiración con postura de Loto":
-                id = R.drawable.loto;
-                url = "https://www.youtube.com/watch?v=5LBtBzi8Djg";
-                break;
-            case "Cocinar":
-                id = R.drawable.hornear;
-                url = "https://www.recetasgratis.net/";
-                break;
-            case "Ir al cine o al teatro":
-                id = R.drawable.cartelera;
-                url = "https://www.filmaffinity.com/es/cat_new_th_es.html";
-                break;
-        }
-        if (id != 0 || !url.isEmpty()) {
-            botonLink.setVisibility(View.VISIBLE);
-            botonLink.setImageResource(id);
-            String finalUrl = url;
-            botonLink.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalUrl));
-                    startActivity(intent);
-                }
-            });
         }
 
     }
