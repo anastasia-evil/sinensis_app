@@ -1,8 +1,17 @@
 package com.example.sinensis;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -10,11 +19,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.VideoView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +36,7 @@ import java.util.Locale;
 
 public class activity_actividadLista extends AppCompatActivity {
 
-    private Button btn_fecha,btn_hora, btn_map;
+    private Button btn_fecha,btn_hora;
 
     private Calendar fecha, hora;
     private Button btn_anadirA;
@@ -34,7 +45,12 @@ public class activity_actividadLista extends AppCompatActivity {
     private TextView descripcion;
 
     private ImageButton btn_link;
+
+    private Button play;
+
+    private SeekBar seekBarVol;
     Button btn_eliminar_actividad;
+
 
 
     @Override
@@ -60,6 +76,7 @@ public class activity_actividadLista extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 elegirHora(btn_hora,hora);
+
             }
         });
 
@@ -83,7 +100,6 @@ public class activity_actividadLista extends AppCompatActivity {
 
         Intent intentH = new Intent(this, activity_principal.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
-        Intent intentM = new Intent(this, activity_mapa.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             //Lanzar actividad de calendario
@@ -145,11 +161,46 @@ public class activity_actividadLista extends AppCompatActivity {
             btn_link.setVisibility(View.VISIBLE);
         }
 
-        btn_link.setOnClickListener(new View.OnClickListener() {
+
+        AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+        int max_vol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+
+        play = (Button)findViewById(R.id.button_play);
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
+        play.setOnClickListener(new View.OnClickListener() {
             @Override
-            //Lanzar actividad de ajustes
             public void onClick(View view) {
-                startActivity(intentM);
+                if(mp.isPlaying()){
+                    mp.pause();
+                    Toast.makeText(activity_actividadLista.this, "Pausa", Toast.LENGTH_SHORT).show();
+                }else{
+                    mp.start();
+                    Toast.makeText(activity_actividadLista.this, "Play", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
+        seekBarVol.setMax(max_vol);
+        seekBarVol.setProgress(currentVolume);
+        seekBarVol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //papa
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i ,0 );
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 

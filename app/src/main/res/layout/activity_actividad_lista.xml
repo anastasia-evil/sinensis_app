@@ -104,9 +104,10 @@
                 android:id="@+id/button_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Play"
+                android:text="Play/PAUSE"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar_vol" />
+                app:layout_constraintTop_toBottomOf="@+id/seekBar_vol"
+                />
 
 
             <SeekBar
@@ -116,7 +117,8 @@
                 android:max="10"
                 android:progress="3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/actividades" />
+                app:layout_constraintTop_toBottomOf="@+id/actividades"
+                />
 
 
             <Button
