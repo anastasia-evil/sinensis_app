@@ -1,14 +1,7 @@
 package com.example.sinensis;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -19,13 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.widget.VideoView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -100,6 +92,7 @@ public class activity_actividadLista extends AppCompatActivity {
 
         Intent intentH = new Intent(this, activity_principal.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
+        Intent intentM = new Intent(this, activity_mapa.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             //Lanzar actividad de calendario
@@ -160,6 +153,12 @@ public class activity_actividadLista extends AppCompatActivity {
         if(nombreActividad.equals("Correr") || nombreActividad.equals("Caminar") || nombreActividad.equals("Ir a un spa")){
             btn_link.setVisibility(View.VISIBLE);
         }
+
+        btn_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //Lanzar actividad de mapa
+            public void onClick(View view) {startActivity(intentM); }
+        });
 
 
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
