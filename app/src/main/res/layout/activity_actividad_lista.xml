@@ -137,6 +137,7 @@
                 android:backgroundTint="@color/botones"
                 android:text="Añadir"
                 android:textAllCaps="false"
+                android:onClick="onClick"
                 app:cornerRadius="10dp" />
 
 

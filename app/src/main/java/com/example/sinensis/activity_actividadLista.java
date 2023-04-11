@@ -298,10 +298,9 @@ public class activity_actividadLista extends AppCompatActivity {
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.Events.TITLE, titulo.getText().toString())
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,startTimeInMillis)
+                .putExtra(CalendarContract.Reminders.MINUTES, 5)
                 .putExtra(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT); // Notificación de alerta
-        if(check.isChecked()){
-            intent.putExtra(CalendarContract.Reminders.MINUTES, 5);
-        }
+
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
