@@ -51,6 +51,9 @@ public interface ActividadesDAO {
     @Query("SELECT descripcion FROM actividades WHERE edad = :edad AND nivel = :nivel AND mentor= :mentor")
     List<String> getDescripcionActividades(int edad, int nivel, int mentor);
 
+    @Query("SELECT edad FROM actividades WHERE nombre=:nombre")
+    int rango(String nombre);
+
     @Query("SELECT nombre FROM actividades")
     List<String> getNombresActividades_();
 

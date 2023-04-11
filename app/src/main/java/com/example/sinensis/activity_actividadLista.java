@@ -157,7 +157,7 @@ public class activity_actividadLista extends AppCompatActivity {
 
         btn_link = (ImageButton) findViewById(R.id.boton_link);
         String nombreActividad = titulo.getText().toString();
-        elegirFoto(btn_link);
+        elegirFoto(btn_link, nombreActividad);
         seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
 
         if(nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")){
@@ -306,9 +306,13 @@ public class activity_actividadLista extends AppCompatActivity {
         }
 
     }
-    public void elegirFoto(ImageButton botonLink){
+    public void elegirFoto(ImageButton botonLink, String nombre){
         String nombreActividad = titulo.getText().toString();
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear1);
+        //tema edad:
+        int edad = activity_principal.db.ActividadesDAO().rango(nombre); // nos dara 1 en las actividades que haya distincion de edad. no vale para nada
+        int edad_recogida = activity_datos.edad_datos;
+
         int id = 0;
         String url = "";
         switch (nombreActividad){
@@ -347,6 +351,29 @@ public class activity_actividadLista extends AppCompatActivity {
             case "Cocinar":
                 id = R.drawable.hornear;
                 url = "https://www.recetasgratis.net/";
+                linearLayout.removeView(seekBarVol);
+                break;
+            case "Artes Marciales":
+                if(edad_recogida > 50){
+                    id = R.drawable.artesmarcialesa;
+                    url = "https://vimeopro.com/zeninmovement/zen-en-movimiento-en-las-artes-marciales/video/246627264";
+
+                }else{
+                    id=R.drawable.artesmarcialesj;
+                    url = "https://psicologiaymente.com/cultura/tipos-de-artes-marciales";
+                }
+                linearLayout.removeView(seekBarVol);
+                break;
+
+            case "Leer Libros":
+                if(edad_recogida > 50){
+                    id = R.drawable.leerlibrosa;
+                    url = "https://www.cosmopolitan.com/es/consejos-planes/familia-amigos/g38043810/mejores-libros-adolescentes/";
+
+                }else{
+                    id=R.drawable.leerlibrosj;
+                    url = "https://stylelovely.com/galeria/libros-tienes-leer/161898/image/161925";
+                }
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Ir al cine o al teatro":
