@@ -38,7 +38,7 @@ import java.util.Locale;
 
 public class activity_actividadLista extends AppCompatActivity {
 
-    private Button btn_fecha,btn_hora;
+    private Button btn_fecha, btn_hora;
 
     private Calendar fecha, hora;
     private Button btn_anadirA;
@@ -52,34 +52,32 @@ public class activity_actividadLista extends AppCompatActivity {
     Button btn_eliminar_actividad;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_lista);
+
+        //<------------- CALENDARIO ----------->
+
+        //BOTONES PARA CALENDARIO
         btn_fecha = (Button) findViewById(R.id.btn_fecha);
         btn_hora = (Button) findViewById(R.id.btn_hora);
         btn_anadirA = (Button) findViewById(R.id.btn_anadirA);
-        fecha = Calendar.getInstance();
-        hora = Calendar.getInstance();
 
         btn_fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                elegirFecha(btn_fecha,fecha);
+                fecha = Calendar.getInstance();
+                elegirFecha(btn_fecha, fecha);
             }
         });
-
-
         btn_hora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                elegirHora(btn_hora,hora);
-
+                hora = Calendar.getInstance();
+                elegirHora(btn_hora, hora);
             }
         });
-
         btn_anadirA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,16 +85,17 @@ public class activity_actividadLista extends AppCompatActivity {
                 String date1 = btn_fecha.getText().toString();
                 String date2 = btn_hora.getText().toString();
                 try {
-                    addEvent(date1,date2);
+                    addEvent(date1, date2);
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
+        //<------------- BOTONES PRINCIPALES ----------->
 
-       ImageButton btn_calendario = (ImageButton) findViewById(R.id.calendario);
-       ImageButton btn_home = (ImageButton) findViewById(R.id.home);
-       ImageButton btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
+        ImageButton btn_calendario = (ImageButton) findViewById(R.id.calendario);
+        ImageButton btn_home = (ImageButton) findViewById(R.id.home);
+        ImageButton btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
 
         Intent intentH = new Intent(this, activity_principal.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
@@ -112,7 +111,9 @@ public class activity_actividadLista extends AppCompatActivity {
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             //Lanzar actividad de lista de actividades
-            public void onClick(View view) {startActivity(intentH); }
+            public void onClick(View view) {
+                startActivity(intentH);
+            }
         });
         btn_ajustes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,27 +123,20 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         });
 
-        //que se guarde el nombre y la descripcion
-
+        //<------------- ACTIVIDAD ELEGIDA ----------->
         titulo = findViewById(R.id.titulo_activity);
         descripcion = findViewById(R.id.descripcion_activity);
         //imagen = findViewById(R.id.imagen_activity);
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
-        if(b!= null){
+        if (b != null) {
             titulo.setText(b.getString("TIT"));
             descripcion.setText(b.getString("DES"));
-            //para la imagen lo haremos diferente:
-            /*String ruta = activity_principal.db.ActividadesDAO().foto(activity_principal.s_nombre);
-            String nombreArchivo = ruta.substring(0, ruta.lastIndexOf(".")); // Elimina la extensión ".png" del nombre de archivo
-            int id = context.getResources().getIdentifier(nombreArchivo, "drawable", context.getPackageName()); // Obtiene el ID de recurso de la imagen sin la extensión
-            imagen.setImageResource(id);*/
-
-
-
         }
+        //ACCIONES DENTRO DE LA ACTIVIDAD
 
+        //Botón eliminar actividad
         btn_eliminar_actividad = (Button) findViewById(R.id.boton_eliminar);
         btn_eliminar_actividad.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,47 +145,37 @@ public class activity_actividadLista extends AppCompatActivity {
                 activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
                 Toast toast = Toast.makeText(activity_actividadLista.this, "Actividad eliminada", Toast.LENGTH_SHORT);
                 toast.show();
-
             }
         });
-
+        //Boton de link a cada enlace
         btn_link = (ImageButton) findViewById(R.id.boton_link);
         String nombreActividad = titulo.getText().toString();
-        elegirFoto(btn_link, nombreActividad);
-        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
+        elegirFoto(btn_link);
 
-        if(nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")){
+        //Music player
+        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
+        if (nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")) {
             btn_link.setVisibility(View.VISIBLE);
             seekBarVol.setVisibility(View.VISIBLE);
-            if(nombreActividad.equals("Respiraciones guiadas")){
+            if (nombreActividad.equals("Respiraciones guiadas")) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.respiraciones);
                 audio(mp);
-            }else if(nombreActividad.equals("Sonidos Relajantes")){
+            } else if (nombreActividad.equals("Sonidos Relajantes")) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.sonidosrelajantes);
                 audio(mp);
-
-            }else if(nombreActividad.equals("Audioguia")){
+            } else if (nombreActividad.equals("Audioguia")) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
                 audio(mp);
-
             }
-
-
-
         }
-
-
-
-
-
-
-
-
     }
 
-    public void eliminar(List<Actividades> a, TextView t){
+    //<-------------  MÉTODOS FUERA DEL ONCREATE ----------->
+
+    //Eliminar actividad
+    public void eliminar(List<Actividades> a, TextView t) {
         String nombreActividad = t.getText().toString();
-        for(int i = 0; i<a.size(); i++){
+        for (int i = 0; i < a.size(); i++) {
             Actividades actividad = a.get(i);
             if (actividad.getNombre().equals(nombreActividad)) {
                 //activity_principal.db.ActividadesDAO().delete(actividad); si lo hago con esto se borra de todo.
@@ -199,24 +183,20 @@ public class activity_actividadLista extends AppCompatActivity {
                 break;
             }
         }
-
-
     }
 
-    public void audio(MediaPlayer mp){
+    //Music player
+    public void audio(MediaPlayer mp) {
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         int max_vol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-
-
-
         btn_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mp.isPlaying()){
+                if (mp.isPlaying()) {
                     mp.pause();
                     Toast.makeText(activity_actividadLista.this, "Pausa", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     mp.start();
                     Toast.makeText(activity_actividadLista.this, "Play", Toast.LENGTH_SHORT).show();
                 }
@@ -229,55 +209,44 @@ public class activity_actividadLista extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 //papa
-                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i ,0 );
-
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 0);
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
     }
 
 
-
-
-
-
-    public void elegirFecha(Button boton, Calendar calendar){
+    //Calendario
+    public void elegirFecha(Button boton, Calendar calendar) {
         DatePickerDialog dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int day, int month, int year) {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, day);
-
-                String date = year + "/" + (month+1) + "/" + day;
+                String date = year + "/" + (month + 1) + "/" + day;
                 boton.setText(date);
-
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         dpd.show();
     }
 
-    public void elegirHora(Button boton, Calendar calendar){
+    public void elegirHora(Button boton, Calendar calendar) {
         TimePickerDialog tpd = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                calendar.set(Calendar.HOUR_OF_DAY,hour);
-                calendar.set(Calendar.MINUTE,minute);
-
+                calendar.set(Calendar.HOUR_OF_DAY, hour);
+                calendar.set(Calendar.MINUTE, minute);
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
                 String timeString = sdf.format(calendar.getTime());
                 boton.setText(timeString);
             }
-        },calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),true);
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
         tpd.show();
     }
 
@@ -297,7 +266,7 @@ public class activity_actividadLista extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.Events.TITLE, titulo.getText().toString())
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,startTimeInMillis)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTimeInMillis)
                 .putExtra(CalendarContract.Reminders.MINUTES, 5)
                 .putExtra(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT); // Notificación de alerta
 
@@ -306,31 +275,31 @@ public class activity_actividadLista extends AppCompatActivity {
         }
 
     }
-    public void elegirFoto(ImageButton botonLink, String nombre){
+
+    //Para que en cada actividad te salga una foto diferente dependiendo de la actividad que quieras
+    public void elegirFoto(ImageButton botonLink) {
         String nombreActividad = titulo.getText().toString();
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear1);
-        //tema edad:
-        int edad = activity_principal.db.ActividadesDAO().rango(nombre); // nos dara 1 en las actividades que haya distincion de edad. no vale para nada
         int edad_recogida = activity_datos.edad_datos;
 
         int id = 0;
         String url = "";
-        switch (nombreActividad){
+        switch (nombreActividad) {
             case "Correr":
             case "Caminar":
             case "Ir a un spa":
                 id = R.drawable.googlemaps;
-                url="mapa";
+                url = "mapa";
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Estiramientos":
                 id = R.drawable.youtube;
-                url = "https://www.youtube.com/watch?v=BaPLtt2w3AM&list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ" ;
+                url = "https://www.youtube.com/watch?v=BaPLtt2w3AM&list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ";
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Yoga":
                 id = R.drawable.youtube;
-                url = "https://www.youtube.com/watch?v=a01D1PzTVFc&list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r" ;
+                url = "https://www.youtube.com/watch?v=a01D1PzTVFc&list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r";
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Escuchar música":
@@ -403,7 +372,7 @@ public class activity_actividadLista extends AppCompatActivity {
                 }
             });
         }
-        if(url.equals("mapa")){
+        if (url.equals("mapa")) {
             botonLink.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -414,8 +383,6 @@ public class activity_actividadLista extends AppCompatActivity {
         }
 
     }
-
-
 
 
 }
