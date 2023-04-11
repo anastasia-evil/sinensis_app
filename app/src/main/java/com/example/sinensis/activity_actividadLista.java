@@ -304,7 +304,6 @@ public class activity_actividadLista extends AppCompatActivity {
         }
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
-
         }
 
     }
