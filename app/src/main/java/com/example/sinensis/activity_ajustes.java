@@ -7,6 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 public class activity_ajustes extends AppCompatActivity {
     private ListView listview_ajustes;
     private ArrayList<String> ajustes;
+    protected static CheckBox checkSi,checkNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class activity_ajustes extends AppCompatActivity {
 
                 String texto = "";
                 int img_ods = 0;
+                int notificacion = 0;
 
                 switch(position){
                     case 0:
@@ -71,17 +75,19 @@ public class activity_ajustes extends AppCompatActivity {
                     case 4:
                         //Notificaciones
                         texto = getString(R.string.notificaciones);
+                        notificacion = 1;
+
                         break;
                     default:
                         break;
                 }
 
-                showPopUp(view, texto, img_ods);
+                showPopUp(view, texto, img_ods, notificacion);
             }
         });
     }
 
-    public void showPopUp(View view, String texto, int img_ods) {
+    public void showPopUp(View view, String texto, int img_ods, int notificacion) {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_ajustes, null);
@@ -97,6 +103,31 @@ public class activity_ajustes extends AppCompatActivity {
         if (img_ods != 1){
             ImageView ods = (ImageView) popupView.findViewById(R.id.imagen_ods);
             ods.setVisibility( View.GONE );
+        }
+
+        checkSi = (CheckBox) popupView.findViewById(R.id.checkSi);
+        checkNo = (CheckBox) popupView.findViewById(R.id.checkNo);
+        checkSi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    checkNo.setChecked(false);
+                }
+            }
+        });
+
+        checkNo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    checkSi.setChecked(false);
+                }
+            }
+        });
+
+        if(notificacion !=1){
+            LinearLayout check = (LinearLayout) popupView.findViewById(R.id.checkbox);
+            check.setVisibility(View.GONE);
         }
 
         popupView.setOnTouchListener(new View.OnTouchListener() {

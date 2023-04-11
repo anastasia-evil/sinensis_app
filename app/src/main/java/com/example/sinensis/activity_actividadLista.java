@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -259,6 +260,7 @@ public class activity_actividadLista extends AppCompatActivity {
 
                 String date = year + "/" + (month+1) + "/" + day;
                 boton.setText(date);
+
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         dpd.show();
@@ -280,6 +282,7 @@ public class activity_actividadLista extends AppCompatActivity {
     }
 
     public void addEvent(String beginDate, String beginHour) throws ParseException {
+        CheckBox check = activity_ajustes.checkSi;
         // Convertir fechas y horas a milisegundos
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date startDate = null;
@@ -295,8 +298,10 @@ public class activity_actividadLista extends AppCompatActivity {
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.Events.TITLE, titulo.getText().toString())
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,startTimeInMillis)
-                .putExtra(CalendarContract.Reminders.MINUTES, 5) // Para que te avise 5 min antes
                 .putExtra(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT); // Notificación de alerta
+        if(check.isChecked()){
+            intent.putExtra(CalendarContract.Reminders.MINUTES, 5);
+        }
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
 
