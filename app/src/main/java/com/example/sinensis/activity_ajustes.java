@@ -14,15 +14,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class activity_ajustes extends AppCompatActivity {
-    private ListView listview_ajustes;
-    private ArrayList<String> ajustes;
+
+    public Button nosotras, app, ods, datos, atras, notificaciones;
     protected static CheckBox checkSi,checkNo;
+
+    public String texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,61 +33,65 @@ public class activity_ajustes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
+
         //Creamos la lista de visualización
-        listview_ajustes = (ListView) findViewById(R.id.listview_ajustes);
-        //Rellenamos el array con las opciones
-        ajustes = new ArrayList<String>();
-        ajustes.add("Sobre la app");
-        ajustes.add("Creadoras");
-        ajustes.add("ODS");
-        ajustes.add("Mis datos");
-        ajustes.add("Notificaciones");
 
-        Adaptadores adapter_ajustes = new Adaptadores(this, null, ajustes);
+        app = (Button) findViewById(R.id.sobre_app);
+        nosotras = (Button) findViewById(R.id.sobre_nosotras);
+        ods = (Button) findViewById(R.id.ods);
+        datos = (Button) findViewById(R.id.misdatos);
+        notificaciones = (Button) findViewById(R.id.notificaciones);
 
-        listview_ajustes.setAdapter(adapter_ajustes);
-        listview_ajustes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        app.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
-                String texto = "";
-                int img_ods = 0;
-                int notificacion = 0;
-
-                switch(position){
-                    case 0:
-                        //Sobre la app
-                        texto = getString(R.string.sobre_la_app);
-                        break;
-                    case 1:
-                        //Creadoras
-                        texto = getString(R.string.creadoras);
-                        break;
-                    case 2:
-                        //ODS
-                        texto = getString(R.string.ods);
-                        img_ods = 1;
-                        break;
-                    case 3:
-                        //Mis datos
-                        String mi_nombre = activity_datos.nombre_datos;
-                        String mi_edad = String.valueOf(activity_datos.edad_datos);
-                        String mi_grado_estres = String.valueOf(activity_datos.grado_datos);
-                        texto = "Tu nombre: " + mi_nombre + "\nTu edad: " + mi_edad + "\nTu último grado de estrés: " + mi_grado_estres;
-                        break;
-                    case 4:
-                        //Notificaciones
-                        texto = getString(R.string.notificaciones);
-                        notificacion = 1;
-
-                        break;
-                    default:
-                        break;
-                }
-
-                showPopUp(view, texto, img_ods, notificacion);
+            public void onClick(View view) {
+                texto = getString(R.string.sobre_la_app);
+                showPopUp(view, texto, 0, 0);
             }
+
         });
+        nosotras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                texto = getString(R.string.creadoras);
+                showPopUp(view, texto, 0, 0);
+            }
+
+        });
+        ods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                texto = getString(R.string.ods);
+                showPopUp(view, texto, 1, 0);
+            }
+
+        });
+        datos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String mi_nombre = activity_datos.nombre_datos;
+                String mi_edad = String.valueOf(activity_datos.edad_datos);
+                String mi_grado_estres = String.valueOf(activity_datos.grado_datos);
+                texto = "Tu nombre: " + mi_nombre + "\nTu edad: " + mi_edad + "\nTu último grado de estrés: " + mi_grado_estres;
+                showPopUp(view, texto, 0, 0);
+            }
+
+        });
+        notificaciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                texto = getString(R.string.notificaciones);
+                showPopUp(view, texto, 0, 1);
+            }
+
+        });
+
+
+
+
+
+
     }
 
     public void showPopUp(View view, String texto, int img_ods, int notificacion) {

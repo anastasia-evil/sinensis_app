@@ -120,7 +120,7 @@ public class activity_principal extends AppCompatActivity {
 
         lista_actividades = Getlista(e,n,mentor);
 
-        adaptador = new Adaptadores(this, lista_actividades, null);
+        adaptador = new Adaptadores(this, lista_actividades);
         listView.setAdapter(adaptador);
 
         //que nos lleve a la acyividad_lista

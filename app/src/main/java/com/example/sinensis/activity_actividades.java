@@ -25,7 +25,7 @@ public class activity_actividades extends AppCompatActivity {
         db2 = AppDatabase.getInstance(getApplicationContext());
 
         List<Actividades> lista_completa = db2.ActividadesDAO().selectAll();
-        Adaptadores adaptador2 = new Adaptadores(this, lista_completa, null);
+        Adaptadores adaptador2 = new Adaptadores(this, lista_completa);
         listView.setAdapter(adaptador2);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

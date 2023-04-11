@@ -13,25 +13,23 @@ import java.util.List;
 
 public class Adaptadores extends BaseAdapter {
     private List<Actividades> lista_act = new ArrayList<>();
-    private List<String> lista_ajus = new ArrayList<>();
+
     private Context context;
     public static int id;
 
 
-    public Adaptadores(Context context, List<Actividades> lista_act, List<String> lista_ajus) {
+    public Adaptadores(Context context, List<Actividades> lista_act) {
         this.context= context;
         this.lista_act = lista_act;
-        this.lista_ajus = lista_ajus;
+
     }
     public int getCount(){
-        if (lista_ajus == null){
+
             return lista_act.size();
-        }else{
-            return lista_ajus.size();
-        }
+
     }
     public Actividades getItem(int position){ return lista_act.get(position); }
-    public String getItem_ajus(int position){ return lista_ajus.get(position); }
+
 
 
     @Override
@@ -48,7 +46,7 @@ public class Adaptadores extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (lista_ajus == null){
+
             Actividades a = (Actividades) getItem(position);
 
             convertView = LayoutInflater.from(context).inflate(R.layout.listas_items, null);
@@ -68,18 +66,7 @@ public class Adaptadores extends BaseAdapter {
 
             return convertView;
 
-        }else{
-//h
-            String a = (String) getItem_ajus(position);
 
-            convertView = LayoutInflater.from(context).inflate(R.layout.listas_items_ajus, null);
-
-            TextView nombreTextView = (TextView) convertView.findViewById(R.id.tituloActividad);
-            nombreTextView.setText(a);
-
-            return convertView;
-
-        }
     }
 
 

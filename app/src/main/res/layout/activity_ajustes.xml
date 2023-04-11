@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     android:background="#6073B1">
 
+
     <include
         android:id="@+id/include"
         layout="@layout/imagen_fija"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="67dp" />
 
     <TextView
         android:id="@+id/titulo"
@@ -27,14 +28,90 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
-    <ListView
-        android:id="@+id/listview_ajustes"
-        android:layout_width="280dp"
-        android:layout_height="300dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="72dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <Button
+            android:id="@+id/sobre_app"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="55dp"
+            android:fontFamily="@font/fresca"
+            android:onClick="onClick"
+            android:text="Sobre Sinensis"
+            android:textAllCaps="false"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/sobre_nosotras"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/fresca"
+            android:onClick="onClick"
+            android:text="Sobre las desarroladoras"
+            android:textAllCaps="false"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/ods"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/fresca"
+            android:onClick="onClick"
+            android:text="Sobre las ODS"
+            android:textAllCaps="false"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/misdatos"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/fresca"
+            android:onClick="onClick"
+            android:text="Mis Datos"
+            android:textAllCaps="false"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/notificaciones"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/fresca"
+            android:onClick="onClick"
+            android:text="Notificaciones"
+            android:textAllCaps="false"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/atras"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/fresca"
+        android:onClick="onClick"
+        android:text="atras"
+        android:textAllCaps="false"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
