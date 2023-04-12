@@ -10,6 +10,7 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -28,6 +29,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import com.google.gson.Gson;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -141,7 +144,7 @@ public class activity_actividadLista extends AppCompatActivity {
         btn_eliminar_actividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                eliminar(activity_principal.lista_actividades, titulo);
+                eliminar(activity_principal.lista, titulo);
                 activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
                 Toast toast = Toast.makeText(activity_actividadLista.this, "Actividad eliminada", Toast.LENGTH_SHORT);
                 toast.show();
@@ -183,6 +186,17 @@ public class activity_actividadLista extends AppCompatActivity {
                 break;
             }
         }
+        SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
+
+        Gson gson = new Gson();
+        // Convertir la lista en una representación JSON usando Gson
+        String listaJson = gson.toJson(activity_principal.lista);
+
+        // Guardar la lista actualizada en SharedPreferences
+        editor.putString("lista", listaJson);
+
+        // Aplicar los cambios
+        editor.apply();
     }
 
     //Music player

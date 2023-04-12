@@ -70,7 +70,7 @@ public class activity_ajustes extends AppCompatActivity {
         datos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mi_nombre = activity_datos.nombre_datos;
+                String mi_nombre = MainActivity.sharedPreferences.getString("nombre", "");;
                 String mi_edad = String.valueOf(activity_datos.edad_datos);
                 String mi_grado_estres = String.valueOf(activity_datos.grado_datos);
                 texto = "Tu nombre: " + mi_nombre + "\nTu edad: " + mi_edad + "\nTu último grado de estrés: " + mi_grado_estres;

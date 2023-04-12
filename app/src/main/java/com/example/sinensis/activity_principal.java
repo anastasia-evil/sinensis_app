@@ -27,10 +27,11 @@ public class activity_principal extends AppCompatActivity {
 
 
     ImageButton btn_calendario,btn_home,btn_ajustes;
-    public static List<Actividades> lista_actividades = new ArrayList<>();
+
     public static List<String> listanombres = new ArrayList<>();
     public static List<String> listadescripcion = new ArrayList<>();
     public static Adaptadores adaptador;
+    public static List<Actividades> lista;
     Button btn_anadir;
 
     Context context;
@@ -75,7 +76,7 @@ public class activity_principal extends AppCompatActivity {
             }
         });
 
-        db = AppDatabase.getInstance(getApplicationContext()); // le damos valores de inicio a db
+        //db = AppDatabase.getInstance(getApplicationContext()); // le damos valores de inicio a db
         listView = findViewById(R.id.list_view);
 
         listView.setOnItemClickListener((adapter, view, pos, id) -> {
@@ -110,17 +111,12 @@ public class activity_principal extends AppCompatActivity {
         }
 
         //restriccion para el nivel
-        if(nivel == 0 || nivel == 1){
-            n = 0;
-        }else if(nivel == 2 || nivel == 3){
-            n = 1;
-        }else{
-            n = 2;
+
+        if(MainActivity.p == 1){
+            lista = activity_mentores.lista_actividades;
         }
 
-        lista_actividades = Getlista(e,n,mentor);
-
-        adaptador = new Adaptadores(this, lista_actividades);
+        adaptador = new Adaptadores(this, lista);
         listView.setAdapter(adaptador);
 
         //que nos lleve a la acyividad_lista
@@ -148,13 +144,7 @@ public class activity_principal extends AppCompatActivity {
 
 
     }
-    private List<Actividades> Getlista(int edad, int nivel, int mentor) {
-        List<Actividades> lista = new ArrayList<>();
-        lista = db.ActividadesDAO().selectactividad(edad,nivel,mentor);
 
-        return lista;
-    }
 
 
 }
-
