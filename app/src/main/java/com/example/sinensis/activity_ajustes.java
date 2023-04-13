@@ -24,10 +24,12 @@ public class activity_ajustes extends AppCompatActivity {
 
     public Button nosotras, app, ods, datos, progreso;
 
-    public String texto,texto2;
+    public String texto,texto2, m;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
@@ -42,11 +44,13 @@ public class activity_ajustes extends AppCompatActivity {
         progreso = (Button) findViewById(R.id.progreso);
 
 
+
+
         app.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.sobre_la_app);
-                showPopUp(view, texto, null,0, 0);
+                showPopUp(view, texto, null,null,0, 0);
             }
 
         });
@@ -54,7 +58,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.creadoras);
-                showPopUp(view, texto, null,0, 0);
+                showPopUp(view, texto, null,null,0, 0);
             }
 
         });
@@ -62,7 +66,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.ods);
-                showPopUp(view, texto, null,1, 0);
+                showPopUp(view, texto, null,null,1, 0);
             }
 
         });
@@ -70,19 +74,24 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String mi_nombre = MainActivity.sharedPreferences.getString("nombre", "");;
-                String mi_edad = String.valueOf(activity_datos.edad_datos);
-                String mi_grado_estres = String.valueOf(activity_datos.grado_datos);
+                int edad = MainActivity.sharedPreferences.getInt("edad", 0);
+                String mi_edad = Integer.toString(edad);
+                int grado = MainActivity.sharedPreferences.getInt("estres", 0);
+                String mi_grado_estres = Integer.toString(grado);
                 texto = getString(R.string.datos,mi_nombre,mi_edad,mi_grado_estres);
-                showPopUp(view, texto, null,0, 0);
+                showPopUp(view, null,texto, null,0, 0);
             }
 
         });
+
+        //String hojas = Integer.toString(MainActivity.sharedPreferences.getInt("hojas", 0));
         progreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                m = Integer.toString(activity_actividadLista.sharedPreferences.getInt("hojas", 0));
                 texto = getString(R.string.progreso);
                 texto2= getString(R.string.progreso2);
-                showPopUp(view, null, texto2,0, 1);
+                showPopUp(view, m,null, texto2,0, 1);
             }
 
         });
@@ -90,7 +99,7 @@ public class activity_ajustes extends AppCompatActivity {
 
     }
 
-    public void showPopUp(View view, String texto, String texto2, int img_ods, int progreso) {
+    public void showPopUp(View view, String m, String texto, String texto2, int img_ods, int progreso) {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_ajustes, null);
@@ -103,6 +112,8 @@ public class activity_ajustes extends AppCompatActivity {
         contenido.setText(texto);
         TextView contenido2 = (TextView)popupView.findViewById(R.id.contenido2);
         contenido2.setText(texto2);
+        TextView cuentaTokens = (TextView)popupView.findViewById(R.id.cuentaTokens);
+        cuentaTokens.setText(m);
         Button cerrar = (Button) popupView.findViewById(R.id.cerrar);
 
         if (img_ods != 1){

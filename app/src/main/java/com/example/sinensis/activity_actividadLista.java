@@ -55,9 +55,12 @@ public class activity_actividadLista extends AppCompatActivity {
 
     private SeekBar seekBarVol;
     Button btn_eliminar_actividad;
+    public static SharedPreferences sharedPreferences;
 
 
     protected static CheckBox checkSi,checkNo;
+
+    public static int hojas;
 
 
     @Override
@@ -193,7 +196,7 @@ public class activity_actividadLista extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if(isChecked){
-                    int hojas = obtenerHojas(); // recuperamos el valor sumado
+                    hojas = obtenerHojas(); // recuperamos el valor sumado
                     if(m == 0){
                         hojas += 5;
                     }else if(m==1){
@@ -455,15 +458,15 @@ public class activity_actividadLista extends AppCompatActivity {
     }*/
 
     private void guardarHojas(int hojas) {
-        SharedPreferences sharedPreferences = getSharedPreferences("mi_pref", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("mi_pref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("hojas", hojas); // gaurdamos
         editor.apply();
     }
 
     // Recuperar el valor de hojas desde SharedPreferences
-    private int obtenerHojas() {
-        SharedPreferences sharedPreferences = getSharedPreferences("mi_pref", Context.MODE_PRIVATE);
+    public int obtenerHojas() {
+        sharedPreferences = getSharedPreferences("mi_pref", Context.MODE_PRIVATE);
         return sharedPreferences.getInt("hojas", 0); // 0 es el valor predeterminado si no se encuentra la clave "hojas"
     }
 
