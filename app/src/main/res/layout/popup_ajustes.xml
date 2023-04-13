@@ -1,84 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="10dip"
-    android:background="#8F9DCC"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/popUp"
+    android:padding="10dp">
 
+    <LinearLayout
+        android:id="@+id/moneda"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_token"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/token"
+            android:foregroundGravity="center"
+            android:elevation="20dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/contenido"
+            tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/cuentaTokens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="10dp"
+            android:text="5"
+            android:fontFamily="@font/fresca"
+            android:textColor="@color/white"
+            android:textSize="22dp"/>
+    </LinearLayout>
     <TextView
         android:id="@+id/contenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/fresca"
         android:text=""
-        android:textColor="#ECE8E8"
+        android:textColor="@color/white"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/imagen_ods"
+        app:layout_constraintTop_toBottomOf="@+id/moneda" />
+    <TextView
+        android:id="@+id/progreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:fontFamily="@font/fresca"
+        android:text="@string/progreso"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/imagen_ods"
+        app:layout_constraintTop_toBottomOf="@+id/moneda" />
+
+    <ImageView
+        android:id="@+id/imagen_ods"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ods"
+        android:foregroundGravity="center"
+        android:elevation="20dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenido"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:id="@+id/token"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenido"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/contenido2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dip"
+            android:fontFamily="@font/fresca"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_token" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/cerrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="284dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="#336088"
+        android:layout_marginTop="58dp"
+        android:backgroundTint="@color/botones"
         android:onClick="onClick"
         android:text="Cerrar"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:fontFamily="@font/fresca"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contenido" />
-
-    <ImageView
-        android:id="@+id/imagen_ods"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/ods"
-        tools:srcCompat="@tools:sample/avatars"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contenido" />
-
-    <LinearLayout
-        android:id="@+id/checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <CheckBox
-            android:id="@+id/checkSi"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="35dp"
-            android:text="Si"
-            android:textSize="20dp"
-            android:fontFamily="@font/fresca"
-            android:textColor="@color/white"
-            android:buttonTint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contenido" />
-
-        <CheckBox
-            android:id="@+id/checkNo"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="35dp"
-            android:text="No"
-            android:textSize="20dp"
-            android:fontFamily="@font/fresca"
-            android:textColor="@color/white"
-            android:buttonTint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contenido" />
-    </LinearLayout>
-
-
+        app:layout_constraintTop_toBottomOf="@+id/token" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

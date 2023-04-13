@@ -22,10 +22,9 @@ import java.util.ArrayList;
 
 public class activity_ajustes extends AppCompatActivity {
 
-    public Button nosotras, app, ods, datos, atras, notificaciones;
-    protected static CheckBox checkSi,checkNo;
+    public Button nosotras, app, ods, datos, progreso;
 
-    public String texto;
+    public String texto,texto2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +39,14 @@ public class activity_ajustes extends AppCompatActivity {
         nosotras = (Button) findViewById(R.id.sobre_nosotras);
         ods = (Button) findViewById(R.id.ods);
         datos = (Button) findViewById(R.id.misdatos);
-        notificaciones = (Button) findViewById(R.id.notificaciones);
+        progreso = (Button) findViewById(R.id.progreso);
 
 
         app.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.sobre_la_app);
-                showPopUp(view, texto, 0, 0);
+                showPopUp(view, texto, null,0, 0);
             }
 
         });
@@ -55,7 +54,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.creadoras);
-                showPopUp(view, texto, 0, 0);
+                showPopUp(view, texto, null,0, 0);
             }
 
         });
@@ -63,7 +62,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.ods);
-                showPopUp(view, texto, 1, 0);
+                showPopUp(view, texto, null,1, 0);
             }
 
         });
@@ -73,28 +72,25 @@ public class activity_ajustes extends AppCompatActivity {
                 String mi_nombre = MainActivity.sharedPreferences.getString("nombre", "");;
                 String mi_edad = String.valueOf(activity_datos.edad_datos);
                 String mi_grado_estres = String.valueOf(activity_datos.grado_datos);
-                texto = "Tu nombre: " + mi_nombre + "\nTu edad: " + mi_edad + "\nTu último grado de estrés: " + mi_grado_estres;
-                showPopUp(view, texto, 0, 0);
+                texto = getString(R.string.datos,mi_nombre,mi_edad,mi_grado_estres);
+                showPopUp(view, texto, null,0, 0);
             }
 
         });
-        notificaciones.setOnClickListener(new View.OnClickListener() {
+        progreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                texto = getString(R.string.notificaciones);
-                showPopUp(view, texto, 0, 1);
+                texto = getString(R.string.progreso);
+                texto2= getString(R.string.progreso2);
+                showPopUp(view, null, texto2,0, 1);
             }
 
         });
-
-
-
-
 
 
     }
 
-    public void showPopUp(View view, String texto, int img_ods, int notificacion) {
+    public void showPopUp(View view, String texto, String texto2, int img_ods, int progreso) {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_ajustes, null);
@@ -105,6 +101,8 @@ public class activity_ajustes extends AppCompatActivity {
 
         TextView contenido = (TextView) popupView.findViewById(R.id.contenido);
         contenido.setText(texto);
+        TextView contenido2 = (TextView)popupView.findViewById(R.id.contenido2);
+        contenido2.setText(texto2);
         Button cerrar = (Button) popupView.findViewById(R.id.cerrar);
 
         if (img_ods != 1){
@@ -112,29 +110,15 @@ public class activity_ajustes extends AppCompatActivity {
             ods.setVisibility( View.GONE );
         }
 
-        checkSi = (CheckBox) popupView.findViewById(R.id.checkSi);
-        checkNo = (CheckBox) popupView.findViewById(R.id.checkNo);
-        checkSi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked){
-                    checkNo.setChecked(false);
-                }
-            }
-        });
-
-        checkNo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    checkSi.setChecked(false);
-                }
-            }
-        });
-
-        if(notificacion !=1){
-            LinearLayout check = (LinearLayout) popupView.findViewById(R.id.checkbox);
+        if(progreso !=1){
+            LinearLayout check = (LinearLayout) popupView.findViewById(R.id.token);
+            LinearLayout check2 = (LinearLayout) popupView.findViewById(R.id.moneda);
+            check2.setVisibility(View.GONE);
             check.setVisibility(View.GONE);
+        }
+        if(progreso==1){
+            TextView text = (TextView) popupView.findViewById(R.id.progreso);
+            text.setVisibility(View.VISIBLE);
         }
 
         popupView.setOnTouchListener(new View.OnTouchListener() {

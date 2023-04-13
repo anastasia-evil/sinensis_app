@@ -312,7 +312,6 @@ public class activity_actividadLista extends AppCompatActivity {
     }
 
     public void addEvent(String beginDate, String beginHour) throws ParseException {
-        CheckBox check = activity_ajustes.checkSi;
         // Convertir fechas y horas a milisegundos
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date startDate = null;
