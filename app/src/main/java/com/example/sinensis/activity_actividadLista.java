@@ -1,6 +1,7 @@
 package com.example.sinensis;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Query;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -19,6 +20,7 @@ import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -55,10 +57,14 @@ public class activity_actividadLista extends AppCompatActivity {
     Button btn_eliminar_actividad;
 
 
+    protected static CheckBox checkSi,checkNo;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_lista);
+
 
         //<------------- CALENDARIO ----------->
 
@@ -171,6 +177,47 @@ public class activity_actividadLista extends AppCompatActivity {
                 audio(mp);
             }
         }
+
+        checkSi = (CheckBox)findViewById(R.id.checkSi);
+
+
+        
+        AppDatabase db;
+        db = AppDatabase.getInstance(getApplicationContext());
+        int m = db.ActividadesDAO().obtenernivel(nombreActividad);
+
+
+
+
+        checkSi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    int hojas = obtenerHojas(); // recuperamos el valor sumado
+                    if(m == 0){
+                        hojas += 5;
+                    }else if(m==1){
+                        hojas +=10;
+                    }else if(m == 2){
+                        hojas +=10;
+                    }
+                    guardarHojas(hojas); //guardamos el valor ya sumado
+                    Toast toast = Toast.makeText(activity_actividadLista.this, "Estas son tus monedas: "+ hojas, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
     }
 
     //<-------------  MÉTODOS FUERA DEL ONCREATE ----------->
@@ -397,6 +444,34 @@ public class activity_actividadLista extends AppCompatActivity {
         }
 
     }
+    /*public void monedas(String name, int hojas) {
+        int m = activity_mentores.db.ActividadesDAO().ontenernivel(name);
+        if(m == 0){
+            hojas += 5;
+        }else if(m == 1){
+            hojas += 10;
+        }else if(m == 2){
+            hojas += 15;
+        }
+    }*/
+
+    private void guardarHojas(int hojas) {
+        SharedPreferences sharedPreferences = getSharedPreferences("mi_pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("hojas", hojas); // gaurdamos
+        editor.apply();
+    }
+
+    // Recuperar el valor de hojas desde SharedPreferences
+    private int obtenerHojas() {
+        SharedPreferences sharedPreferences = getSharedPreferences("mi_pref", Context.MODE_PRIVATE);
+        return sharedPreferences.getInt("hojas", 0); // 0 es el valor predeterminado si no se encuentra la clave "hojas"
+    }
+
+
+
+
+
 
 
 }

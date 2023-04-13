@@ -44,6 +44,9 @@ public interface ActividadesDAO {
     @Query("SELECT nombre FROM actividades WHERE nivel = :nivel AND mentor= :mentor")
     List<String> getNombresActividades( int nivel, int mentor);
 
+    @Query("SELECT nivel FROM actividades WHERE nombre LIKE :nombre LIMIT 1")
+    int obtenernivel(String nombre);
+
     @Query("SELECT descripcion FROM actividades WHERE nivel = :nivel AND mentor= :mentor")
     List<String> getDescripcionActividades(int nivel, int mentor);
 

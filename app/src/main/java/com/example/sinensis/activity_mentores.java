@@ -23,6 +23,7 @@ public class activity_mentores extends AppCompatActivity {
     public static AppDatabase db; //base de datos en java
     Button boton,boton2,boton3;
     public static int mentor_datos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

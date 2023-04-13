@@ -63,4 +63,6 @@ public class Actividades {
     }
 
     public String getDescripcion_larga(){return descripcion_larga;}
+
+    public int getNivel(){return nivel;}
 }
