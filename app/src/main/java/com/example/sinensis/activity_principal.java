@@ -98,17 +98,7 @@ public class activity_principal extends AppCompatActivity {
         int edad = activity_datos.edad_datos;
         int nivel = activity_datos.grado_datos;
         int mentor = activity_mentores.mentor_datos;
-        int e = 0;
         int n = 0;
-
-        //restriccion de edad
-        if(edad<= 50){
-            e = 0; //niños y adultos
-        }else if(edad> 50 && edad<=99){
-            e = 0; //gente mayor
-        }else if(edad > 0 && edad<99){
-            e = 0; //todos
-        }
 
         //restriccion para el nivel
 
