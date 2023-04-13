@@ -89,7 +89,6 @@
         app:layout_constraintTop_toBottomOf="@+id/contenido"
         android:orientation="vertical">
 
-
         <TextView
             android:id="@+id/contenido2"
             android:layout_width="wrap_content"
@@ -102,6 +101,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/img_token" />
+        <Button
+            android:id="@+id/boton_eliminar"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/botones"
+            android:textAllCaps="false"
+            android:text="Eliminar actividades"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.868"/>
+
     </LinearLayout>
 
     <Button
