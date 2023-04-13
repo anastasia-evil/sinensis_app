@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Sinensis</string>
     <string name="titulo">Sinensis</string>
-    <string name="titulo_formulario">Bienvenido a Sinensis. Es preciso para nosotros saber tus datos.</string>
+
+    <!--Ajustes-->
     <string name="sobre_la_app">Sinensis es una app enfocada en el alivio del estrés a través de la creatividad. Dispone de un amplio catálogo de actividades que te ayudarán a conectar tranquilamente con el momento presente.</string>
     <string name="creadoras">Esta app fue desarrollada por tres estudiantes de Ingeniería de Sonido e Imagen de la Universidad Carlos III de Madrid: \n - Inés Acebes,\n - Paula Gallejones  \n - Jimena Díaz.</string>
     <string name="ods">La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.</string>
@@ -11,10 +12,35 @@
     <string name="eliminar">Si no te interesa la actividad, pulsa el botón y se eliminará de tu plan</string>
     <string name="datos">Los datos que has introducido son: \n - Tu nombre: %s \n - Tu edad: %s \n - Tu grado de estrés: %s</string>
 
+    <!--Datos-->
+    <string name="titulo_formulario">Bienvenido a Sinensis. Es preciso para nosotros saber tus datos.</string>
+    <string name="enviar">Enviar</string>
+    <string name="nivel">Nivel: </string>
+    <string name="estresado">¿Qué tan estresado te sientes?</string>
+    <string name="edad">Introduce tu edad</string>
+    <string name="nombre">Introduce tu nombre</string>
+    <string name="edad1">¿Cuántos años tienes?</string>
+    <string name="nombre1">¿Cómo te llamas?</string>
+
+
+    <!--Mentores-->
+    <string name="elegir">Elige tu mentor</string>
     <string name="descripcion_ines">Inés \n Te dará ejercicios con más movimiento y para disfrutar al aire libre</string>
     <string name="descripcion_paula">Paula \n Planificará actividades más relajantes y mentales</string>
     <string name="descripcion_jimena">Jimena \n  Te ayudará con ejercicios en casa y de meditación </string>
-    <string name="moneditas">¿ Has completado esta actividada ?</string>
+
+
+    <!--Principal-->
+    <string name="bienvenida">Hola %s!. Estas son las actividades añadidas a tu plan. Seleccione alguna de ellas para empezar y añadirlas a tus recordatorios</string>
+    <string name="anadir">Añadir actividad</string>
+
+    <!--Actividad-->
+    <string name="fecha">Elegir fecha</string>
+    <string name="hora">Elegir hora</string>
+    <string name="cal">Añadir</string>
+    <string name="si">Si</string>
+    <string name="moneditas">¿Has completado esta actividad?</string>
+    <string name="btn_eliminar">Eliminar actividad</string>
 
     <string name="bienvenida_todas_actividades">Aquí puedes observar todas las actividades. Selecciona las que quieras a tu plan.</string>
 </resources>

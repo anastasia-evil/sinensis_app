@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        sharedPreferences = getSharedPreferences("datos6", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("datos0", Context.MODE_PRIVATE);
 
         int i = carga(sharedPreferences);
 
