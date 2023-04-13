@@ -1,6 +1,7 @@
 package com.example.sinensis;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class activity_datos extends AppCompatActivity {
@@ -98,8 +100,16 @@ public class activity_datos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
-                    Toast toast = Toast.makeText(activity_datos.this, "Rellena todos los datos", Toast.LENGTH_SHORT);
-                    toast.show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(activity_datos.this);
+                    builder.setMessage("Rellena todos los campos")
+                            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
                 }
                 else{
                     String edad_conversor = edad.getText().toString();
@@ -107,7 +117,7 @@ public class activity_datos extends AppCompatActivity {
                     nombre_datos = nombre.getText().toString();
                     // Obtén una instancia de SharedPreferences
                     // Obtiene un editor de SharedPreferences para realizar modificaciones
-                    sharedPreferences = getSharedPreferences("datos6", Context.MODE_PRIVATE);
+                    sharedPreferences = getSharedPreferences("datos0", Context.MODE_PRIVATE);
                     editor = sharedPreferences.edit();
 
                     // Guarda los datos ingresados por el usuario en SharedPreferences

@@ -43,10 +43,9 @@ public class activity_principal extends AppCompatActivity {
         //Intent intent = getIntent();
 
         //mostramos el nombre que hemos introducido
-        String mi_nombre = activity_datos.nombre_datos;
+        String mi_nombre = MainActivity.sharedPreferences.getString("nombre", "");
         TextView textView = findViewById(R.id.textonombre);
-        textView.setText("Hola " + mi_nombre + "!. Estas son las actividades añadidas a tu plan. Seleccione alguna de ellas para empezar y añadirlas a tus recordatorios");
-
+        textView.setText(getString(R.string.bienvenida,mi_nombre));
         //Botones
         btn_calendario = (ImageButton) findViewById(R.id.calendario);
         btn_home = (ImageButton) findViewById(R.id.home);
