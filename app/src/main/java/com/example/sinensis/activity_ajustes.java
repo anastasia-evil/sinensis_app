@@ -50,7 +50,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.sobre_la_app);
-                showPopUp(view, texto, null,null,0, 0);
+                showPopUp(view, null, texto,null,0, 0);
             }
 
         });
@@ -58,7 +58,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.creadoras);
-                showPopUp(view, texto, null,null,0, 0);
+                showPopUp(view, null, texto,null,0, 0);
             }
 
         });
@@ -66,7 +66,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.ods);
-                showPopUp(view, texto, null,null,1, 0);
+                showPopUp(view, null, texto,null,1, 0);
             }
 
         });
@@ -91,11 +91,10 @@ public class activity_ajustes extends AppCompatActivity {
                 m = Integer.toString(activity_actividadLista.sharedPreferences.getInt("hojas", 0));
                 texto = getString(R.string.progreso);
                 texto2= getString(R.string.progreso2);
-                showPopUp(view, m,null, texto2,0, 1);
+                showPopUp(view, m,texto, texto2,0, 1);
             }
 
         });
-
 
     }
 
