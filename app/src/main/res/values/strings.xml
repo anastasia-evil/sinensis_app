@@ -42,5 +42,17 @@
     <string name="moneditas">¿Has completado esta actividad?</string>
     <string name="btn_eliminar">Eliminar actividad</string>
 
+    <!--Ajustes-->
+    <string name="ajustes">Ajustes</string>
+    <string name="btn_info">Sobre Sinensis</string>
+    <string name="btn_desarrolladoras">Sobre las desarrolladoras</string>
+    <string name="btn_ods">Sobre la ODS</string>
+    <string name="btn_datos">Mis datos</string>
+    <string name="btn_progreso">Mi progreso</string>
+
+    <!--Pop-Up Ajustes-->
+    <string name="cerrar">Cerrar</string>
+    <string name="btn_elimi">Eliminar actividades</string>
+
     <string name="bienvenida_todas_actividades">Aquí puedes observar todas las actividades. Selecciona las que quieras a tu plan.</string>
 </resources>

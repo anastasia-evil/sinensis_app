@@ -17,7 +17,7 @@
         android:layout_width="177dp"
         android:layout_height="59dp"
         android:fontFamily="@font/fresca"
-        android:text="Ajustes"
+        android:text="@string/ajustes"
         android:textColor="@color/white"
         android:textSize="50dp"
         android:gravity="center"
@@ -46,7 +46,7 @@
             android:fontFamily="@font/fresca"
             android:backgroundTint="@color/botones"
             android:onClick="onClick"
-            android:text="Sobre Sinensis"
+            android:text="@string/btn_info"
             android:textAllCaps="false"
             android:textSize="20dp" />
 
@@ -59,7 +59,7 @@
             android:fontFamily="@font/fresca"
             android:backgroundTint="@color/botones"
             android:onClick="onClick"
-            android:text="Sobre las desarrolladoras"
+            android:text="@string/btn_desarrolladoras"
             android:textAllCaps="false"
             android:textSize="20dp" />
 
@@ -72,7 +72,7 @@
             android:fontFamily="@font/fresca"
             android:backgroundTint="@color/botones"
             android:onClick="onClick"
-            android:text="Sobre las ODS"
+            android:text="@string/btn_ods"
             android:textAllCaps="false"
             android:textSize="20dp" />
 
@@ -85,7 +85,7 @@
             android:fontFamily="@font/fresca"
             android:backgroundTint="@color/botones"
             android:onClick="onClick"
-            android:text="Mis Datos"
+            android:text="@string/btn_datos"
             android:textAllCaps="false"
             android:textSize="20dp" />
 
@@ -98,7 +98,7 @@
             android:fontFamily="@font/fresca"
             android:backgroundTint="@color/botones"
             android:onClick="onClick"
-            android:text="Tu progreso"
+            android:text="@string/btn_progreso"
             android:textAllCaps="false"
             android:textSize="20dp" />
 
