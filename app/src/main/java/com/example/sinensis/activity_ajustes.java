@@ -24,7 +24,8 @@ public class activity_ajustes extends AppCompatActivity {
 
     public Button nosotras, app, ods, datos, progreso;
 
-    public String texto,texto2, m;
+    public static String texto,texto2, m;
+
 
 
     @Override
@@ -88,7 +89,6 @@ public class activity_ajustes extends AppCompatActivity {
         progreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m = Integer.toString(activity_actividadLista.sharedPreferences.getInt("hojas", 0));
                 texto = getString(R.string.progreso);
                 texto2= getString(R.string.progreso2);
                 showPopUp(view, m,texto, texto2,0, 1);

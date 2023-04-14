@@ -55,7 +55,8 @@ public class activity_actividadLista extends AppCompatActivity {
 
     private SeekBar seekBarVol;
     Button btn_eliminar_actividad;
-    public static SharedPreferences sharedPreferences;
+
+    public static int val;
 
 
     protected static CheckBox checkSi,checkNo;
@@ -189,9 +190,6 @@ public class activity_actividadLista extends AppCompatActivity {
         db = AppDatabase.getInstance(getApplicationContext());
         int m = db.ActividadesDAO().obtenernivel(nombreActividad);
 
-
-
-
         checkSi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -204,12 +202,16 @@ public class activity_actividadLista extends AppCompatActivity {
                     }else if(m == 2){
                         hojas +=10;
                     }
-                    guardarHojas(hojas); //guardamos el valor ya sumado
+                    guardarHojas(hojas);//guardamos el valor ya sumado
+                    activity_ajustes.m = Integer.toString(obtenerHojas());
                     Toast toast = Toast.makeText(activity_actividadLista.this, "Estas son tus monedas: "+ hojas, Toast.LENGTH_SHORT);
                     toast.show();
+                    val = 1;
                 }
             }
         });
+
+
 
 
 
@@ -458,16 +460,16 @@ public class activity_actividadLista extends AppCompatActivity {
     }*/
 
     private void guardarHojas(int hojas) {
-        sharedPreferences = getSharedPreferences("mi_pref", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        MainActivity.sharedPreferences = getSharedPreferences("datos20", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
         editor.putInt("hojas", hojas); // gaurdamos
         editor.apply();
     }
 
     // Recuperar el valor de hojas desde SharedPreferences
     public int obtenerHojas() {
-        sharedPreferences = getSharedPreferences("mi_pref", Context.MODE_PRIVATE);
-        return sharedPreferences.getInt("hojas", 0); // 0 es el valor predeterminado si no se encuentra la clave "hojas"
+        MainActivity.sharedPreferences = getSharedPreferences("datos20", Context.MODE_PRIVATE);
+        return MainActivity.sharedPreferences.getInt("hojas", 0); // 0 es el valor predeterminado si no se encuentra la clave "hojas"
     }
 
 
