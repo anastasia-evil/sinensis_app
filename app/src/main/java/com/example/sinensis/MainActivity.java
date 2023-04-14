@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        sharedPreferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("datos33", Context.MODE_PRIVATE);
 
         int i = carga(sharedPreferences);
 
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         int gradoEstres = sharedPreferences.getInt("estres", 0);
         //int mentor = sharedPreferences.getInt("mentor",0);
         String listaJson = sharedPreferences.getString("lista", null);
+        activity_ajustes.m = Integer.toString(sharedPreferences.getInt("hojas",0));
         Gson gson = new Gson();
         if (listaJson != null) {
             // Convertir la cadena de texto JSON a una lista de objetos "Item"

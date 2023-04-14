@@ -460,7 +460,7 @@ public class activity_actividadLista extends AppCompatActivity {
     }*/
 
     private void guardarHojas(int hojas) {
-        MainActivity.sharedPreferences = getSharedPreferences("datos20", Context.MODE_PRIVATE);
+        MainActivity.sharedPreferences = getSharedPreferences("datos33", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
         editor.putInt("hojas", hojas); // gaurdamos
         editor.apply();
@@ -468,7 +468,7 @@ public class activity_actividadLista extends AppCompatActivity {
 
     // Recuperar el valor de hojas desde SharedPreferences
     public int obtenerHojas() {
-        MainActivity.sharedPreferences = getSharedPreferences("datos20", Context.MODE_PRIVATE);
+        MainActivity.sharedPreferences = getSharedPreferences("datos33", Context.MODE_PRIVATE);
         return MainActivity.sharedPreferences.getInt("hojas", 0); // 0 es el valor predeterminado si no se encuentra la clave "hojas"
     }
 
