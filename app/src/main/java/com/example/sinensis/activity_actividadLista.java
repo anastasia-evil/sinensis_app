@@ -1,6 +1,8 @@
 package com.example.sinensis;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.room.Query;
 
 import android.app.AlarmManager;
@@ -9,14 +11,18 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -34,12 +40,15 @@ import android.widget.VideoView;
 
 import com.google.gson.Gson;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import android.Manifest;
 
 public class activity_actividadLista extends AppCompatActivity {
 
@@ -62,6 +71,8 @@ public class activity_actividadLista extends AppCompatActivity {
     protected static CheckBox checkSi,checkNo;
 
     public static int hojas;
+    private static final int REQUEST_CAMERA_PERMISSION = 200;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
 
 
     @Override
@@ -210,17 +221,6 @@ public class activity_actividadLista extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
@@ -387,6 +387,10 @@ public class activity_actividadLista extends AppCompatActivity {
                 url = "https://www.recetasgratis.net/";
                 linearLayout.removeView(seekBarVol);
                 break;
+            case "Practicar Fotografía":
+                id = R.drawable.camara;
+                url = "foto";
+                break;
             case "Artes Marciales":
                 if(edad_recogida > 50){
                     id = R.drawable.artesmarcialesa;
@@ -443,6 +447,22 @@ public class activity_actividadLista extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), activity_mapa.class);
                     startActivity(intent);
+                }
+            });
+        }
+        if(url.equals("foto")){
+            botonLink.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Permisos para acceder a la cámara
+                    if (ContextCompat.checkSelfPermission(activity_actividadLista.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                        //Inicio de la cámara
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+                    } else {
+                        //Si no se ha concedido el permiso lo vuelvo a pedir
+                        ActivityCompat.requestPermissions(activity_actividadLista.this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+                    }
                 }
             });
         }
