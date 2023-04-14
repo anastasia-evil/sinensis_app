@@ -128,7 +128,7 @@ public class activity_actividadLista extends AppCompatActivity {
             //Lanzar actividad de calendario
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://calendar.google.com"));
+                intent.setData(Uri.parse(getString(R.string.enlace_calendario)));
                 startActivity(intent);
             }
         });
@@ -167,7 +167,7 @@ public class activity_actividadLista extends AppCompatActivity {
             public void onClick(View view) {
                 eliminar(activity_principal.lista, titulo);
                 activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
-                Toast toast = Toast.makeText(activity_actividadLista.this, "Actividad eliminada", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.actividad_eliminada), Toast.LENGTH_SHORT);
                 toast.show();
             }
         });
@@ -215,7 +215,7 @@ public class activity_actividadLista extends AppCompatActivity {
                     }
                     guardarHojas(hojas);//guardamos el valor ya sumado
                     activity_ajustes.m = Integer.toString(obtenerHojas());
-                    Toast toast = Toast.makeText(activity_actividadLista.this, "Estas son tus monedas: "+ hojas, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.monedas,hojas), Toast.LENGTH_SHORT);
                     toast.show();
                     val = 1;
                 }
@@ -359,32 +359,32 @@ public class activity_actividadLista extends AppCompatActivity {
                 break;
             case "Estiramientos":
                 id = R.drawable.youtube;
-                url = "https://www.youtube.com/watch?v=BaPLtt2w3AM&list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ";
+                url = getString(R.string.estiramientos);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Yoga":
                 id = R.drawable.youtube;
-                url = "https://www.youtube.com/watch?v=a01D1PzTVFc&list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r";
+                url =getString(R.string.yoga);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Escuchar música":
                 id = R.drawable.spotify;
-                url = "https://open.spotify.com/";
+                url = getString(R.string.spotify);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Libros de autoayuda":
                 id = R.drawable.libro;
-                url = "https://lamenteesmaravillosa.com/los-9-mejores-libros-de-autoayuda-y-superacion-personal/";
+                url = getString(R.string.libros_autoayuda);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Respiración con postura de Loto":
                 id = R.drawable.loto;
-                url = "https://www.youtube.com/watch?v=5LBtBzi8Djg";
+                url = getString(R.string.loto);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Cocinar":
                 id = R.drawable.hornear;
-                url = "https://www.recetasgratis.net/";
+                url = getString(R.string.cocinar);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Practicar Fotografía":
@@ -394,11 +394,11 @@ public class activity_actividadLista extends AppCompatActivity {
             case "Artes Marciales":
                 if(edad_recogida > 50){
                     id = R.drawable.artesmarcialesa;
-                    url = "https://vimeopro.com/zeninmovement/zen-en-movimiento-en-las-artes-marciales/video/246627264";
+                    url = getString(R.string.marciales_abuelos);
 
                 }else{
                     id=R.drawable.artesmarcialesj;
-                    url = "https://psicologiaymente.com/cultura/tipos-de-artes-marciales";
+                    url = getString(R.string.maricales_jovenes);
                 }
                 linearLayout.removeView(seekBarVol);
                 break;
@@ -406,17 +406,17 @@ public class activity_actividadLista extends AppCompatActivity {
             case "Leer Libros":
                 if(edad_recogida > 50){
                     id = R.drawable.leerlibrosa;
-                    url = "https://www.cosmopolitan.com/es/consejos-planes/familia-amigos/g38043810/mejores-libros-adolescentes/";
+                    url = getString(R.string.leer_abuelos);
 
                 }else{
                     id=R.drawable.leerlibrosj;
-                    url = "https://stylelovely.com/galeria/libros-tienes-leer/161898/image/161925";
+                    url = getString(R.string.leer_jovenes);
                 }
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Ir al cine o al teatro":
                 id = R.drawable.cartelera;
-                url = "https://www.filmaffinity.com/es/cat_new_th_es.html";
+                url = getString(R.string.cartelera);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Respiraciones guiadas":

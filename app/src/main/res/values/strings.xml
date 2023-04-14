@@ -54,5 +54,23 @@
     <string name="cerrar">Cerrar</string>
     <string name="btn_elimi">Eliminar actividades</string>
 
+    <!--ENLACES-->
+    <string name="estiramientos">https://www.youtube.com/watch?v=BaPLtt2w3AM&amp;list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ</string>
+    <string name="yoga">https://www.youtube.com/watch?v=a01D1PzTVFc&amp;list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r</string>
+    <string name="spotify">https://open.spotify.com/</string>
+    <string name="libros_autoayuda">https://lamenteesmaravillosa.com/los-9-mejores-libros-de-autoayuda-y-superacion-personal/</string>
+    <string name="loto">https://www.youtube.com/watch?v=5LBtBzi8Djg</string>
+    <string name="cocinar">https://www.recetasgratis.net/</string>
+    <string name="marciales_abuelos">https://vimeopro.com/zeninmovement/zen-en-movimiento-en-las-artes-marciales/video/246627264</string>
+    <string name="maricales_jovenes">https://psicologiaymente.com/cultura/tipos-de-artes-marciales</string>
+    <string name="leer_abuelos">https://www.cosmopolitan.com/es/consejos-planes/familia-amigos/g38043810/mejores-libros-adolescentes/</string>
+    <string name="leer_jovenes">https://stylelovely.com/galeria/libros-tienes-leer/161898/image/161925</string>
+    <string name="cartelera">https://www.filmaffinity.com/es/cat_new_th_es.html</string>
+    <string name="enlace_calendario">https://calendar.google.com</string>
+
+    <!--TOAST-->
+    <string name="actividad_eliminada">Actividad eliminada</string>
+    <string name="monedas">Estas son tu monedas %d</string>
+
     <string name="bienvenida_todas_actividades">Aquí puedes observar todas las actividades. Selecciona las que quieras a tu plan.</string>
 </resources>
