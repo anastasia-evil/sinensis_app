@@ -1,5 +1,6 @@
 package com.example.sinensis;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,13 +19,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class activity_ajustes extends AppCompatActivity {
 
     public Button nosotras, app, ods, datos, progreso;
 
-    public static String texto,texto2, m;
+    public static String texto,texto2, texto3, m;
+
+    public static List<Actividades> graves;
 
 
 
@@ -51,7 +57,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.sobre_la_app);
-                showPopUp(view, null, texto,null,0, 0);
+                showPopUp(view, null, texto,null,null,0, 0);
             }
 
         });
@@ -59,7 +65,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.creadoras);
-                showPopUp(view, null, texto,null,0, 0);
+                showPopUp(view, null, texto,null,null,0, 0);
             }
 
         });
@@ -67,7 +73,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.ods);
-                showPopUp(view, null, texto,null,1, 0);
+                showPopUp(view, null, texto,null,null,1, 0);
             }
 
         });
@@ -80,7 +86,7 @@ public class activity_ajustes extends AppCompatActivity {
                 int grado = MainActivity.sharedPreferences.getInt("estres", 0);
                 String mi_grado_estres = Integer.toString(grado);
                 texto = getString(R.string.datos,mi_nombre,mi_edad,mi_grado_estres);
-                showPopUp(view, null,texto, null,0, 0);
+                showPopUp(view, null,texto, null,null,0, 0);
             }
 
         });
@@ -89,16 +95,20 @@ public class activity_ajustes extends AppCompatActivity {
         progreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                graves = act(activity_principal.lista);
+                List<String> lista_nombres = obtenername(graves);
+                String cadena = String.join(" ", lista_nombres);
                 texto = getString(R.string.progreso);
                 texto2= getString(R.string.progreso2);
-                showPopUp(view, m,texto, texto2,0, 1);
+                texto3 = cadena;
+                showPopUp(view, m,texto, texto2,texto3,0, 1);
             }
 
         });
 
     }
 
-    public void showPopUp(View view, String m, String texto, String texto2, int img_ods, int progreso) {
+    public void showPopUp(View view, String m, String texto, String texto2,String texto3, int img_ods, int progreso) {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_ajustes, null);
@@ -110,10 +120,11 @@ public class activity_ajustes extends AppCompatActivity {
         TextView contenido = (TextView) popupView.findViewById(R.id.contenido);
         contenido.setText(texto);
         TextView contenido2 = (TextView)popupView.findViewById(R.id.contenido2);
-        contenido2.setText(texto2);
+        contenido2.setText(texto2 + texto3);
         TextView cuentaTokens = (TextView)popupView.findViewById(R.id.cuentaTokens);
         cuentaTokens.setText(m);
         Button cerrar = (Button) popupView.findViewById(R.id.cerrar);
+        Button eliminar = (Button) popupView.findViewById(R.id.boton_eliminar);
 
         if (img_ods != 1){
             ImageView ods = (ImageView) popupView.findViewById(R.id.imagen_ods);
@@ -145,6 +156,56 @@ public class activity_ajustes extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
+
+        eliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                eliminar(graves);
+                activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
+                Toast toast = Toast.makeText(activity_ajustes.this, "Actividad/es eliminadas", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+    }
+
+    public List<Actividades> act(List<Actividades> completa){
+        List<Actividades> borradas = new ArrayList<>();
+        for(int i =0; i< completa.size();i++){
+            if(completa.get(i).getNivel() == 2){
+                Actividades a = completa.get(i);
+                borradas.add(a);
+            }
+        }
+        return borradas;
+    }
+
+    public List<String> obtenername(List<Actividades> completa){
+        List<String> c = new ArrayList<>();
+        for(int i =0; i< completa.size();i++){
+            c.add(completa.get(i).getNombre());
+        }
+        return c;
+
+    }
+
+    public void eliminar(List<Actividades> borradas) {
+        for (int i = 0; i < borradas.size(); i++) {
+            Actividades a = borradas.get(i);
+            borradas.remove(a);
+            break;
+        }
+
+        SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
+
+        Gson gson = new Gson();
+        // Convertir la lista en una representación JSON usando Gson
+        String listaJson = gson.toJson(activity_principal.lista);
+
+        // Guardar la lista actualizada en SharedPreferences
+        editor.putString("lista", listaJson);
+
+        // Aplicar los cambios
+        editor.apply();
     }
 
 }
