@@ -21,6 +21,13 @@
     <string name="nombre">Introduce tu nombre</string>
     <string name="edad1">¿Cuántos años tienes?</string>
     <string name="nombre1">¿Cómo te llamas?</string>
+    <string name="nivel_bajo">Bajo</string>
+    <string name="nivel_mediobajo">Medio bajo</string>
+    <string name="nivel_medio">Medio</string>
+    <string name="nivel_medioalto">Medio alto</string>
+    <string name="nivel_alto">Alto</string>
+    <string name="rellenar_datos">Rellena todos los campos</string>
+    <string name="aceptar">Aceptar</string>
 
 
     <!--Mentores-->
@@ -55,22 +62,33 @@
     <string name="btn_elimi">Eliminar actividades</string>
 
     <!--ENLACES-->
-    <string name="estiramientos">https://www.youtube.com/watch?v=BaPLtt2w3AM&amp;list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ</string>
-    <string name="yoga">https://www.youtube.com/watch?v=a01D1PzTVFc&amp;list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r</string>
-    <string name="spotify">https://open.spotify.com/</string>
-    <string name="libros_autoayuda">https://lamenteesmaravillosa.com/los-9-mejores-libros-de-autoayuda-y-superacion-personal/</string>
-    <string name="loto">https://www.youtube.com/watch?v=5LBtBzi8Djg</string>
-    <string name="cocinar">https://www.recetasgratis.net/</string>
-    <string name="marciales_abuelos">https://vimeopro.com/zeninmovement/zen-en-movimiento-en-las-artes-marciales/video/246627264</string>
-    <string name="maricales_jovenes">https://psicologiaymente.com/cultura/tipos-de-artes-marciales</string>
-    <string name="leer_abuelos">https://www.cosmopolitan.com/es/consejos-planes/familia-amigos/g38043810/mejores-libros-adolescentes/</string>
-    <string name="leer_jovenes">https://stylelovely.com/galeria/libros-tienes-leer/161898/image/161925</string>
-    <string name="cartelera">https://www.filmaffinity.com/es/cat_new_th_es.html</string>
+    <string name="enlace_estiramientos">https://www.youtube.com/watch?v=BaPLtt2w3AM&amp;list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ</string>
+    <string name="enlace_yoga">https://www.youtube.com/watch?v=a01D1PzTVFc&amp;list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r</string>
+    <string name="enlace_spotify">https://open.spotify.com/</string>
+    <string name="enlace_libros_autoayuda">https://lamenteesmaravillosa.com/los-9-mejores-libros-de-autoayuda-y-superacion-personal/</string>
+    <string name="enlace_loto">https://www.youtube.com/watch?v=5LBtBzi8Djg</string>
+    <string name="enlace_cocinar">https://www.recetasgratis.net/</string>
+    <string name="enlace_marciales_abuelos">https://vimeopro.com/zeninmovement/zen-en-movimiento-en-las-artes-marciales/video/246627264</string>
+    <string name="enlace_maricales_jovenes">https://psicologiaymente.com/cultura/tipos-de-artes-marciales</string>
+    <string name="enlace_leer_abuelos">https://www.cosmopolitan.com/es/consejos-planes/familia-amigos/g38043810/mejores-libros-adolescentes/</string>
+    <string name="enlace_leer_jovenes">https://stylelovely.com/galeria/libros-tienes-leer/161898/image/161925</string>
+    <string name="enlace_cartelera">https://www.filmaffinity.com/es/cat_new_th_es.html</string>
     <string name="enlace_calendario">https://calendar.google.com</string>
 
     <!--TOAST-->
     <string name="actividad_eliminada">Actividad eliminada</string>
+    <string name="actividades_eliminadas">Actividad/es eliminadas</string>
+    <string name="actividad_seleccionada">Actividad seleccionada</string>
     <string name="monedas">Estas son tu monedas %d</string>
+    <string name="play">Play</string>
+    <string name="pause">Pausa</string>
+
+    <!--NOMBRE DE ACTIVIDADES-->
+    <string name="respiraciones_guiadas">Respiraciones guiadas</string>
+    <string name="sonidos_relajantes">Sonidos Relajantes</string>
+    <string name="audioguia">Audioguia</string>
+
+
 
     <string name="bienvenida_todas_actividades">Aquí puedes observar todas las actividades. Selecciona las que quieras a tu plan.</string>
 </resources>

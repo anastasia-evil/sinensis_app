@@ -162,7 +162,7 @@ public class activity_ajustes extends AppCompatActivity {
             public void onClick(View view) {
                 eliminar(graves);
                 activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
-                Toast toast = Toast.makeText(activity_ajustes.this, "Actividad/es eliminadas", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(activity_ajustes.this, getString(R.string.actividades_eliminadas), Toast.LENGTH_SHORT);
                 toast.show();
             }
         });

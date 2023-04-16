@@ -58,7 +58,7 @@ public class activity_principal extends AppCompatActivity {
             //Lanzar actividad de calendario
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://calendar.google.com"));
+                intent.setData(Uri.parse(getString(R.string.enlace_calendario)));
                 startActivity(intent);
             }
         });

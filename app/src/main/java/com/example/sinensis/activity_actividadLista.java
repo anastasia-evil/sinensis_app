@@ -178,16 +178,16 @@ public class activity_actividadLista extends AppCompatActivity {
 
         //Music player
         seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
-        if (nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")) {
+        if (nombreActividad.equals(getString(R.string.respiraciones_guiadas)) || nombreActividad.equals(getString(R.string.sonidos_relajantes)) || nombreActividad.equals(R.string.audioguia)) {
             btn_link.setVisibility(View.VISIBLE);
             seekBarVol.setVisibility(View.VISIBLE);
-            if (nombreActividad.equals("Respiraciones guiadas")) {
+            if (nombreActividad.equals(R.string.respiraciones_guiadas)) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.respiraciones);
                 audio(mp);
-            } else if (nombreActividad.equals("Sonidos Relajantes")) {
+            } else if (nombreActividad.equals(R.string.sonidos_relajantes)) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.sonidosrelajantes);
                 audio(mp);
-            } else if (nombreActividad.equals("Audioguia")) {
+            } else if (nombreActividad.equals(R.string.audioguia)) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
                 audio(mp);
             }
@@ -261,10 +261,10 @@ public class activity_actividadLista extends AppCompatActivity {
             public void onClick(View view) {
                 if (mp.isPlaying()) {
                     mp.pause();
-                    Toast.makeText(activity_actividadLista.this, "Pausa", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity_actividadLista.this, getString(R.string.pause), Toast.LENGTH_SHORT).show();
                 } else {
                     mp.start();
-                    Toast.makeText(activity_actividadLista.this, "Play", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity_actividadLista.this, getString((R.string.play)), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -359,32 +359,32 @@ public class activity_actividadLista extends AppCompatActivity {
                 break;
             case "Estiramientos":
                 id = R.drawable.youtube;
-                url = getString(R.string.estiramientos);
+                url = getString(R.string.enlace_estiramientos);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Yoga":
                 id = R.drawable.youtube;
-                url =getString(R.string.yoga);
+                url =getString(R.string.enlace_yoga);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Escuchar música":
                 id = R.drawable.spotify;
-                url = getString(R.string.spotify);
+                url = getString(R.string.enlace_spotify);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Libros de autoayuda":
                 id = R.drawable.libro;
-                url = getString(R.string.libros_autoayuda);
+                url = getString(R.string.enlace_libros_autoayuda);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Respiración con postura de Loto":
                 id = R.drawable.loto;
-                url = getString(R.string.loto);
+                url = getString(R.string.enlace_loto);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Cocinar":
                 id = R.drawable.hornear;
-                url = getString(R.string.cocinar);
+                url = getString(R.string.enlace_cocinar);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Practicar Fotografía":
@@ -394,11 +394,11 @@ public class activity_actividadLista extends AppCompatActivity {
             case "Artes Marciales":
                 if(edad_recogida > 50){
                     id = R.drawable.artesmarcialesa;
-                    url = getString(R.string.marciales_abuelos);
+                    url = getString(R.string.enlace_marciales_abuelos);
 
                 }else{
                     id=R.drawable.artesmarcialesj;
-                    url = getString(R.string.maricales_jovenes);
+                    url = getString(R.string.enlace_maricales_jovenes);
                 }
                 linearLayout.removeView(seekBarVol);
                 break;
@@ -406,17 +406,17 @@ public class activity_actividadLista extends AppCompatActivity {
             case "Leer Libros":
                 if(edad_recogida > 50){
                     id = R.drawable.leerlibrosa;
-                    url = getString(R.string.leer_abuelos);
+                    url = getString(R.string.enlace_leer_abuelos);
 
                 }else{
                     id=R.drawable.leerlibrosj;
-                    url = getString(R.string.leer_jovenes);
+                    url = getString(R.string.enlace_leer_jovenes);
                 }
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Ir al cine o al teatro":
                 id = R.drawable.cartelera;
-                url = getString(R.string.cartelera);
+                url = getString(R.string.enlace_cartelera);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Respiraciones guiadas":
@@ -480,7 +480,7 @@ public class activity_actividadLista extends AppCompatActivity {
     }*/
 
     private void guardarHojas(int hojas) {
-        MainActivity.sharedPreferences = getSharedPreferences("datos33", Context.MODE_PRIVATE);
+        MainActivity.sharedPreferences = getSharedPreferences("datosm", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
         editor.putInt("hojas", hojas); // gaurdamos
         editor.apply();
@@ -488,7 +488,7 @@ public class activity_actividadLista extends AppCompatActivity {
 
     // Recuperar el valor de hojas desde SharedPreferences
     public int obtenerHojas() {
-        MainActivity.sharedPreferences = getSharedPreferences("datos33", Context.MODE_PRIVATE);
+        MainActivity.sharedPreferences = getSharedPreferences("datosm", Context.MODE_PRIVATE);
         return MainActivity.sharedPreferences.getInt("hojas", 0); // 0 es el valor predeterminado si no se encuentra la clave "hojas"
     }
 

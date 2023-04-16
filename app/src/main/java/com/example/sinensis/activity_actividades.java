@@ -56,7 +56,7 @@ public class activity_actividades extends AppCompatActivity {
                 editor.apply();
 
                 activity_principal.adaptador.notifyDataSetChanged();
-                Toast toast = Toast.makeText(activity_actividades.this, "Actividad seleccionada", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_seleccionada), Toast.LENGTH_SHORT);
                 toast.show();
 
 

@@ -49,8 +49,8 @@ public class activity_datos extends AppCompatActivity {
         btn = (Button) findViewById(R.id.button);
 
 
-        txt = "Medio";
-        n.setText("Nivel: " + txt);
+        txt = getString(R.string.nivel_medio);
+        n.setText(getString(R.string.nivel) + txt);
 
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -59,21 +59,21 @@ public class activity_datos extends AppCompatActivity {
                 grado = seekbar.getProgress();
 
                 if(progress == 0){
-                    txt = "Bajo";
+                    txt = getString(R.string.nivel_bajo);
 
                 }else if(progress == 1){
-                    txt = "Medio bajo";
+                    txt = getString(R.string.nivel_mediobajo);
 
                 }else if(progress == 2){
-                    txt = "Medio";
+                    txt = getString(R.string.nivel_medio);
 
                 }else if(progress == 3 ){
-                    txt = "Medio alto";
+                    txt = getString(R.string.nivel_medioalto);
 
                 }else if(progress == 4){
-                    txt = "Alto";
+                    txt = getString(R.string.nivel_alto);
                 }
-                n.setText("Nivel: " + txt);
+                n.setText(getString(R.string.nivel) + txt);
                 grado_datos = progress;
 
             }
@@ -101,8 +101,8 @@ public class activity_datos extends AppCompatActivity {
             public void onClick(View view) {
                 if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
                     AlertDialog.Builder builder = new AlertDialog.Builder(activity_datos.this);
-                    builder.setMessage("Rellena todos los campos")
-                            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    builder.setMessage(getString(R.string.rellenar_datos))
+                            .setPositiveButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     dialogInterface.dismiss();
