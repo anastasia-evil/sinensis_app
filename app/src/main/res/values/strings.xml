@@ -61,6 +61,9 @@
     <string name="cerrar">Cerrar</string>
     <string name="btn_elimi">Eliminar actividades</string>
 
+    <!--Mapa-->
+    <string name="google_api_key" translatable="false">AIzaSyDBrKizRUyqs4d4CMgNzUFZK-Yv3kmTt7g</string>
+
     <!--ENLACES-->
     <string name="enlace_estiramientos">https://www.youtube.com/watch?v=BaPLtt2w3AM&amp;list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ</string>
     <string name="enlace_yoga">https://www.youtube.com/watch?v=a01D1PzTVFc&amp;list=PLNH7cFJ42PKi-Gziz-jaNHj-JgLWrLt0r</string>
