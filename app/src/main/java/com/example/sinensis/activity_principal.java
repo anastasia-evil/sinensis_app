@@ -2,6 +2,7 @@ package com.example.sinensis;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -106,6 +107,7 @@ public class activity_principal extends AppCompatActivity {
                 intentLista.putExtra("TIT", a.getNombre());
                 intentLista.putExtra("DES", a.getDescripcion_larga());
                 startActivity(intentLista);
+
             }
         });
 

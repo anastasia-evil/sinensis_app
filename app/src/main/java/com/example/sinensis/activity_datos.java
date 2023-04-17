@@ -123,7 +123,7 @@ public class activity_datos extends AppCompatActivity {
                     // Guarda los datos ingresados por el usuario en SharedPreferences
                     editor.putString("nombre", activity_datos.nombre_datos);
                     editor.putInt("edad", activity_datos.edad_datos);
-                    editor.putInt("estres", level());
+                    editor.putInt("estres",level());
 
 
                     // Aplica los cambios

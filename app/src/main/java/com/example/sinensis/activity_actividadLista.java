@@ -201,6 +201,8 @@ public class activity_actividadLista extends AppCompatActivity {
         db = AppDatabase.getInstance(getApplicationContext());
         int m = db.ActividadesDAO().obtenernivel(nombreActividad);
 
+
+
         checkSi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -218,7 +220,9 @@ public class activity_actividadLista extends AppCompatActivity {
                     Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.monedas,hojas), Toast.LENGTH_SHORT);
                     toast.show();
                     val = 1;
+
                 }
+
             }
         });
 
