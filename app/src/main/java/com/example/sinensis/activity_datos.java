@@ -117,7 +117,7 @@ public class activity_datos extends AppCompatActivity {
                     nombre_datos = nombre.getText().toString();
                     // Obtén una instancia de SharedPreferences
                     // Obtiene un editor de SharedPreferences para realizar modificaciones
-                    sharedPreferences = getSharedPreferences("datos33", Context.MODE_PRIVATE);
+                    sharedPreferences = getSharedPreferences("datos12", Context.MODE_PRIVATE);
                     editor = sharedPreferences.edit();
 
                     // Guarda los datos ingresados por el usuario en SharedPreferences
