@@ -78,20 +78,7 @@ public class activity_principal extends AppCompatActivity {
         //db = AppDatabase.getInstance(getApplicationContext()); // le damos valores de inicio a db
         listView = findViewById(R.id.list_view);
 
-        listView.setOnItemClickListener((adapter, view, pos, id) -> {
 
-            //Esta sección se utilizará posteriormente para que al hacer click en una, se inicie el ejercicio
-
-            Actividades actividades = (Actividades) adapter.getAdapter().getItem(pos);
-
-            //Intent intent_mapa = new Intent(view.getContext(), activity_mapa.class);
-            //intent.putExtra("id", actividades.id);
-            //startActivity(intent_mapa);
-
-            //si pulsamos nos lleva a la descripcion mas clara de la actividad.
-
-
-        });
 
         //Que salgan las listas de actividades dependiendo de nuestra edad, nivel (grado) y mentor
         int edad = activity_datos.edad_datos;
