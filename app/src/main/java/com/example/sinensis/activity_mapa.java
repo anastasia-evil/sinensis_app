@@ -49,12 +49,30 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        int actividad = 0;
+
+        switch (actividad){
+
+            case 0:
+                buscarSitiosCercanos("museum");
+                break;
+            case 1:
+                buscarSitiosCercanos("park");
+                break;
+            case 2:
+                buscarSitiosCercanos("spa");
+                break;
+        }
+
+    }
+
+    public void buscarSitiosCercanos(String sitio){
         StringBuilder stringBuilder = new StringBuilder
                 ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         stringBuilder.append("location=" + lat + ","+ lng);
         stringBuilder.append("&radius=1000");
         //CAMBIAR
-        stringBuilder.append("&type=food");
+        stringBuilder.append("&type="+sitio);
         stringBuilder.append("&sensor=true");
         stringBuilder.append("&key=" + getResources().getString(R.string.google_api_key));
 
@@ -65,7 +83,6 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
 
         FetchData fetchData = new FetchData();
         fetchData.execute(dataFetch);
-
     }
 
     @Override
