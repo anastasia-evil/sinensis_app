@@ -1,22 +1,12 @@
 package com.example.sinensis;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.room.Query;
-
-import android.app.AlarmManager;
+import android.Manifest;
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -29,26 +19,24 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.widget.VideoView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import android.Manifest;
 
 public class activity_actividadLista extends AppCompatActivity {
 
@@ -66,6 +54,8 @@ public class activity_actividadLista extends AppCompatActivity {
     Button btn_eliminar_actividad;
 
     public static int val;
+
+    public static int act_places;
 
 
     protected static CheckBox checkSi;
@@ -355,10 +345,16 @@ public class activity_actividadLista extends AppCompatActivity {
         switch (nombreActividad) {
             case "Correr":
             case "Caminar":
+                id = R.drawable.googlemaps;
+                url = "mapa";
+                linearLayout.removeView(seekBarVol);
+                act_places = 0;
+                break;
             case "Ir a un spa":
                 id = R.drawable.googlemaps;
                 url = "mapa";
                 linearLayout.removeView(seekBarVol);
+                act_places = 1;
                 break;
             case "Estiramientos":
                 id = R.drawable.youtube;

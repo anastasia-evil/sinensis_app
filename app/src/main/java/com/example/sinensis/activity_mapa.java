@@ -5,6 +5,9 @@ import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,7 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class activity_mapa extends FragmentActivity implements OnMapReadyCallback {
+public class activity_mapa extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener {
 
     private GoogleMap mMap;
     private ActivityMapaBinding binding;
@@ -50,6 +53,17 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
+        binding.imgZoomOut.setOnClickListener(this);
+        binding.imgZoomIn.setOnClickListener(this);
+
+        TextView busqueda = (TextView) findViewById(R.id.busqueda);
+
+        if (activity_actividadLista.act_places == 0){
+            busqueda.setText("Parques en tu zona...");
+        }else{
+            busqueda.setText("Spas en tu zona...");
+        }
+
     }
 
     public void buscarSitiosCercanos(String sitio){
@@ -68,9 +82,7 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
-
         getCurrentLocation();
-
     }
 
     private void getCurrentLocation(){
@@ -98,7 +110,13 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
 
                 for(Location location:locationResult.getLocations()){
                     if(location != null){
-                        Toast.makeText(getApplicationContext(), "Tu ubicación actual es: " + (int) location.getLatitude() + "," + (int) location.getLongitude(), Toast.LENGTH_SHORT).show();
+                        String texto;
+                        if (activity_actividadLista.act_places == 0){
+                            texto = "Parques en tu zona";
+                        }else{
+                            texto = "Spas en tu zona";
+                        }
+                        Toast.makeText(getApplicationContext(), texto, Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -121,17 +139,12 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
 
-                    int actividad = 0;
-
-                    switch (actividad){
+                    switch (activity_actividadLista.act_places){
 
                         case 0:
-                            buscarSitiosCercanos("restaurant");
-                            break;
-                        case 1:
                             buscarSitiosCercanos("park");
                             break;
-                        case 2:
+                        case 1:
                             buscarSitiosCercanos("spa");
                             break;
 
@@ -156,5 +169,17 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
 
         }
 
+    }
+
+    public void onClick(View view) {
+        Log.i("click_event","called");
+        switch (view.getId()){
+            case R.id.imgZoomIn:
+                mMap.animateCamera(CameraUpdateFactory.zoomIn());
+                break;
+            case R.id.imgZoomOut:
+                mMap.animateCamera(CameraUpdateFactory.zoomOut());
+                break;
+        }
     }
 }

@@ -6,13 +6,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,15 +28,12 @@ public class activity_ajustes extends AppCompatActivity {
 
     public static List<Actividades> graves;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
-
 
         //Creamos la lista de visualización
 
@@ -49,9 +42,6 @@ public class activity_ajustes extends AppCompatActivity {
         ods = (Button) findViewById(R.id.ods);
         datos = (Button) findViewById(R.id.misdatos);
         progreso = (Button) findViewById(R.id.progreso);
-
-
-
 
         app.setOnClickListener(new View.OnClickListener() {
             @Override
