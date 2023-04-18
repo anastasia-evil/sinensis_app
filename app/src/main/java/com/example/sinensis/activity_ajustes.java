@@ -129,6 +129,11 @@ public class activity_ajustes extends AppCompatActivity {
         Button eliminar = (Button) popupView.findViewById(R.id.boton_eliminar);
         ImageButton ods_img = (ImageButton) popupView.findViewById(R.id.imagen_ods);
 
+        if(MainActivity.sharedPreferences.getInt("hojas",0)>=50){
+            eliminar.setVisibility(View.VISIBLE);
+            contenido2.setVisibility(View.VISIBLE);
+        }
+
         if (img_ods != 1){
             ods_img.setVisibility( View.GONE );
         }

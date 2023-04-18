@@ -6,8 +6,8 @@
     <string name="sobre_la_app">Sinensis es una app enfocada en el alivio del estrés a través de la creatividad. Dispone de un amplio catálogo de actividades que te ayudarán a conectar tranquilamente con el momento presente.</string>
     <string name="creadoras">Esta app fue desarrollada por tres estudiantes de Ingeniería de Sonido e Imagen de la Universidad Carlos III de Madrid: \n - Inés Acebes,\n - Paula Gallejones  \n - Jimena Díaz.</string>
     <string name="ods">La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.</string>
-    <string name="progreso">Cuando consigas 50 tokens, mira tu plan de actividades para una sorpresa.</string>
-    <string name="progreso2">¿Quieres eliminar las actividades más fuertes? Estas son: </string>
+    <string name="progreso">Si has conseguido 50 tokens, echa un vistazo a la lista de todas las actividades y verás que se habrán desploqueado las más especiales</string>
+    <string name="progreso2">Ya has llegado a 70 tokens, ¿quieres eliminar las actividades más fuertes? Estas son: </string>
     <string name="calendario">Añade esta actividad a tu calendario:</string>
     <string name="eliminar">Si no te interesa la actividad, pulsa el botón y se eliminará de tu plan</string>
     <string name="datos">Los datos que has introducido son: \n - Tu nombre: %s \n - Tu edad: %s \n - Tu grado de estrés: %s</string>
