@@ -99,7 +99,7 @@ public class activity_ajustes extends AppCompatActivity {
             public void onClick(View view) {
                 graves = act(activity_principal.lista);
                 lista_nombres = obtenername(graves);
-                String cadena = String.join(" ", lista_nombres);
+                String cadena = String.join(", ", lista_nombres);
                 texto = getString(R.string.progreso);
                 texto2= getString(R.string.progreso2);
                 texto3 = cadena;
@@ -122,7 +122,7 @@ public class activity_ajustes extends AppCompatActivity {
         TextView contenido = (TextView) popupView.findViewById(R.id.contenido);
         contenido.setText(texto);
         TextView contenido2 = (TextView)popupView.findViewById(R.id.contenido2);
-        contenido2.setText(texto2 + texto3);
+        contenido2.setText(texto2 + " " +texto3);
         TextView cuentaTokens = (TextView)popupView.findViewById(R.id.cuentaTokens);
         cuentaTokens.setText(m);
         Button cerrar = (Button) popupView.findViewById(R.id.cerrar);

@@ -7,7 +7,7 @@
     <string name="creadoras">Esta app fue desarrollada por tres estudiantes de Ingeniería de Sonido e Imagen de la Universidad Carlos III de Madrid: \n - Inés Acebes,\n - Paula Gallejones  \n - Jimena Díaz.</string>
     <string name="ods">La ODS (Objetivos y Metas de Desarrollo Sostenible) a la que está enfocada esta app es a Salud y Bienestar.</string>
     <string name="progreso">Cuando consigas 50 tokens, mira tu plan de actividades para una sorpresa.</string>
-    <string name="progreso2">¿Quieres eliminar las actividades más fuertes?</string>
+    <string name="progreso2">¿Quieres eliminar las actividades más fuertes? Estas son: </string>
     <string name="calendario">Añade esta actividad a tu calendario:</string>
     <string name="eliminar">Si no te interesa la actividad, pulsa el botón y se eliminará de tu plan</string>
     <string name="datos">Los datos que has introducido son: \n - Tu nombre: %s \n - Tu edad: %s \n - Tu grado de estrés: %s</string>
