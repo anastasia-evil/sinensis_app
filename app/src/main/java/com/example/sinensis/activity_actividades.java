@@ -48,22 +48,7 @@ public class activity_actividades extends AppCompatActivity {
                     }else{
                         p = 0;
                     }
-                       /* activity_principal.lista.add(a);
-                        SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
 
-                        Gson gson = new Gson();
-                        // Convertir la lista en una representación JSON usando Gson
-                        String listaJson = gson.toJson(activity_principal.lista);
-
-                        // Guardar la lista actualizada en SharedPreferences
-                        editor.putString("lista", listaJson);
-
-                        // Aplicar los cambios
-                        editor.apply();
-
-                        activity_principal.adaptador.notifyDataSetChanged();
-                        Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_seleccionada), Toast.LENGTH_SHORT);
-                        toast.show();*/
 
                     }
 
