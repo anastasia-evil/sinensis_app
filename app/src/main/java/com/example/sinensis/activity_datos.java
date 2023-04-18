@@ -3,16 +3,13 @@ package com.example.sinensis;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,9 +29,6 @@ public class activity_datos extends AppCompatActivity {
 
     public static SharedPreferences.Editor editor;
     public static SharedPreferences sharedPreferences;
-
-
-
 
 
     private AppDatabase db;
@@ -58,18 +52,14 @@ public class activity_datos extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 grado = seekbar.getProgress();
 
-                if(progress == 0){
+                if (progress == 0){
                     txt = getString(R.string.nivel_bajo);
-
                 }else if(progress == 1){
                     txt = getString(R.string.nivel_mediobajo);
-
                 }else if(progress == 2){
                     txt = getString(R.string.nivel_medio);
-
-                }else if(progress == 3 ){
+                }else if(progress == 3){
                     txt = getString(R.string.nivel_medioalto);
-
                 }else if(progress == 4){
                     txt = getString(R.string.nivel_alto);
                 }
@@ -77,7 +67,6 @@ public class activity_datos extends AppCompatActivity {
                 grado_datos = progress;
 
             }
-
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -90,11 +79,7 @@ public class activity_datos extends AppCompatActivity {
             }
 
 
-
-
         });
-
-
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,17 +120,6 @@ public class activity_datos extends AppCompatActivity {
             }
 
         });
-
-
-
-
-
-
-
-
-
-
-
 
     }
 

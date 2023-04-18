@@ -68,15 +68,14 @@
         app:layout_constraintBottom_toTopOf="@id/imagen_ods"
         app:layout_constraintTop_toBottomOf="@+id/moneda" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imagen_ods"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/ods"
         android:foregroundGravity="center"
         android:elevation="20dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:background="@drawable/ods"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contenido"

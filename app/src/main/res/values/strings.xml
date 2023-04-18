@@ -38,7 +38,7 @@
 
 
     <!--Principal-->
-    <string name="bienvenida">Hola %s! Estas son las actividades añadidas a tu plan. Seleccione alguna de ellas para empezar y añadirlas a tus recordatorios</string>
+    <string name="bienvenida">¡Hola %s! Estas son las actividades añadidas a tu plan. Seleccione alguna de ellas para empezar y añadirlas a tus recordatorios.</string>
     <string name="anadir">Añadir actividad</string>
 
     <!--Actividad-->
@@ -77,6 +77,7 @@
     <string name="enlace_leer_jovenes">https://stylelovely.com/galeria/libros-tienes-leer/161898/image/161925</string>
     <string name="enlace_cartelera">https://www.filmaffinity.com/es/cat_new_th_es.html</string>
     <string name="enlace_calendario">https://calendar.google.com</string>
+    <string name="enlace_ods">https://www.un.org/sustainabledevelopment/es/health/</string>
 
     <!--TOAST-->
     <string name="actividad_eliminada">Actividad eliminada</string>
@@ -90,7 +91,7 @@
     <!--NOMBRE DE ACTIVIDADES-->
     <string name="respiraciones_guiadas">Respiraciones guiadas</string>
     <string name="sonidos_relajantes">Sonidos Relajantes</string>
-    <string name="audioguia">Audioguia</string>
+    <string name="audioguia">Audioguía</string>
 
 
 

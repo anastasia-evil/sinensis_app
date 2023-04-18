@@ -1,13 +1,15 @@
 package com.example.sinensis;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -75,7 +77,16 @@ public class activity_ajustes extends AppCompatActivity {
                 int edad = MainActivity.sharedPreferences.getInt("edad", 0);
                 String mi_edad = Integer.toString(edad);
                 int grado = MainActivity.sharedPreferences.getInt("estres", 0);
-                String mi_grado_estres = Integer.toString(grado);
+                String mi_grado_estres = "";
+
+                if (grado == 0){
+                    mi_grado_estres = getString(R.string.nivel_bajo);
+                }else if(grado == 1){
+                    mi_grado_estres = getString(R.string.nivel_mediobajo);
+                }else if(grado == 2){
+                    mi_grado_estres = getString(R.string.nivel_medio);
+                }
+
                 texto = getString(R.string.datos,mi_nombre,mi_edad,mi_grado_estres);
                 showPopUp(view, null,texto, null,null,0, 0);
             }
@@ -116,11 +127,18 @@ public class activity_ajustes extends AppCompatActivity {
         cuentaTokens.setText(m);
         Button cerrar = (Button) popupView.findViewById(R.id.cerrar);
         Button eliminar = (Button) popupView.findViewById(R.id.boton_eliminar);
+        ImageButton ods_img = (ImageButton) popupView.findViewById(R.id.imagen_ods);
 
         if (img_ods != 1){
-            ImageView ods = (ImageView) popupView.findViewById(R.id.imagen_ods);
-            ods.setVisibility( View.GONE );
+            ods_img.setVisibility( View.GONE );
         }
+        ods_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.enlace_ods)));
+                startActivity(intent);
+            }
+        });
 
         if(progreso !=1){
             LinearLayout check = (LinearLayout) popupView.findViewById(R.id.token);
