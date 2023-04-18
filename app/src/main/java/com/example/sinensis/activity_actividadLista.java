@@ -68,7 +68,7 @@ public class activity_actividadLista extends AppCompatActivity {
     public static int val;
 
 
-    protected static CheckBox checkSi,checkNo;
+    protected static CheckBox checkSi;
 
     public static int hojas;
     private static final int REQUEST_CAMERA_PERMISSION = 200;
@@ -220,7 +220,6 @@ public class activity_actividadLista extends AppCompatActivity {
                     Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.monedas,hojas), Toast.LENGTH_SHORT);
                     toast.show();
                     val = 1;
-
                 }
 
             }

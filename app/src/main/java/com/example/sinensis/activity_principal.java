@@ -27,13 +27,12 @@ public class activity_principal extends AppCompatActivity {
     public static String s_nombre;//nombre de la actividad
 
 
-    ImageButton btn_calendario,btn_home,btn_ajustes;
+    ImageButton btn_calendario,btn_anadir,btn_ajustes;
 
     public static List<String> listanombres = new ArrayList<>();
     public static List<String> listadescripcion = new ArrayList<>();
     public static Adaptadores adaptador;
     public static List<Actividades> lista;
-    Button btn_anadir;
 
     Context context;
 
@@ -49,10 +48,8 @@ public class activity_principal extends AppCompatActivity {
         textView.setText(getString(R.string.bienvenida,mi_nombre));
         //Botones
         btn_calendario = (ImageButton) findViewById(R.id.calendario);
-        btn_home = (ImageButton) findViewById(R.id.home);
         btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
 
-        Intent intentH = new Intent(this, activity_principal.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +59,6 @@ public class activity_principal extends AppCompatActivity {
                 intent.setData(Uri.parse(getString(R.string.enlace_calendario)));
                 startActivity(intent);
             }
-        });
-        btn_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //Lanzar actividad de lista de actividades
-            public void onClick(View view) { startActivity(intentH); }
         });
         btn_ajustes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +92,7 @@ public class activity_principal extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                SharedPreferences sharedPreferences = getSharedPreferences("check",MODE_PRIVATE);
                 Actividades a = (Actividades) adaptador.getItem(position);
                 Intent intentLista = new Intent(view.getContext(), activity_actividadLista.class);
                 //parametros, nosotros tenemos titulo, imagen y descripcion(pongo de momento la de siempre)
@@ -112,7 +105,7 @@ public class activity_principal extends AppCompatActivity {
         });
 
 
-        btn_anadir = (Button) findViewById(R.id.button_eleccion);
+        btn_anadir = (ImageButton) findViewById(R.id.button_eleccion);
         Intent anadir = new Intent(this, activity_actividades.class);
         btn_anadir.setOnClickListener(new View.OnClickListener() {
             @Override

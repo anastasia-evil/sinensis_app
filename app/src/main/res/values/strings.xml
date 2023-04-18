@@ -38,7 +38,7 @@
 
 
     <!--Principal-->
-    <string name="bienvenida">Hola %s!. Estas son las actividades añadidas a tu plan. Seleccione alguna de ellas para empezar y añadirlas a tus recordatorios</string>
+    <string name="bienvenida">Hola %s! Estas son las actividades añadidas a tu plan. Seleccione alguna de ellas para empezar y añadirlas a tus recordatorios</string>
     <string name="anadir">Añadir actividad</string>
 
     <!--Actividad-->
@@ -46,7 +46,7 @@
     <string name="hora">Elegir hora</string>
     <string name="cal">Añadir</string>
     <string name="si">Si</string>
-    <string name="moneditas">¿Has completado esta actividad?</string>
+    <string name="moneditas">Recoge tu recompensa al terminar la actividad</string>
     <string name="btn_eliminar">Eliminar actividad</string>
 
     <!--Ajustes-->
@@ -93,5 +93,5 @@
 
 
 
-    <string name="bienvenida_todas_actividades">Aquí puedes observar todas las actividades. Selecciona las que quieras a tu plan.</string>
+    <string name="bienvenida_todas_actividades">Aquí puedes observar todas las actividades. Selecciona las que quieras para añadirlas a tu plan.</string>
 </resources>
