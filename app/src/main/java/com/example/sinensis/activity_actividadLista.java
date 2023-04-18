@@ -68,7 +68,7 @@ public class activity_actividadLista extends AppCompatActivity {
     public static int val;
 
 
-    protected static CheckBox checkSi,checkNo;
+    protected static CheckBox checkSi;
 
     public static int hojas;
     private static final int REQUEST_CAMERA_PERMISSION = 200;
@@ -201,6 +201,8 @@ public class activity_actividadLista extends AppCompatActivity {
         db = AppDatabase.getInstance(getApplicationContext());
         int m = db.ActividadesDAO().obtenernivel(nombreActividad);
 
+
+
         checkSi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -219,6 +221,7 @@ public class activity_actividadLista extends AppCompatActivity {
                     toast.show();
                     val = 1;
                 }
+
             }
         });
 
