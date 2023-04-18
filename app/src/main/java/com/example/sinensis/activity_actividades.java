@@ -18,6 +18,7 @@ public class activity_actividades extends AppCompatActivity {
 
     private ListView listView;
     public static AppDatabase db2; //base de datos en java
+    public static int p = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -40,24 +41,58 @@ public class activity_actividades extends AppCompatActivity {
 
                 //intentLista.putExtra("TIT", a.getNombre());
 
+                for(int i =0;i<activity_principal.lista.size(); i++) {
+                    if (a.getNombre().equals(activity_principal.lista.get(i).getNombre())) {
+                        p = 1;
+                        break;
+                    }else{
+                        p = 0;
+                    }
+                       /* activity_principal.lista.add(a);
+                        SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
+
+                        Gson gson = new Gson();
+                        // Convertir la lista en una representación JSON usando Gson
+                        String listaJson = gson.toJson(activity_principal.lista);
+
+                        // Guardar la lista actualizada en SharedPreferences
+                        editor.putString("lista", listaJson);
+
+                        // Aplicar los cambios
+                        editor.apply();
+
+                        activity_principal.adaptador.notifyDataSetChanged();
+                        Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_seleccionada), Toast.LENGTH_SHORT);
+                        toast.show();*/
+
+                    }
 
 
-                activity_principal.lista.add(a);
-                SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
+                if(p == 1){
+                    Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_ya_anadida), Toast.LENGTH_SHORT);
+                    toast.show();
+                }else{
+                    activity_principal.lista.add(a);
+                    SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
 
-                Gson gson = new Gson();
-                // Convertir la lista en una representación JSON usando Gson
-                String listaJson = gson.toJson(activity_principal.lista);
+                    Gson gson = new Gson();
+                    // Convertir la lista en una representación JSON usando Gson
+                    String listaJson = gson.toJson(activity_principal.lista);
 
-                // Guardar la lista actualizada en SharedPreferences
-                editor.putString("lista", listaJson);
+                    // Guardar la lista actualizada en SharedPreferences
+                    editor.putString("lista", listaJson);
 
-                // Aplicar los cambios
-                editor.apply();
+                    // Aplicar los cambios
+                    editor.apply();
 
-                activity_principal.adaptador.notifyDataSetChanged();
-                Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_seleccionada), Toast.LENGTH_SHORT);
-                toast.show();
+                    activity_principal.adaptador.notifyDataSetChanged();
+                    Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_seleccionada), Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+
+
+
 
 
 

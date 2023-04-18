@@ -31,6 +31,7 @@ public class activity_ajustes extends AppCompatActivity {
     public static String texto,texto2, texto3, m;
 
     public static List<Actividades> graves;
+    public static List<String> lista_nombres;
 
 
 
@@ -96,7 +97,7 @@ public class activity_ajustes extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 graves = act(activity_principal.lista);
-                List<String> lista_nombres = obtenername(graves);
+                lista_nombres = obtenername(graves);
                 String cadena = String.join(" ", lista_nombres);
                 texto = getString(R.string.progreso);
                 texto2= getString(R.string.progreso2);
@@ -160,7 +161,7 @@ public class activity_ajustes extends AppCompatActivity {
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                eliminar(graves);
+                eliminar(activity_principal.lista, lista_nombres);
                 activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
                 Toast toast = Toast.makeText(activity_ajustes.this, getString(R.string.actividades_eliminadas), Toast.LENGTH_SHORT);
                 toast.show();
@@ -188,12 +189,16 @@ public class activity_ajustes extends AppCompatActivity {
 
     }
 
-    public void eliminar(List<Actividades> borradas) {
-        for (int i = 0; i < borradas.size(); i++) {
-            Actividades a = borradas.get(i);
-            borradas.remove(a);
-            break;
+    public void eliminar(List<Actividades> entera, List<String> nombres_actividad_borradas) {
+        List<Actividades> nuevasActividades = new ArrayList<>();
+        for (int i = 0; i < entera.size(); i++) {
+            if (!nombres_actividad_borradas.contains(entera.get(i).getNombre())) {
+                nuevasActividades.add(entera.get(i));
+            }
         }
+        entera.clear();
+        entera.addAll(nuevasActividades);
+
 
         SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
 

@@ -82,6 +82,7 @@
     <string name="actividad_eliminada">Actividad eliminada</string>
     <string name="actividades_eliminadas">Actividad/es eliminadas</string>
     <string name="actividad_seleccionada">Actividad seleccionada</string>
+    <string name="actividad_ya_anadida">Esta actividad ya esta añadida a tu plan</string>
     <string name="monedas">Monedas acumuladas: %d</string>
     <string name="play">Play</string>
     <string name="pause">Pausa</string>
