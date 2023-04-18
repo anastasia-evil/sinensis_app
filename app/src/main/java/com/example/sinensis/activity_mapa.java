@@ -33,7 +33,7 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
     private ActivityMapaBinding binding;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final int Request_code = 101;
-    double lat, lng;
+    private double lat, lng;
 
 
     protected void onCreate(Bundle savedInstanceState){
@@ -47,36 +47,16 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
-
-        int actividad = 0;
-
-        switch (actividad){
-
-            case 0:
-                buscarSitiosCercanos("museum");
-                break;
-            case 1:
-                buscarSitiosCercanos("park");
-                break;
-            case 2:
-                buscarSitiosCercanos("spa");
-                break;
-        }
 
     }
 
     public void buscarSitiosCercanos(String sitio){
-        StringBuilder stringBuilder = new StringBuilder
-                ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        stringBuilder.append("location=" + lat + ","+ lng);
-        stringBuilder.append("&radius=1000");
-        //CAMBIAR
-        stringBuilder.append("&type="+sitio);
-        stringBuilder.append("&sensor=true");
-        stringBuilder.append("&key=" + getResources().getString(R.string.google_api_key));
 
-        String url = stringBuilder.toString();
+        String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ lat + "," + lng +
+                "&radius=1000&type="+ sitio + "&sensor=true&key=" + getResources().getString(R.string.google_api_key);
+        //System.out.println("----- " + url);
         Object dataFetch[] = new Object[2];
         dataFetch[0] = mMap;
         dataFetch[1] = url;
@@ -90,6 +70,7 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         getCurrentLocation();
+
     }
 
     private void getCurrentLocation(){
@@ -109,16 +90,15 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
             @Override
             public void onLocationResult(@NonNull LocationResult locationResult) {
                 super.onLocationResult(locationResult);
-                Toast.makeText(getApplicationContext(), "location result is: " + locationResult, Toast.LENGTH_SHORT).show();
 
                 if (locationResult == null){
-                    Toast.makeText(getApplicationContext(), "current location is null", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "La ubicación actual está vacía", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 for(Location location:locationResult.getLocations()){
                     if(location != null){
-                        Toast.makeText(getApplicationContext(), "current location is: " + location.getLongitude(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Tu ubicación actual es: " + (int) location.getLatitude() + "," + (int) location.getLongitude(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -137,9 +117,24 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
                     lng = location.getLongitude();
 
                     LatLng latLng = new LatLng(lat, lng);
-                    mMap.addMarker(new MarkerOptions().position(latLng).title("current location!"));
+                    mMap.addMarker(new MarkerOptions().position(latLng).title("Ubicación actual"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+
+                    int actividad = 0;
+
+                    switch (actividad){
+
+                        case 0:
+                            buscarSitiosCercanos("restaurant");
+                            break;
+                        case 1:
+                            buscarSitiosCercanos("park");
+                            break;
+                        case 2:
+                            buscarSitiosCercanos("spa");
+                            break;
+                    }
 
                 }
 
