@@ -111,7 +111,7 @@ public class activity_mentores extends AppCompatActivity {
     }
     private List<Actividades> Getlista(int nivel, int mentor) {
         List<Actividades> lista = new ArrayList<>();
-        lista = db.ActividadesDAO().selectactividad(nivel,mentor);
+        lista = db.ActividadesDAO().selectactividad(nivel,mentor,0);
 
         return lista;
     }

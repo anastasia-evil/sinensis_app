@@ -46,6 +46,13 @@ public class activity_actividades extends AppCompatActivity {
                         break;
                     }else{
                         p = 0;
+                        if(a.getNombre().equals("Aprendes sobre los ajolotes") || a.getNombre().equals("Plan de ocio") || a.getNombre().equals("Cocinar arepas")){
+                            if(activity_actividadLista.hojas > 50){
+                                p = 0;
+                            }else{
+                                p = 2;
+                            }
+                        }
                     }
 
                 }
@@ -53,7 +60,7 @@ public class activity_actividades extends AppCompatActivity {
                 if(p == 1){
                     Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_ya_anadida), Toast.LENGTH_SHORT);
                     toast.show();
-                }else{
+                }else if(p==0){
                     activity_principal.lista.add(a);
                     SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
 
@@ -71,7 +78,16 @@ public class activity_actividades extends AppCompatActivity {
                     Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_seleccionada), Toast.LENGTH_SHORT);
                     toast.show();
 
+                }else{
+                    Toast toast = Toast.makeText(activity_actividades.this, "Aun no has desbloqueado la actividad", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
+
+                /*if(a.getNombre().equals("Aprendes sobre los ajolotes") || a.getNombre().equals("Plan de ocio") || a.getNombre().equals("Cocinar arepas")){
+                    if(activity_actividadLista.hojas > 50){
+
+                    }
+                }*/
 
             }
         });

@@ -30,7 +30,10 @@ public class Actividades {
     @ColumnInfo(name = "descripcion_larga")
     public String  descripcion_larga;
 
-    public Actividades(long id, String nombre, int nivel, String descripcion, int mentor, String foto, String descripcion_larga) {
+    @ColumnInfo(name = "bonus")
+    public int bonus;
+
+    public Actividades(long id, String nombre, int nivel, String descripcion, int mentor, String foto, String descripcion_larga, int bonus) {
         this.id = id;
         this.nombre = nombre;
         this.nivel = nivel;
@@ -38,15 +41,17 @@ public class Actividades {
         this.mentor = mentor;
         this.foto = foto;
         this.descripcion_larga = descripcion_larga;
+        this.bonus = bonus;
     }
 
     @Ignore
-    public Actividades(String nombre, int nivel, String descripcion, int mentor,String foto) {
+    public Actividades(String nombre, int nivel, String descripcion, int mentor,String foto, int bonus) {
         this.nombre = nombre;
         this.nivel = nivel;
         this.descripcion = descripcion;
         this.mentor = mentor;
         this.foto = foto;
+        this.bonus = bonus;
     }
 
 
@@ -65,4 +70,6 @@ public class Actividades {
     public String getDescripcion_larga(){return descripcion_larga;}
 
     public int getNivel(){return nivel;}
+
+    public int getBonus(){return bonus;}
 }
