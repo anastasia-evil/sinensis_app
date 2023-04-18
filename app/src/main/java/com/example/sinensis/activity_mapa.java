@@ -112,9 +112,9 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
                     if(location != null){
                         String texto;
                         if (activity_actividadLista.act_places == 0){
-                            texto = "Parques en tu zona";
+                            texto = getString(R.string.parques);
                         }else{
-                            texto = "Spas en tu zona";
+                            texto = getString(R.string.spas);
                         }
                         Toast.makeText(getApplicationContext(), texto, Toast.LENGTH_SHORT).show();
                     }

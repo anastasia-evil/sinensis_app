@@ -1,6 +1,5 @@
 package com.example.sinensis;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -49,9 +48,7 @@ public class activity_actividades extends AppCompatActivity {
                         p = 0;
                     }
 
-
-                    }
-
+                }
 
                 if(p == 1){
                     Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_ya_anadida), Toast.LENGTH_SHORT);
@@ -76,11 +73,6 @@ public class activity_actividades extends AppCompatActivity {
 
                 }
 
-
-
-
-
-
             }
         });
     }
@@ -88,8 +80,6 @@ public class activity_actividades extends AppCompatActivity {
     /*public void anadir(List<Actividades> parcial, Actividades a){
 
         activity_principal.db.ActividadesDAO().insert(a);
-
-
 
     }*/
 

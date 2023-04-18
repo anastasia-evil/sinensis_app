@@ -63,6 +63,8 @@
 
     <!--Mapa-->
     <string name="google_api_key" translatable="false">AIzaSyDBrKizRUyqs4d4CMgNzUFZK-Yv3kmTt7g</string>
+    <string name="parques">Parques en tu zona:</string>
+    <string name="spas">Spas en tu zona:</string>
 
     <!--ENLACES-->
     <string name="enlace_estiramientos">https://www.youtube.com/watch?v=BaPLtt2w3AM&amp;list=PLNH7cFJ42PKgirbDO9op6TMj8nvjaqlvJ</string>
