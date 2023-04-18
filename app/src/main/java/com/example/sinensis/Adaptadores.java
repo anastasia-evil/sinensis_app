@@ -57,6 +57,15 @@ public class Adaptadores extends BaseAdapter {
             TextView descripcionTextView = (TextView) convertView.findViewById(R.id.descripcionActividad);
             descripcionTextView.setText(a.getDescripcion());
 
+            TextView nivel_actividad = (TextView) convertView.findViewById(R.id.descripcion_nivel);
+            if(a.getNivel() == 0){
+                nivel_actividad.setText("Nivel: Bajo");
+            }else if(a.getNivel() == 1){
+                nivel_actividad.setText("Nivel: Medio");
+            }else{
+                nivel_actividad.setText("Nivel: Alto");
+            }
+
             String ruta = a.getfoto(); // Devuelve el nombre de archivo de la imagen
             String nombreArchivo = ruta.substring(0, ruta.lastIndexOf(".")); // Elimina la extensión ".png" del nombre de archivo
             id = context.getResources().getIdentifier(nombreArchivo, "drawable", context.getPackageName()); // Obtiene el ID de recurso de la imagen sin la extensión
