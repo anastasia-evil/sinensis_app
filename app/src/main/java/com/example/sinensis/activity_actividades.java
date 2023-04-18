@@ -2,6 +2,7 @@ package com.example.sinensis;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -39,6 +40,7 @@ public class activity_actividades extends AppCompatActivity {
                 //parametros, nosotros tenemos titulo, imagen y descripcion(pongo de momento la de siempre)
 
                 //intentLista.putExtra("TIT", a.getNombre());
+                Log.d("Adaptador", "Número de hojas: " + MainActivity.sharedPreferences.getInt("hojas",0));
 
                 for(int i =0;i<activity_principal.lista.size(); i++) {
                     if (a.getNombre().equals(activity_principal.lista.get(i).getNombre())) {
@@ -47,7 +49,7 @@ public class activity_actividades extends AppCompatActivity {
                     }else{
                         p = 0;
                         if(a.getNombre().equals("Aprendes sobre los ajolotes") || a.getNombre().equals("Plan de ocio") || a.getNombre().equals("Cocinar arepas")){
-                            if(activity_actividadLista.hojas > 50){
+                            if(MainActivity.sharedPreferences.getInt("hojas",0) >= 50){
                                 p = 0;
                             }else{
                                 p = 2;

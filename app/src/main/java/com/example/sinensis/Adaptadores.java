@@ -1,6 +1,7 @@
 package com.example.sinensis;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class Adaptadores extends BaseAdapter {
         return 0;
     }
 
+
     public void actualizarActividades(List<Actividades> actividades) {
         lista_act = actividades;
         notifyDataSetChanged();
@@ -71,6 +73,12 @@ public class Adaptadores extends BaseAdapter {
             id = context.getResources().getIdentifier(nombreArchivo, "drawable", context.getPackageName()); // Obtiene el ID de recurso de la imagen sin la extensión
             ImageView imagenDraw = (ImageView) convertView.findViewById(R.id.imageactividad);
             imagenDraw.setImageResource(id);
+        if(MainActivity.sharedPreferences.getInt("hojas",0) < 50 && (a.getNombre().equals("Aprendes sobre los ajolotes") || a.getNombre().equals("Plan de ocio") || a.getNombre().equals("Cocinar arepas"))){
+                ImageView imagen_candado = (ImageView) convertView.findViewById(R.id.imagecandado);
+                imagen_candado.setImageResource(R.drawable.candado);
+            }
+
+
 
 
             return convertView;

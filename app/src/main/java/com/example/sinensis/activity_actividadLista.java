@@ -207,6 +207,7 @@ public class activity_actividadLista extends AppCompatActivity {
                     }
                     guardarHojas(hojas);//guardamos el valor ya sumado
                     activity_ajustes.m = Integer.toString(obtenerHojas());
+                    activity_actividadLista.hojas = obtenerHojas();
                     Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.monedas,hojas), Toast.LENGTH_SHORT);
                     toast.show();
                     val = 1;
