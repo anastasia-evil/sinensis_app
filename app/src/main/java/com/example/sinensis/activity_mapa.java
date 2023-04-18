@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.renderscript.RenderScript;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -135,6 +134,7 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
                         case 2:
                             buscarSitiosCercanos("spa");
                             break;
+
                     }
 
                 }

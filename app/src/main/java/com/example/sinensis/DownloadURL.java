@@ -38,6 +38,7 @@ public class DownloadURL {
         }catch (Exception e){
             Log.d("Exception", e.toString());
         }finally {
+
             assert inputStream != null;
             inputStream.close();
             httpURLConnection.disconnect();
