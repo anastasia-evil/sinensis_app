@@ -166,7 +166,7 @@ public class activity_actividadLista extends AppCompatActivity {
                                 activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
                                 Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.actividad_eliminada), Toast.LENGTH_SHORT);
                                 toast.show();
-                                Intent intent = new Intent(view.getContext(),activity_principal.class);
+                                Intent intent = new Intent(view.getContext(), activity_principal.class);
                                 startActivity(intent);
                             }
                         })
@@ -184,19 +184,18 @@ public class activity_actividadLista extends AppCompatActivity {
         btn_link = (ImageButton) findViewById(R.id.boton_link);
         String nombreActividad = titulo.getText().toString();
         elegirFoto(btn_link);
-
         //Music player
         seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
-        if (nombreActividad.equals(getString(R.string.respiraciones_guiadas)) || nombreActividad.equals(getString(R.string.sonidos_relajantes)) || nombreActividad.equals(R.string.audioguia)) {
+        if (nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")) {
             btn_link.setVisibility(View.VISIBLE);
             seekBarVol.setVisibility(View.VISIBLE);
-            if (nombreActividad.equals(R.string.respiraciones_guiadas)) {
+            if (nombreActividad.equals("Respiraciones guiadas")) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.respiraciones);
                 audio(mp);
-            } else if (nombreActividad.equals(R.string.sonidos_relajantes)) {
+            } else if (nombreActividad.equals("Sonidos Relajantes")) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.sonidosrelajantes);
                 audio(mp);
-            } else if (nombreActividad.equals(R.string.audioguia)) {
+            } else if (nombreActividad.equals("Audioguia")) {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.audioguia);
                 audio(mp);
             }
@@ -272,14 +271,13 @@ public class activity_actividadLista extends AppCompatActivity {
             public void onClick(View view) {
                 if (mp.isPlaying()) {
                     mp.pause();
-                    Toast.makeText(activity_actividadLista.this, getString(R.string.pause), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity_actividadLista.this, "Pausa", Toast.LENGTH_SHORT).show();
                 } else {
                     mp.start();
-                    Toast.makeText(activity_actividadLista.this, getString((R.string.play)), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity_actividadLista.this, "Play", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
         seekBarVol.setMax(max_vol);
         seekBarVol.setProgress(currentVolume);
         seekBarVol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -288,11 +286,9 @@ public class activity_actividadLista extends AppCompatActivity {
                 //papa
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 0);
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
