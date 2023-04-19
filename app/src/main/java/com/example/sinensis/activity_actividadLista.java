@@ -1,9 +1,11 @@
 package com.example.sinensis;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -108,10 +110,10 @@ public class activity_actividadLista extends AppCompatActivity {
         //<------------- BOTONES PRINCIPALES ----------->
 
         ImageButton btn_calendario = (ImageButton) findViewById(R.id.calendario);
-        ImageButton btn_home = (ImageButton) findViewById(R.id.home);
+        ImageButton btn_anadir = (ImageButton) findViewById(R.id.button_eleccion);
         ImageButton btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
 
-        Intent intentH = new Intent(this, activity_principal.class);
+        Intent intentH = new Intent(this, activity_actividades.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +124,7 @@ public class activity_actividadLista extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btn_home.setOnClickListener(new View.OnClickListener() {
+        btn_anadir.setOnClickListener(new View.OnClickListener() {
             @Override
             //Lanzar actividad de lista de actividades
             public void onClick(View view) {
@@ -155,10 +157,27 @@ public class activity_actividadLista extends AppCompatActivity {
         btn_eliminar_actividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                eliminar(activity_principal.lista, titulo);
-                activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
-                Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.actividad_eliminada), Toast.LENGTH_SHORT);
-                toast.show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity_actividadLista.this);
+                builder.setMessage(getString(R.string.alerta))
+                        .setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                eliminar(activity_principal.lista, titulo);
+                                activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
+                                Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.actividad_eliminada), Toast.LENGTH_SHORT);
+                                toast.show();
+                                Intent intent = new Intent(view.getContext(),activity_principal.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
         //Boton de link a cada enlace
@@ -183,32 +202,30 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         }
 
-        checkSi = (CheckBox)findViewById(R.id.checkSi);
+        checkSi = (CheckBox) findViewById(R.id.checkSi);
 
 
-        
         AppDatabase db;
         db = AppDatabase.getInstance(getApplicationContext());
         int m = db.ActividadesDAO().obtenernivel(nombreActividad);
 
 
-
         checkSi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked){
+                if (isChecked) {
                     hojas = obtenerHojas(); // recuperamos el valor sumado
-                    if(m == 0){
+                    if (m == 0) {
                         hojas += 5;
-                    }else if(m==1){
-                        hojas +=10;
-                    }else if(m == 2){
-                        hojas +=10;
+                    } else if (m == 1) {
+                        hojas += 10;
+                    } else if (m == 2) {
+                        hojas += 10;
                     }
                     guardarHojas(hojas);//guardamos el valor ya sumado
                     activity_ajustes.m = Integer.toString(obtenerHojas());
                     activity_actividadLista.hojas = obtenerHojas();
-                    Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.monedas,hojas), Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.monedas, hojas), Toast.LENGTH_SHORT);
                     toast.show();
                     val = 1;
                 }
@@ -271,9 +288,11 @@ public class activity_actividadLista extends AppCompatActivity {
                 //papa
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 0);
             }
+
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
+
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
@@ -364,7 +383,7 @@ public class activity_actividadLista extends AppCompatActivity {
                 break;
             case "Yoga":
                 id = R.drawable.youtube;
-                url =getString(R.string.enlace_yoga);
+                url = getString(R.string.enlace_yoga);
                 linearLayout.removeView(seekBarVol);
                 break;
             case "Escuchar música":
@@ -392,24 +411,24 @@ public class activity_actividadLista extends AppCompatActivity {
                 url = "foto";
                 break;
             case "Artes Marciales":
-                if(edad_recogida > 50){
+                if (edad_recogida > 50) {
                     id = R.drawable.artesmarcialesa;
                     url = getString(R.string.enlace_marciales_abuelos);
 
-                }else{
-                    id=R.drawable.artesmarcialesj;
+                } else {
+                    id = R.drawable.artesmarcialesj;
                     url = getString(R.string.enlace_maricales_jovenes);
                 }
                 linearLayout.removeView(seekBarVol);
                 break;
 
             case "Leer Libros":
-                if(edad_recogida > 50){
+                if (edad_recogida > 50) {
                     id = R.drawable.leerlibrosa;
                     url = getString(R.string.enlace_leer_abuelos);
 
-                }else{
-                    id=R.drawable.leerlibrosj;
+                } else {
+                    id = R.drawable.leerlibrosj;
                     url = getString(R.string.enlace_leer_jovenes);
                 }
                 linearLayout.removeView(seekBarVol);
@@ -450,7 +469,7 @@ public class activity_actividadLista extends AppCompatActivity {
                 }
             });
         }
-        if(url.equals("foto")){
+        if (url.equals("foto")) {
             botonLink.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -491,11 +510,6 @@ public class activity_actividadLista extends AppCompatActivity {
         MainActivity.sharedPreferences = getSharedPreferences("datos12", Context.MODE_PRIVATE);
         return MainActivity.sharedPreferences.getInt("hojas", 0); // 0 es el valor predeterminado si no se encuentra la clave "hojas"
     }
-
-
-
-
-
 
 
 }

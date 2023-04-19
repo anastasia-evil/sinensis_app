@@ -48,6 +48,8 @@
     <string name="si">Si</string>
     <string name="moneditas">Recoge tu recompensa al terminar la actividad</string>
     <string name="btn_eliminar">Eliminar actividad</string>
+    <string name="alerta">¿Seguro que quieres eliminar esta actividad?</string>
+    <string name="cancelar">Cancelar</string>
 
     <!--Ajustes-->
     <string name="ajustes">Ajustes</string>
