@@ -8,9 +8,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/imagen_fija"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="67dp" />
+        layout="@layout/imagen_fija" />
 
     <TextView
         android:id="@+id/titulo"
@@ -39,72 +37,88 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8">
+        app:layout_constraintVertical_bias="0.6">
 
 
         <Button
             android:id="@+id/sobre_app"
             android:layout_width="300dp"
-            android:layout_height="65dp"
-            android:backgroundTint="@color/botones"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/container"
             android:fontFamily="@font/fresca"
-            android:textColor="@color/white"
             android:onClick="onClick"
+            android:padding="10dp"
             android:text="@string/btn_info"
             android:textAllCaps="false"
-            android:textSize="20dp" />
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:cornerRadius="20dp"
+            app:strokeColor="@color/fondo_carga"
+            app:strokeWidth="2dp" />
 
         <Button
             android:id="@+id/sobre_nosotras"
             android:layout_width="300dp"
-            android:layout_height="65dp"
+            android:layout_height="70dp"
             android:layout_marginTop="15dp"
-            android:backgroundTint="@color/botones"
+            android:backgroundTint="@color/container"
             android:fontFamily="@font/fresca"
             android:textColor="@color/white"
             android:onClick="onClick"
             android:text="@string/btn_desarrolladoras"
             android:textAllCaps="false"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            app:cornerRadius="20dp"
+            app:strokeColor="@color/fondo_carga"
+            app:strokeWidth="2dp"/>
 
         <Button
             android:id="@+id/ods"
             android:layout_width="300dp"
-            android:layout_height="65dp"
+            android:layout_height="70dp"
             android:layout_marginTop="15dp"
-            android:backgroundTint="@color/botones"
+            android:backgroundTint="@color/container"
             android:fontFamily="@font/fresca"
             android:textColor="@color/white"
             android:onClick="onClick"
             android:text="@string/btn_ods"
             android:textAllCaps="false"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            app:cornerRadius="20dp"
+            app:strokeColor="@color/fondo_carga"
+            app:strokeWidth="2dp"/>
 
         <Button
             android:id="@+id/misdatos"
             android:layout_width="300dp"
-            android:layout_height="65dp"
+            android:layout_height="70dp"
             android:layout_marginTop="15dp"
-            android:backgroundTint="@color/botones"
+            android:backgroundTint="@color/container"
             android:fontFamily="@font/fresca"
             android:textColor="@color/white"
             android:onClick="onClick"
             android:text="@string/btn_datos"
             android:textAllCaps="false"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            app:cornerRadius="20dp"
+            app:strokeColor="@color/fondo_carga"
+            app:strokeWidth="2dp"/>
 
         <Button
             android:id="@+id/progreso"
             android:layout_width="300dp"
-            android:layout_height="65dp"
+            android:layout_height="70dp"
             android:layout_marginTop="15dp"
-            android:backgroundTint="@color/botones"
+            android:backgroundTint="@color/container"
             android:fontFamily="@font/fresca"
             android:textColor="@color/white"
             android:onClick="onClick"
             android:text="@string/btn_progreso"
             android:textAllCaps="false"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            app:cornerRadius="20dp"
+            app:strokeColor="@color/fondo_carga"
+            app:strokeWidth="2dp"/>
 
     </LinearLayout>
 
