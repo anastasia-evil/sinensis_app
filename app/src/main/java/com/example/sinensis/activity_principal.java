@@ -99,6 +99,7 @@ public class activity_principal extends AppCompatActivity {
 
                 intentLista.putExtra("TIT", a.getNombre());
                 intentLista.putExtra("DES", a.getDescripcion_larga());
+                intentLista.putExtra("POS", position);
                 startActivity(intentLista);
 
             }

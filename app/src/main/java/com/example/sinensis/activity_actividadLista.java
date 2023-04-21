@@ -13,6 +13,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.view.View;
@@ -76,9 +77,9 @@ public class activity_actividadLista extends AppCompatActivity {
         //<------------- CALENDARIO ----------->
 
         //BOTONES PARA CALENDARIO
-        btn_fecha = (Button) findViewById(R.id.btn_fecha);
-        btn_hora = (Button) findViewById(R.id.btn_hora);
-        btn_anadirA = (Button) findViewById(R.id.btn_anadirA);
+        btn_fecha = findViewById(R.id.btn_fecha);
+        btn_hora =  findViewById(R.id.btn_hora);
+        btn_anadirA = findViewById(R.id.btn_anadirA);
 
         btn_fecha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,9 +110,9 @@ public class activity_actividadLista extends AppCompatActivity {
         });
         //<------------- BOTONES PRINCIPALES ----------->
 
-        ImageButton btn_calendario = (ImageButton) findViewById(R.id.calendario);
-        ImageButton btn_anadir = (ImageButton) findViewById(R.id.button_eleccion);
-        ImageButton btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
+        ImageButton btn_calendario = findViewById(R.id.calendario);
+        ImageButton btn_anadir = findViewById(R.id.button_eleccion);
+        ImageButton btn_ajustes = findViewById(R.id.ajustes);
 
         Intent intentH = new Intent(this, activity_actividades.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
@@ -153,7 +154,7 @@ public class activity_actividadLista extends AppCompatActivity {
         //ACCIONES DENTRO DE LA ACTIVIDAD
 
         //Botón eliminar actividad
-        btn_eliminar_actividad = (Button) findViewById(R.id.boton_eliminar);
+        btn_eliminar_actividad = findViewById(R.id.boton_eliminar);
         btn_eliminar_actividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,11 +182,11 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         });
         //Boton de link a cada enlace
-        btn_link = (ImageButton) findViewById(R.id.boton_link);
+        btn_link = findViewById(R.id.boton_link);
         String nombreActividad = titulo.getText().toString();
         elegirFoto(btn_link);
         //Music player
-        seekBarVol = (SeekBar) findViewById(R.id.seekBar_vol);
+        seekBarVol = findViewById(R.id.seekBar_vol);
         if (nombreActividad.equals("Respiraciones guiadas") || nombreActividad.equals("Sonidos Relajantes") || nombreActividad.equals("Audioguia")) {
             btn_link.setVisibility(View.VISIBLE);
             seekBarVol.setVisibility(View.VISIBLE);
@@ -201,36 +202,56 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         }
 
-        checkSi = (CheckBox) findViewById(R.id.checkSi);
+        checkSi = findViewById(R.id.checkSi);
 
 
         AppDatabase db;
         db = AppDatabase.getInstance(getApplicationContext());
         int m = db.ActividadesDAO().obtenernivel(nombreActividad);
 
-
+        SharedPreferences sharedPreferences = getSharedPreferences("check",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        int position = getIntent().getIntExtra("POS", -1);
         checkSi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            private CountDownTimer timer;
+            private boolean isChecked = false;
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (isChecked) {
+                this.isChecked = isChecked;
+                if(isChecked){
+                    timer = new CountDownTimer(4000,1000) {
+                        @Override
+                        public void onTick(long l) {
+                            checkSi.setEnabled(false); //Inhabilitamos el check
+                        }
+                        @Override
+                        public void onFinish() {
+                            checkSi.setEnabled(true); //Volvemos a habilitar el check
+                            checkSi.setChecked(false); //Descamarcamos el check
+                        }
+                    }.start();
+
                     hojas = obtenerHojas(); // recuperamos el valor sumado
-                    if (m == 0) {
+                    if(m == 0){
                         hojas += 5;
-                    } else if (m == 1) {
-                        hojas += 10;
-                    } else if (m == 2) {
-                        hojas += 10;
+                    }else if(m==1){
+                        hojas +=10;
+                    }else if(m == 2){
+                        hojas +=10;
                     }
                     guardarHojas(hojas);//guardamos el valor ya sumado
                     activity_ajustes.m = Integer.toString(obtenerHojas());
-                    activity_actividadLista.hojas = obtenerHojas();
-                    Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.monedas, hojas), Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(activity_actividadLista.this,getString(R.string.monedas,hojas) , Toast.LENGTH_SHORT);
                     toast.show();
                     val = 1;
                 }
 
+                editor.putBoolean("check1"+position, isChecked);
+                editor.apply();
             }
         });
+        boolean checkboxState = sharedPreferences.getBoolean("check1"+position, false);
+        checkSi.setChecked(checkboxState);
 
 
     }
@@ -353,7 +374,7 @@ public class activity_actividadLista extends AppCompatActivity {
     //Para que en cada actividad te salga una foto diferente dependiendo de la actividad que quieras
     public void elegirFoto(ImageButton botonLink) {
         String nombreActividad = titulo.getText().toString();
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear1);
+        LinearLayout linearLayout = findViewById(R.id.linear1);
         int edad_recogida = activity_datos.edad_datos;
 
         int id = 0;
@@ -440,7 +461,7 @@ public class activity_actividadLista extends AppCompatActivity {
                 id = R.drawable.play;
                 break;
             default:
-                LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linear);
+                LinearLayout linearLayout1 = findViewById(R.id.linear);
                 linearLayout1.removeView(btn_link);
                 linearLayout.removeView(seekBarVol);
         }

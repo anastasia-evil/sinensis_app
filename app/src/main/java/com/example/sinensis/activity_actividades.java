@@ -48,7 +48,7 @@ public class activity_actividades extends AppCompatActivity {
                         break;
                     }else{
                         p = 0;
-                        if(a.getNombre().equals("Aprendes sobre los ajolotes") || a.getNombre().equals("Plan de ocio") || a.getNombre().equals("Cocinar arepas")){
+                        if(a.getNombre().equals("Aprendes sobre los ajolotes") || a.getNombre().equals("Plan de ocio") || a.getNombre().equals("Cocinar Arepas")){
                             if(MainActivity.sharedPreferences.getInt("hojas",0) >= 50){
                                 p = 0;
                             }else{
