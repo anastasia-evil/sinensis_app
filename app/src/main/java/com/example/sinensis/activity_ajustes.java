@@ -85,6 +85,10 @@ public class activity_ajustes extends AppCompatActivity {
                     mi_grado_estres = getString(R.string.nivel_mediobajo);
                 }else if(grado == 2){
                     mi_grado_estres = getString(R.string.nivel_medio);
+                }else if(grado == 3){
+                    mi_grado_estres = getString(R.string.nivel_medioalto);
+                }else if(grado == 4){
+                    mi_grado_estres = getString(R.string.nivel_alto);
                 }
 
                 texto = getString(R.string.datos,mi_nombre,mi_edad,mi_grado_estres);
