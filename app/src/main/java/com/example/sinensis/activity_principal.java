@@ -1,6 +1,7 @@
 package com.example.sinensis;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -15,9 +16,11 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class activity_principal extends AppCompatActivity {
@@ -25,6 +28,8 @@ public class activity_principal extends AppCompatActivity {
     public static ListView listView; //lista de actividades
     public static AppDatabase db; //base de datos en java
     public static String s_nombre;//nombre de la actividad
+    public static int currentDate;
+    public static Calendar calendar;
 
 
     ImageButton btn_calendario,btn_anadir,btn_ajustes;
@@ -50,14 +55,13 @@ public class activity_principal extends AppCompatActivity {
         btn_calendario = (ImageButton) findViewById(R.id.calendario);
         btn_ajustes = (ImageButton) findViewById(R.id.ajustes);
 
+        Intent intentC = new Intent(this,activity_calendario.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
         btn_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             //Lanzar actividad de calendario
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(getString(R.string.enlace_calendario)));
-                startActivity(intent);
+                startActivity(intentC);
             }
         });
         btn_ajustes.setOnClickListener(new View.OnClickListener() {
@@ -114,8 +118,33 @@ public class activity_principal extends AppCompatActivity {
             public void onClick(View view) { startActivity(anadir); }
         });
 
+        SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
+        calendar = Calendar.getInstance();
+        currentDate = calendar.get(Calendar.DAY_OF_MONTH);
+
+        Intent intent_calendario = new Intent(this, activity_calendario.class);
+
+        if(currentDate != prefs.getInt("lastShownDate", 0)){
+            // Mostrar el AlertDialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Este es tu mensaje")
+                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Guardar la fecha actual como última fecha mostrada
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putInt("lastShownDate", currentDate);
+                            editor.apply();
+                            startActivity(intent_calendario);
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+
 
     }
+
+
 
 
 
