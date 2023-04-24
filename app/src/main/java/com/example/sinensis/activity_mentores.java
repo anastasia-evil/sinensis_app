@@ -2,9 +2,7 @@ package com.example.sinensis;
 
 import static com.example.sinensis.activity_datos.nombre;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -86,7 +84,9 @@ public class activity_mentores extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mentor_datos = 2;
-                lista_actividades = Getlista(MainActivity.sharedPreferences.getInt("estres", 0),2);
+                int estres_pref = MainActivity.sharedPreferences.getInt("estres", 0);
+                int estres = level(estres_pref);
+                lista_actividades = Getlista(estres,2);
                 String listaJson = gson.toJson(lista_actividades);
 
                 // Guardar la cadena de texto JSON en SharedPreferences
@@ -101,19 +101,22 @@ public class activity_mentores extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
     }
     private List<Actividades> Getlista(int nivel, int mentor) {
         List<Actividades> lista = new ArrayList<>();
         lista = db.ActividadesDAO().selectactividad(nivel,mentor,0);
 
         return lista;
+    }
+
+    public int level(int grado_datos){
+        if(grado_datos == 0 || grado_datos  == 1){
+            return 0;
+        }else if(grado_datos  == 2 || grado_datos  == 3){
+            return 1;
+        }else{
+            return 2;
+        }
     }
 
 

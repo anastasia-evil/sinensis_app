@@ -108,8 +108,7 @@ public class activity_datos extends AppCompatActivity {
                     // Guarda los datos ingresados por el usuario en SharedPreferences
                     editor.putString("nombre", activity_datos.nombre_datos);
                     editor.putInt("edad", activity_datos.edad_datos);
-                    editor.putInt("estres",level());
-
+                    editor.putInt("estres",activity_datos.grado_datos);
 
                     // Aplica los cambios
                     editor.apply();
@@ -123,14 +122,6 @@ public class activity_datos extends AppCompatActivity {
 
     }
 
-    public int level(){
-        if(grado_datos == 0 || grado_datos  == 1){
-            return 0;
-        }else if(grado_datos  == 2 || grado_datos  == 3){
-            return 1;
-        }else{
-            return 2;
-        }
-    }
+
 
 }
