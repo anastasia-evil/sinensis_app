@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -34,25 +35,31 @@ public class activity_calendario extends AppCompatActivity {
 
 
 
+        progreso.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true; // desactiva el control táctil de la SeekBar
+            }
+        });
+
         feliz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 valorActual++;
-
+                progreso.setProgress(valorActual);
             }
         });
         regular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                valorActual=valorActual;
+
             }
         });
         mal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 valorActual--;
-
-
+                progreso.setProgress(valorActual);
             }
         });
 
