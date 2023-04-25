@@ -103,7 +103,6 @@ public class activity_mentores extends AppCompatActivity {
             }
         });
 
-
     }
     private List<Actividades> Getlista(int nivel, int mentor) {
         List<Actividades> lista = new ArrayList<>();
