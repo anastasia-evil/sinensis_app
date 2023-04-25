@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 
 public class activity_calendario extends AppCompatActivity {
 
     ImageButton feliz, regular, mal;
-    private CalendarView calendarView;
+
+    SeekBar progreso;
+    public static int valorActual;
 
     private static int color;
 
@@ -25,32 +28,31 @@ public class activity_calendario extends AppCompatActivity {
         feliz = findViewById(R.id.button_bien);
         regular = findViewById(R.id.button_regular);
         mal = findViewById(R.id.button_mal);
-        calendarView = findViewById(R.id.calendario);
-        long dia = calendarView.getDate();
+        progreso = findViewById(R.id.seekBar_progreso);
+
+        valorActual = progreso.getProgress();
+
+
 
         feliz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                color = R.color.red;
-                calendarView.setDateTextAppearance(color);
-
-
-
+                valorActual++;
 
             }
         });
         regular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                color = R.color.fondo_carga;
-                calendarView.setDateTextAppearance(Long.valueOf(dia).intValue());
+                valorActual=valorActual;
             }
         });
         mal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                color = R.color.red;
-                calendarView.setDateTextAppearance(Long.valueOf(dia).intValue());
+                valorActual--;
+
+
             }
         });
 
