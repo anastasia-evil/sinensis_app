@@ -100,7 +100,6 @@ public class activity_mentores extends AppCompatActivity {
 
                 startActivity(intent);
                 startActivity(intent1);
-
             }
         });
 
