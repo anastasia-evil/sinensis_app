@@ -46,7 +46,9 @@ public class activity_mentores extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mentor_datos = 0;
-                lista_actividades = Getlista(MainActivity.sharedPreferences.getInt("estres", 0),0);
+                int estres_pref = MainActivity.sharedPreferences.getInt("estres", 0);
+                int estres = level(estres_pref);
+                lista_actividades = Getlista(estres,0);
                 String listaJson = gson.toJson(lista_actividades);
 
                 // Guardar la cadena de texto JSON en SharedPreferences
@@ -65,7 +67,9 @@ public class activity_mentores extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mentor_datos = 1;
-                lista_actividades = Getlista(MainActivity.sharedPreferences.getInt("estres", 0),1);
+                int estres_pref = MainActivity.sharedPreferences.getInt("estres", 0);
+                int estres = level(estres_pref);
+                lista_actividades = Getlista(estres,1);
                 String listaJson = gson.toJson(lista_actividades);
 
                 // Guardar la cadena de texto JSON en SharedPreferences
@@ -96,10 +100,8 @@ public class activity_mentores extends AppCompatActivity {
 
                 startActivity(intent);
                 startActivity(intent1);
-
             }
         });
-
 
     }
     private List<Actividades> Getlista(int nivel, int mentor) {
