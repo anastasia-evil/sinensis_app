@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/fresca"
-        android:text="¿ Como te seintes hoy ?"
+        android:text="@string/pregunta_animo"
         android:textColor="@color/fondo_carga"
         android:textSize="18dp"
         android:elevation="1dp"
@@ -58,7 +58,7 @@
             android:layout_width="45dp"
             android:layout_height="46dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/serio"
+            android:background="@drawable/regular"
             android:elevation="1dp"
             android:onClick="onClick" />
 
@@ -66,7 +66,7 @@
             android:id="@+id/button_mal"
             android:layout_width="45dp"
             android:layout_height="46dp"
-            android:background="@drawable/triste"
+            android:background="@drawable/mal"
             android:elevation="1dp"
             android:onClick="onClick" />
     </LinearLayout>
@@ -75,7 +75,7 @@
     <View
         android:id="@+id/container2"
         android:layout_width="400dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/corner"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
@@ -88,7 +88,7 @@
     <View
         android:id="@+id/container3"
         android:layout_width="400dp"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:background="@drawable/corner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,45 +111,13 @@
         app:layout_constraintVertical_bias="0.1">
 
         <TextView
-            android:id="@+id/titulo_ficha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="1dp"
-            android:fontFamily="@font/fresca"
-            android:text="FICHA TÉCNICA"
-            android:textColor="@color/fondo_carga"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
-
-        <TextView
-            android:id="@+id/ficha_progreso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:elevation="1dp"
-            android:fontFamily="@font/fresca"
-            android:text="nombre o las cosas que vyaamos a poner que no kas se "
-            android:textColor="@color/fondo_carga"
-            android:textSize="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/barra_progreso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:elevation="1dp"
             android:fontFamily="@font/fresca"
-            android:text="Ahora mismo esta es tu salud mental, esta barra irá aumentando segund como te sientas."
+            android:text="@string/seek_bar"
             android:textColor="@color/fondo_carga"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -159,16 +127,31 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.26" />
 
+        <TextView
+            android:id="@+id/ficha_progreso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:elevation="1dp"
+            android:fontFamily="@font/fresca"
+            android:text=""
+            android:textColor="@color/fondo_carga"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <SeekBar
             android:id="@+id/seekBar_progreso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:enabled="false"
-            android:max="10"
-            android:progress="5"
-            android:progressBackgroundTint="@color/quantum_lime"
-            android:progressTint="@color/black"
+            android:max="30"
+            android:progress="0"
+            android:progressBackgroundTint="@color/fondo_carga"
+            android:progressTint="@color/fondo_carga"
             android:thumbTint="@color/botones"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

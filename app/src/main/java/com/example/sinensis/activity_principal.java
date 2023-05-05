@@ -38,6 +38,7 @@ public class activity_principal extends AppCompatActivity {
     public static List<String> listadescripcion = new ArrayList<>();
     public static Adaptadores adaptador;
     public static List<Actividades> lista;
+    public static int token;
 
     Context context;
 
@@ -121,15 +122,20 @@ public class activity_principal extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
         calendar = Calendar.getInstance();
         currentDate = calendar.get(Calendar.DAY_OF_MONTH);
-
         Intent intent_calendario = new Intent(this, activity_calendario.class);
 
         if(currentDate != prefs.getInt("lastShownDate", 0)){
             // Mostrar el AlertDialog
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Este es tu mensaje")
-                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            builder.setMessage(getString(R.string.mensaje))
+                    .setPositiveButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
+                            SharedPreferences.Editor editor2 = MainActivity.sharedPreferences.edit();
+                            int h = MainActivity.sharedPreferences.getInt("hojas",0);
+                            h = h + 5;
+                            editor2.putInt("hojas", h); // Guarda el nuevo valor de 'hojas'
+                            editor2.apply();
+                            activity_ajustes.m = Integer.toString(MainActivity.sharedPreferences.getInt("hojas",0));
                             // Guardar la fecha actual como última fecha mostrada
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putInt("lastShownDate", currentDate);
