@@ -23,7 +23,6 @@ public class activity_calendario extends AppCompatActivity {
     TextView texto_estado;
     public static int valorActual;
 
-    private static int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,12 @@ public class activity_calendario extends AppCompatActivity {
         });
 
         SharedPreferences sharedPreferences = getSharedPreferences("estado_animo", MODE_PRIVATE);
+        SharedPreferences sharedPreferences1 = getSharedPreferences("texto_animo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences1.edit();
+        String textoGuardado = sharedPreferences1.getString("texto_animo", "");
+        if (!textoGuardado.isEmpty()) {
+            texto_estado.setText(textoGuardado);
+        }
         Calendar calendar = Calendar.getInstance();
         int today = calendar.get(Calendar.DAY_OF_YEAR);
 
@@ -56,7 +61,10 @@ public class activity_calendario extends AppCompatActivity {
                 if (lastDayClicked != today) {
                     valorActual++;
                     progreso.setProgress(valorActual);
-                    texto_estado.setText(getString(R.string.estado_bien));
+                    String texto = getString(R.string.estado_bien);
+                    texto_estado.setText(texto);
+                    editor.putString("texto_animo", texto);
+                    editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
                 } else {
 
@@ -69,7 +77,10 @@ public class activity_calendario extends AppCompatActivity {
                 int lastDayClicked = sharedPreferences.getInt("ultimoDia", -1);
                 if (lastDayClicked != today) {
                     progreso.setProgress(valorActual);
-                    texto_estado.setText(getString(R.string.estado_bien));
+                    String texto = getString(R.string.estado_regular);
+                    texto_estado.setText(texto);
+                    editor.putString("texto_animo", texto);
+                    editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
                 } else {
 
@@ -83,7 +94,10 @@ public class activity_calendario extends AppCompatActivity {
                 if (lastDayClicked != today) {
                     valorActual++;
                     progreso.setProgress(valorActual);
-                    texto_estado.setText(getString(R.string.estado_bien));
+                    String texto = getString(R.string.estado_mal);
+                    texto_estado.setText(texto);
+                    editor.putString("texto_animo", texto);
+                    editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
                 } else {
 

@@ -59,9 +59,9 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
         TextView busqueda = (TextView) findViewById(R.id.busqueda);
 
         if (activity_actividadLista.act_places == 0){
-            busqueda.setText("Parques en tu zona...");
+            busqueda.setText(getString(R.string.parques));
         }else{
-            busqueda.setText("Spas en tu zona...");
+            busqueda.setText(getString(R.string.spas));
         }
 
     }
@@ -104,7 +104,7 @@ public class activity_mapa extends FragmentActivity implements OnMapReadyCallbac
                 super.onLocationResult(locationResult);
 
                 if (locationResult == null){
-                    Toast.makeText(getApplicationContext(), "La ubicación actual está vacía", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.ubi_vacia), Toast.LENGTH_SHORT).show();
                     return;
                 }
 

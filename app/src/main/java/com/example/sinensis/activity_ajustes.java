@@ -23,36 +23,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class activity_ajustes extends AppCompatActivity {
-
     public Button nosotras, app, ods, datos, progreso;
-
     public static String texto,texto2, texto3, m;
-
     public static List<Actividades> graves;
     public static List<String> lista_nombres;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
         //Creamos la lista de visualización
-
         app = (Button) findViewById(R.id.sobre_app);
         nosotras = (Button) findViewById(R.id.sobre_nosotras);
         ods = (Button) findViewById(R.id.ods);
         datos = (Button) findViewById(R.id.misdatos);
         progreso = (Button) findViewById(R.id.progreso);
-
         app.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 texto = getString(R.string.sobre_la_app);
                 showPopUp(view, null, texto,null,null,0, 0);
             }
-
         });
         nosotras.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +51,6 @@ public class activity_ajustes extends AppCompatActivity {
                 texto = getString(R.string.creadoras);
                 showPopUp(view, null, texto,null,null,0, 0);
             }
-
         });
         ods.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +58,6 @@ public class activity_ajustes extends AppCompatActivity {
                 texto = getString(R.string.ods);
                 showPopUp(view, null, texto,null,null,1, 0);
             }
-
         });
         datos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,10 +83,8 @@ public class activity_ajustes extends AppCompatActivity {
                 texto = getString(R.string.datos,mi_nombre,mi_edad,mi_grado_estres);
                 showPopUp(view, null,texto, null,null,0, 0);
             }
-
         });
 
-        //String hojas = Integer.toString(MainActivity.sharedPreferences.getInt("hojas", 0));
         progreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,15 +101,13 @@ public class activity_ajustes extends AppCompatActivity {
 
     }
 
-    public void showPopUp(View view, String m, String texto, String texto2,String texto3, int img_ods, int progreso) {
+    //<-------------  MÉTODOS FUERA DEL ONCREATE ----------->
 
+    public void showPopUp(View view, String m, String texto, String texto2,String texto3, int img_ods, int progreso) { //Variamos que se mostrará en cada pop-up cuando pulsemos un monton
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_ajustes, null);
-
         final PopupWindow popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true );
-
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
         TextView contenido = (TextView) popupView.findViewById(R.id.contenido);
         contenido.setText(texto);
         TextView contenido2 = (TextView)popupView.findViewById(R.id.contenido2);
@@ -133,12 +118,11 @@ public class activity_ajustes extends AppCompatActivity {
         Button eliminar = (Button) popupView.findViewById(R.id.boton_eliminar);
         ImageButton ods_img = (ImageButton) popupView.findViewById(R.id.imagen_ods);
 
-        if(MainActivity.sharedPreferences.getInt("hojas",0)>=50){
+        if(MainActivity.sharedPreferences.getInt("hojas",0)>=50){ //Cuando lleguemos a mas de 50 tokens podremos visualizar diferentes textos
             eliminar.setVisibility(View.VISIBLE);
             contenido2.setVisibility(View.VISIBLE);
         }
-
-        if (img_ods != 1){
+        if (img_ods != 1){ //La imagen de la ods se mostrará si estamos en el apartado indicado
             ods_img.setVisibility( View.GONE );
         }
         ods_img.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +132,7 @@ public class activity_ajustes extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         if(progreso !=1){
             LinearLayout check = (LinearLayout) popupView.findViewById(R.id.token);
@@ -160,6 +145,7 @@ public class activity_ajustes extends AppCompatActivity {
             text.setVisibility(View.VISIBLE);
         }
 
+        //Botones para cerrar el pop-up
         popupView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -174,8 +160,7 @@ public class activity_ajustes extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
-
-        eliminar.setOnClickListener(new View.OnClickListener() {
+        eliminar.setOnClickListener(new View.OnClickListener() { //El boton de eliminar hará que se eliminen las actividades mas duras
             @Override
             public void onClick(View view) {
                 eliminar(activity_principal.lista, lista_nombres);
@@ -185,7 +170,6 @@ public class activity_ajustes extends AppCompatActivity {
             }
         });
     }
-
     public List<Actividades> act(List<Actividades> completa){
         List<Actividades> borradas = new ArrayList<>();
         for(int i =0; i< completa.size();i++){
@@ -196,16 +180,14 @@ public class activity_ajustes extends AppCompatActivity {
         }
         return borradas;
     }
-
     public List<String> obtenername(List<Actividades> completa){
         List<String> c = new ArrayList<>();
         for(int i =0; i< completa.size();i++){
             c.add(completa.get(i).getNombre());
         }
         return c;
-
     }
-
+    // Metodo para eliminar las actividades mas duras
     public void eliminar(List<Actividades> entera, List<String> nombres_actividad_borradas) {
         List<Actividades> nuevasActividades = new ArrayList<>();
         for (int i = 0; i < entera.size(); i++) {

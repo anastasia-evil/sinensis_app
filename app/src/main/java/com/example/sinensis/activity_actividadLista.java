@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -20,20 +19,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import com.google.gson.Gson;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -42,73 +37,47 @@ import java.util.List;
 import java.util.Locale;
 
 public class activity_actividadLista extends AppCompatActivity {
-
     private Button btn_fecha, btn_hora;
-
     private Calendar fecha, hora;
     private Button btn_anadirA;
-
-    private TextView titulo;
-    private TextView descripcion;
-
+    private TextView titulo,descripcion;
     private ImageButton btn_link;
-
     private SeekBar seekBarVol;
     Button btn_eliminar_actividad;
-
-    public static int val;
-
-    public static int act_places;
-
-
+    public static int val, act_places, hojas;
     protected static CheckBox checkSi;
 
-    public static int hojas;
     private static final int REQUEST_CAMERA_PERMISSION = 200;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_lista);
 
-
-        //<------------- CALENDARIO ----------->
-
         //BOTONES PARA CALENDARIO
         btn_fecha = findViewById(R.id.btn_fecha);
         btn_hora =  findViewById(R.id.btn_hora);
         btn_anadirA = findViewById(R.id.btn_anadirA);
+        btn_fecha.setOnClickListener(view -> {
+            fecha = Calendar.getInstance();
+            elegirFecha(btn_fecha, fecha);
+        });
+        btn_hora.setOnClickListener(view -> {
+            hora = Calendar.getInstance();
+            elegirHora(btn_hora, hora);
+        });
+        btn_anadirA.setOnClickListener(view -> {
+            // Obtener valores de los botones
+            String date1 = btn_fecha.getText().toString();
+            String date2 = btn_hora.getText().toString();
+            try {
+                addEvent(date1, date2);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
-        btn_fecha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fecha = Calendar.getInstance();
-                elegirFecha(btn_fecha, fecha);
-            }
-        });
-        btn_hora.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hora = Calendar.getInstance();
-                elegirHora(btn_hora, hora);
-            }
-        });
-        btn_anadirA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Obtener valores de los botones
-                String date1 = btn_fecha.getText().toString();
-                String date2 = btn_hora.getText().toString();
-                try {
-                    addEvent(date1, date2);
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        //<------------- BOTONES PRINCIPALES ----------->
+        //<------------- BOTONES PRINCIPALES INFERIORES ----------->
 
         ImageButton btn_calendario = findViewById(R.id.calendario);
         ImageButton btn_anadir = findViewById(R.id.button_eleccion);
@@ -116,72 +85,49 @@ public class activity_actividadLista extends AppCompatActivity {
 
         Intent intentH = new Intent(this, activity_actividades.class);
         Intent intentA = new Intent(this, activity_ajustes.class);
-        btn_calendario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //Lanzar actividad de calendario
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(getString(R.string.enlace_calendario)));
-                startActivity(intent);
-            }
+        //Lanzar actividad de calendario
+        btn_calendario.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(getString(R.string.enlace_calendario)));
+            startActivity(intent);
         });
-        btn_anadir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //Lanzar actividad de lista de actividades
-            public void onClick(View view) {
-                startActivity(intentH);
-            }
-        });
-        btn_ajustes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //Lanzar actividad de ajustes
-            public void onClick(View view) {
-                startActivity(intentA);
-            }
-        });
+        //Lanzar actividad de lista de actividades
+        btn_anadir.setOnClickListener(view -> startActivity(intentH));
+        //Lanzar actividad de ajustes
+        btn_ajustes.setOnClickListener(view -> startActivity(intentA));
 
         //<------------- ACTIVIDAD ELEGIDA ----------->
+
         titulo = findViewById(R.id.titulo_activity);
         descripcion = findViewById(R.id.descripcion_activity);
-        //imagen = findViewById(R.id.imagen_activity);
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
+        //Dependiendo de que actividad hayamos seleccionado de nuestro plan en activity_principal se guarda el titulo y la descripción para luego mostrarla.
         if (b != null) {
             titulo.setText(b.getString("TIT"));
             descripcion.setText(b.getString("DES"));
         }
-        //ACCIONES DENTRO DE LA ACTIVIDAD
 
-        //Botón eliminar actividad
+        //Opción de eliminar actividad
         btn_eliminar_actividad = findViewById(R.id.boton_eliminar);
-        btn_eliminar_actividad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(activity_actividadLista.this);
-                builder.setMessage(getString(R.string.alerta))
-                        .setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                eliminar(activity_principal.lista, titulo);
-                                activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
-                                Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.actividad_eliminada), Toast.LENGTH_SHORT);
-                                toast.show();
-                                Intent intent = new Intent(view.getContext(), activity_principal.class);
-                                startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
+        btn_eliminar_actividad.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity_actividadLista.this);
+            builder.setMessage(getString(R.string.alerta))
+                    .setPositiveButton(R.string.aceptar, (dialogInterface, i1) -> {
+                        eliminar(activity_principal.lista, titulo);
+                        activity_principal.adaptador.notifyDataSetChanged(); // para actualizar el adaptador
+                        Toast toast = Toast.makeText(activity_actividadLista.this, getString(R.string.actividad_eliminada), Toast.LENGTH_SHORT);
+                        toast.show();
+                        Intent intent = new Intent(view.getContext(), activity_principal.class);
+                        startActivity(intent);
+                    })
+                    .setNegativeButton(R.string.cancelar, (dialogInterface, i1) -> dialogInterface.dismiss());
+            AlertDialog alertDialog = builder.create(); //Alert que te indique si estas seguro de eliminar la actividad.
+            alertDialog.show();
         });
-        //Boton de link a cada enlace
+
+        //Boton de link a cada enlace dependiendo de la actividad que hayamos pulsado
         btn_link = findViewById(R.id.boton_link);
         String nombreActividad = titulo.getText().toString();
         elegirFoto(btn_link);
@@ -202,13 +148,13 @@ public class activity_actividadLista extends AppCompatActivity {
             }
         }
 
-        checkSi = findViewById(R.id.checkSi);
 
+
+        checkSi = findViewById(R.id.checkSi); //Comprobar si han realizado la actividad
 
         AppDatabase db;
         db = AppDatabase.getInstance(getApplicationContext());
-        int m = db.ActividadesDAO().obtenernivel(nombreActividad);
-
+        int m = db.ActividadesDAO().obtenernivel(nombreActividad); //variable de los tokens.
         SharedPreferences sharedPreferences = getSharedPreferences("check",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         int position = getIntent().getIntExtra("POS", -1);
@@ -231,6 +177,7 @@ public class activity_actividadLista extends AppCompatActivity {
                         }
                     }.start();
 
+                    //Variable donde se almacenan los tokens
                     hojas = obtenerHojas(); // recuperamos el valor sumado
                     if(m == 0){
                         hojas += 5;
@@ -245,41 +192,31 @@ public class activity_actividadLista extends AppCompatActivity {
                     toast.show();
                     val = 1;
                 }
-
                 editor.putBoolean("check1"+position, isChecked);
                 editor.apply();
             }
         });
         boolean checkboxState = sharedPreferences.getBoolean("check1"+position, false);
         checkSi.setChecked(checkboxState);
-
-
     }
 
     //<-------------  MÉTODOS FUERA DEL ONCREATE ----------->
 
-    //Eliminar actividad
+    //Metodo para eliminar actividad
     public void eliminar(List<Actividades> a, TextView t) {
         String nombreActividad = t.getText().toString();
         for (int i = 0; i < a.size(); i++) {
             Actividades actividad = a.get(i);
             if (actividad.getNombre().equals(nombreActividad)) {
-                //activity_principal.db.ActividadesDAO().delete(actividad); si lo hago con esto se borra de todo.
                 a.remove(actividad);
                 break;
             }
         }
         SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
-
         Gson gson = new Gson();
-        // Convertir la lista en una representación JSON usando Gson
-        String listaJson = gson.toJson(activity_principal.lista);
-
-        // Guardar la lista actualizada en SharedPreferences
-        editor.putString("lista", listaJson);
-
-        // Aplicar los cambios
-        editor.apply();
+        String listaJson = gson.toJson(activity_principal.lista);// Convertir la lista en una representación JSON usando Gson
+        editor.putString("lista", listaJson); //Guardar la lista actualizada en SharedPreferences
+        editor.apply(); // Aplicar los cambios
     }
 
     //Music player
@@ -299,6 +236,7 @@ public class activity_actividadLista extends AppCompatActivity {
                 }
             }
         });
+        //Barra de volumen para poder controlarlo
         seekBarVol.setMax(max_vol);
         seekBarVol.setProgress(currentVolume);
         seekBarVol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -316,36 +254,27 @@ public class activity_actividadLista extends AppCompatActivity {
         });
     }
 
-
     //Calendario
     public void elegirFecha(Button boton, Calendar calendar) {
-        DatePickerDialog dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int day, int month, int year) {
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month);
-                calendar.set(Calendar.DAY_OF_MONTH, day);
-                String date = year + "/" + (month + 1) + "/" + day;
-                boton.setText(date);
-            }
+        DatePickerDialog dpd = new DatePickerDialog(this, (datePicker, day, month, year) -> {
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+            String date = year + "/" + (month + 1) + "/" + day;
+            boton.setText(date);
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         dpd.show();
     }
-
     public void elegirHora(Button boton, Calendar calendar) {
-        TimePickerDialog tpd = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                calendar.set(Calendar.HOUR_OF_DAY, hour);
-                calendar.set(Calendar.MINUTE, minute);
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
-                String timeString = sdf.format(calendar.getTime());
-                boton.setText(timeString);
-            }
+        TimePickerDialog tpd = new TimePickerDialog(this, (timePicker, hour, minute) -> {
+            calendar.set(Calendar.HOUR_OF_DAY, hour);
+            calendar.set(Calendar.MINUTE, minute);
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+            String timeString = sdf.format(calendar.getTime());
+            boton.setText(timeString);
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
         tpd.show();
     }
-
     public void addEvent(String beginDate, String beginHour) throws ParseException {
         // Convertir fechas y horas a milisegundos
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -368,15 +297,13 @@ public class activity_actividadLista extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
-
     }
 
-    //Para que en cada actividad te salga una foto diferente dependiendo de la actividad que quieras
+    //Para que en cada actividad te salga una foto diferente dependiendo de la actividad que pulses
     public void elegirFoto(ImageButton botonLink) {
         String nombreActividad = titulo.getText().toString();
         LinearLayout linearLayout = findViewById(R.id.linear1);
         int edad_recogida = activity_datos.edad_datos;
-
         int id = 0;
         String url = "";
         switch (nombreActividad) {
@@ -469,64 +396,42 @@ public class activity_actividadLista extends AppCompatActivity {
             botonLink.setVisibility(View.VISIBLE);
             botonLink.setImageResource(id);
             String finalUrl = url;
-            botonLink.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalUrl));
-                    startActivity(intent);
-                }
+            botonLink.setOnClickListener(view -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalUrl));
+                startActivity(intent);
             });
         }
         if (url.equals("mapa")) {
-            botonLink.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), activity_mapa.class);
-                    startActivity(intent);
-                }
+            botonLink.setOnClickListener(view -> {
+                Intent intent = new Intent(view.getContext(), activity_mapa.class);
+                startActivity(intent);
             });
         }
         if (url.equals("foto")) {
-            botonLink.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //Permisos para acceder a la cámara
-                    if (ContextCompat.checkSelfPermission(activity_actividadLista.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                        //Inicio de la cámara
-                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-                    } else {
-                        //Si no se ha concedido el permiso lo vuelvo a pedir
-                        ActivityCompat.requestPermissions(activity_actividadLista.this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
-                    }
+            botonLink.setOnClickListener(view -> {
+                //Permisos para acceder a la cámara
+                if (ContextCompat.checkSelfPermission(activity_actividadLista.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    //Inicio de la cámara
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+                } else {
+                    //Si no se ha concedido el permiso lo vuelvo a pedir
+                    ActivityCompat.requestPermissions(activity_actividadLista.this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
                 }
             });
         }
 
     }
-    /*public void monedas(String name, int hojas) {
-        int m = activity_mentores.db.ActividadesDAO().ontenernivel(name);
-        if(m == 0){
-            hojas += 5;
-        }else if(m == 1){
-            hojas += 10;
-        }else if(m == 2){
-            hojas += 15;
-        }
-    }*/
 
+    //Metodo para controlar shared preferences y la contabilización de tokens
     private void guardarHojas(int hojas) {
         MainActivity.sharedPreferences = getSharedPreferences("datos12", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
         editor.putInt("hojas", hojas); // gaurdamos
         editor.apply();
     }
-
-    // Recuperar el valor de hojas desde SharedPreferences
     public int obtenerHojas() {
         MainActivity.sharedPreferences = getSharedPreferences("datos12", Context.MODE_PRIVATE);
         return MainActivity.sharedPreferences.getInt("hojas", 0); // 0 es el valor predeterminado si no se encuentra la clave "hojas"
     }
-
-
 }

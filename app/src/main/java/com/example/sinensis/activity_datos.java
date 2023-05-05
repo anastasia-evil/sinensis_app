@@ -16,8 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class activity_datos extends AppCompatActivity {
 
-    static EditText nombre;
-    EditText edad;
+    EditText nombre,edad;
     SeekBar seekbar;
     int grado = 2;
     public static int grado_datos = 2;
@@ -26,32 +25,24 @@ public class activity_datos extends AppCompatActivity {
     TextView n;
     Button btn;
     String txt;
-
     public static SharedPreferences.Editor editor;
     public static SharedPreferences sharedPreferences;
-
-
-    private AppDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos);
-        nombre = (EditText) findViewById(R.id.nombre);
-        edad = (EditText) findViewById(R.id.edad);
-        seekbar = (SeekBar) findViewById(R.id.seekbar);
-        n = (TextView) findViewById(R.id.textito);
-        btn = (Button) findViewById(R.id.button);
-
-
+        // Convertimos los valores del xml para manejarlos en java
+        nombre = findViewById(R.id.nombre);
+        edad = findViewById(R.id.edad);
+        seekbar = findViewById(R.id.seekbar);
+        n = findViewById(R.id.textito);
+        btn = findViewById(R.id.button);
         txt = getString(R.string.nivel_medio);
         n.setText(getString(R.string.nivel) + txt);
-
-
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){ //Guarda el estado de la seekbar para saber el nivel de ansiedad introducido
                 grado = seekbar.getProgress();
-
                 if (progress == 0){
                     txt = getString(R.string.nivel_bajo);
                 }else if(progress == 1){
@@ -65,63 +56,43 @@ public class activity_datos extends AppCompatActivity {
                 }
                 n.setText(getString(R.string.nivel) + txt);
                 grado_datos = progress;
-
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
-
-
         });
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(activity_datos.this);
-                    builder.setMessage(getString(R.string.rellenar_datos))
-                            .setPositiveButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                }
-                            });
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-                }
-                else{
-                    String edad_conversor = edad.getText().toString();
-                    edad_datos = Integer.parseInt(edad_conversor);
-                    nombre_datos = nombre.getText().toString();
-                    // Obtén una instancia de SharedPreferences
-                    // Obtiene un editor de SharedPreferences para realizar modificaciones
-                    sharedPreferences = getSharedPreferences("datos12", Context.MODE_PRIVATE);
-                    editor = sharedPreferences.edit();
-
-                    // Guarda los datos ingresados por el usuario en SharedPreferences
-                    editor.putString("nombre", activity_datos.nombre_datos);
-                    editor.putInt("edad", activity_datos.edad_datos);
-                    editor.putInt("estres",activity_datos.grado_datos);
-
-                    // Aplica los cambios
-                    editor.apply();
-                    Intent intent = new Intent(activity_datos.this, activity_mentores.class);
-                    startActivity(intent);
-                }
-
+        btn.setOnClickListener(view -> {
+            if(nombre.getText().toString().isEmpty() || edad.getText().toString().isEmpty()){
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity_datos.this);
+                builder.setMessage(getString(R.string.rellenar_datos))
+                        .setPositiveButton(getString(R.string.aceptar), (dialogInterface, i) -> dialogInterface.dismiss());
+                AlertDialog alertDialog = builder.create(); //Nos sale una alerta si no hemos introducido algun dato
+                alertDialog.show();
             }
+            else{
+                //Convertimos los valores
+                String edad_conversor = edad.getText().toString();
+                edad_datos = Integer.parseInt(edad_conversor);
+                nombre_datos = nombre.getText().toString();
 
+                // Guarda los datos ingresados por el usuario en SharedPreferences. Obtiene un editor de SharedPreferences para realizar modificaciones
+                sharedPreferences = getSharedPreferences("datos12", Context.MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                sharedPreferences = getSharedPreferences("datos12", Context.MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                editor.putString("nombre", activity_datos.nombre_datos);
+                editor.putInt("edad", activity_datos.edad_datos);
+                editor.putInt("estres",activity_datos.grado_datos);
+
+                // Aplica los cambios
+                editor.apply();
+                Intent intent = new Intent(activity_datos.this, activity_mentores.class);
+                startActivity(intent);
+            }
         });
-
     }
-
-
 
 }
