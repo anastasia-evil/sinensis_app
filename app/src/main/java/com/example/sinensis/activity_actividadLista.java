@@ -192,8 +192,6 @@ public class activity_actividadLista extends AppCompatActivity {
                     toast.show();
                     val = 1;
                 }
-                editor.putBoolean("check1"+position, isChecked);
-                editor.apply();
             }
         });
         boolean checkboxState = sharedPreferences.getBoolean("check1"+position, false);
