@@ -78,8 +78,8 @@ public class activity_principal extends AppCompatActivity {
         if(currentDate != prefs.getInt("lastShownDate", 0)){
             // Mostrar el AlertDialog
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Este es tu mensaje")
-                    .setPositiveButton("Aceptar", (dialog, id) -> {
+            builder.setMessage(getString(R.string.mensaje))
+                    .setPositiveButton(getString(R.string.aceptar), (dialog, id) -> {
                         // Guarda el nuevo valor de 'hojas' que ganamos cada dia que iniciamos la app
                         SharedPreferences.Editor editor2 = MainActivity.sharedPreferences.edit();
                         int h = MainActivity.sharedPreferences.getInt("hojas",0);

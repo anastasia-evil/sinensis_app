@@ -99,7 +99,7 @@
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="373dp"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +132,6 @@
             android:layout_marginTop="45dp"
             android:enabled="false"
             android:max="30"
-            android:progress="0"
             android:progressBackgroundTint="@color/fondo_carga"
             android:progressTint="@color/fondo_carga"
             android:thumbTint="@color/botones"

@@ -12,13 +12,13 @@ import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class activity_calendario extends AppCompatActivity {
 
     ImageButton feliz, regular, mal;
-
     SeekBar progreso;
     TextView texto_estado;
     public static int valorActual;
@@ -29,12 +29,12 @@ public class activity_calendario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
 
+
         feliz = findViewById(R.id.button_bien);
         regular = findViewById(R.id.button_regular);
         mal = findViewById(R.id.button_mal);
         progreso = findViewById(R.id.seekBar_progreso);
         texto_estado = findViewById(R.id.ficha_progreso);
-
 
         valorActual = progreso.getProgress();
         progreso.setOnTouchListener(new View.OnTouchListener() {
@@ -44,10 +44,13 @@ public class activity_calendario extends AppCompatActivity {
             }
         });
 
+        //Guardamos el
         SharedPreferences sharedPreferences = getSharedPreferences("estado_animo", MODE_PRIVATE);
         SharedPreferences sharedPreferences1 = getSharedPreferences("texto_animo", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences1.edit();
         String textoGuardado = sharedPreferences1.getString("texto_animo", "");
+        Toast toast = Toast.makeText(activity_calendario.this, getString(R.string.solo_un_dia), Toast.LENGTH_SHORT);
+
         if (!textoGuardado.isEmpty()) {
             texto_estado.setText(textoGuardado);
         }
@@ -67,7 +70,7 @@ public class activity_calendario extends AppCompatActivity {
                     editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
                 } else {
-
+                    toast.show();
                 }
             }
         });
@@ -83,7 +86,7 @@ public class activity_calendario extends AppCompatActivity {
                     editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
                 } else {
-
+                    toast.show();
                 }
             }
         });
@@ -100,7 +103,7 @@ public class activity_calendario extends AppCompatActivity {
                     editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
                 } else {
-
+                    toast.show();
                 }
 
             }

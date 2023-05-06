@@ -56,7 +56,7 @@ public class activity_actividades extends AppCompatActivity {
                 Toast toast = Toast.makeText(activity_actividades.this, getString(R.string.actividad_seleccionada), Toast.LENGTH_SHORT);
                 toast.show();
             }else{
-                Toast toast = Toast.makeText(activity_actividades.this, "Aun no has desbloqueado la actividad", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(activity_actividades.this, "", Toast.LENGTH_SHORT);
                 toast.show();
             }
         });
