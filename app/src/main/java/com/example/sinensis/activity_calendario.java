@@ -56,6 +56,9 @@ public class activity_calendario extends AppCompatActivity {
         }
         Calendar calendar = Calendar.getInstance();
         int today = calendar.get(Calendar.DAY_OF_YEAR);
+        // Restaura el valor de la SeekBar guardado para el día actual
+        valorActual = sharedPreferences.getInt(String.valueOf(today), valorActual);
+        progreso.setProgress(valorActual);
 
         feliz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +72,7 @@ public class activity_calendario extends AppCompatActivity {
                     editor.putString("texto_animo", texto);
                     editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
+                    sharedPreferences.edit().putInt(String.valueOf(today), valorActual).apply(); // Guarda el valor de la SeekBar para el día actual
                 } else {
                     toast.show();
                 }
@@ -85,6 +89,8 @@ public class activity_calendario extends AppCompatActivity {
                     editor.putString("texto_animo", texto);
                     editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
+                    sharedPreferences.edit().putInt(String.valueOf(today), valorActual).apply(); // Guarda el valor de la SeekBar para el día actual
+
                 } else {
                     toast.show();
                 }
@@ -102,6 +108,8 @@ public class activity_calendario extends AppCompatActivity {
                     editor.putString("texto_animo", texto);
                     editor.apply();
                     sharedPreferences.edit().putInt("ultimoDia", today).apply();
+                    sharedPreferences.edit().putInt(String.valueOf(today), valorActual).apply(); // Guarda el valor de la SeekBar para el día actual
+
                 } else {
                     toast.show();
                 }
